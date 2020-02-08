@@ -5,7 +5,7 @@ import ReportForm from '../components/ReportForm';
 import Budtender from '../components/Budtender';
 
 //need navigation prop ou of all - using navigate func to other screens
-const CreateScreen = ({ navigation}, {name})=> {//????need to use name prop..
+const CreateScreen = ({ navigation}, {budname})=> {//????need to use name prop..
 
 //inside of main component (CreateScreen) call usecontext and pass in the context object and then -
 //-we're going to get back our whole big 'state' object and all its different action functions.
@@ -17,7 +17,7 @@ const CreateScreen = ({ navigation}, {name})=> {//????need to use name prop..
 //whenever blogpostform calls onSubmit it has to pass in the new title and content !
   return (
     <View>
-        <Text>{name}</Text>
+        <Text>{budname}</Text>
         <ReportForm onSubmit={(lines)=> {
 //anytime the user submits the form -the blogpostform invokes this onSubmit prop-
 //(it's custom - should be in the form component as a var also..)-
@@ -25,7 +25,7 @@ const CreateScreen = ({ navigation}, {name})=> {//????need to use name prop..
 //Inside this callback function: 1.call addblogpost ;
 //-2.pass in the new title and content, that the user just created;
 //3.pass in a callback as a 3d arg -to navigate back to the show report screen using that navigation prop:
-            addReport(lines, () => navigation.navigate('Show'), {name});
+            addReport(lines, () => navigation.navigate('Show'));
         }} 
         />
     </View>);

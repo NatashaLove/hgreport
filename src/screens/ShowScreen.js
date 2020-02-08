@@ -11,7 +11,7 @@ import {EvilIcons} from '@expo/vector-icons';
 // we have to receive that {navigation} prop -the navigation prop has a function
 //called Get param- then pass in a string that will be the I.D. or some of the property name 
 //that we want to retrieve during that navigate call over here: console.log(navigation.getParam('id'));
-const ShowScreen = ({ navigation})=> {
+const ShowScreen = ({ navigation}, {budname})=> {
     const title = navigation.getParam ('title');// to use directly 'id' var
     const { state } = useContext(Context);// going to pass data through context-where we get it from
 // find - helper func for arrays :  if the I.D. that was provided into this screen from Index screen
@@ -23,6 +23,7 @@ const ShowScreen = ({ navigation})=> {
 
     return (
         <View>
+            <Text>{budname}</Text>
             <Text>{report.lines}</Text>
             
         </View>

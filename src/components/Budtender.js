@@ -1,14 +1,16 @@
 import React from 'react';
-import { View, TouchableOpacity, StyleSheet } from "react-native";
+import { View, StyleSheet, Text, Image, TouchableOpacity } from "react-native";
 
-const Budtender = (name)=>{
+const Budtender = ({budname}, {navigation})=>{
 
 
     return <View style={styles.container}>
-        <Text>{name}</Text>
-        <Image style={styles.image}>
-            
-        </Image>
+        <TouchableOpacity
+         onPress={()=> navigation.navigate('Create')}
+        > 
+        <Text>{budname}</Text>
+        
+        </TouchableOpacity>
     </View>
 
 };

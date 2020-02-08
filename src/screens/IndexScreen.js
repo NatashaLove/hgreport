@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, TouchableOpacity, StyleSheet } from "react-native";
+import { View, TouchableOpacity, StyleSheet, Text } from "react-native";
 import {withNavigation} from 'react-navigation';
 import Budtender from '../components/Budtender';
 
@@ -15,21 +15,12 @@ const IndexScreen = ({navigation}) => {
 
 
     return <View>
-        <TouchableOpacity
-         onPress={()=> navigation.navigate('CreateScreen', {name})} 
-        >
-        <Budtender name = 'Art'/>
-        </TouchableOpacity>
-        <TouchableOpacity
-        onPress={()=> navigation.navigate('CreateScreen'), {name}} 
-        > 
-        <Budtender name = 'Dane'/>
-        </TouchableOpacity>
-        <TouchableOpacity
-        onPress={()=> navigation.navigate('CreateScreen'), {name}} 
-        >  
-        <Budtender name = 'Natasha'/>
-        </TouchableOpacity>
+        <Text>Hello hg!</Text>
+        <Budtender budname = "Art"/>
+        
+        <Budtender budname = "Dane"/>
+         
+        <Budtender budname = "Natasha"/>
         
     </View>
 };
