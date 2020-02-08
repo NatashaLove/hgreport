@@ -11,7 +11,7 @@ import Budtender from '../components/Budtender';
 
 
 
-const IndexScreen = ({navigation}) => {
+const IndexScreen = ({budname}) => {
 
 
     return <View>

@@ -4,14 +4,16 @@ import { View, StyleSheet, Text, Image, TouchableOpacity } from "react-native";
 const Budtender = ({budname}, {navigation})=>{
 
 
-    return <View style={styles.container}>
+    return (
         <TouchableOpacity
-         onPress={()=> navigation.navigate('Create')}
+         onPress={()=> navigation.navigate('Create', {budname})}
         > 
-        <Text>{budname}</Text>
-        
+        <View>
+        <Text style={styles.container}>{budname}</Text>
+        </View>
         </TouchableOpacity>
-    </View>
+    );
+    
 
 };
 
@@ -23,6 +25,7 @@ const styles = StyleSheet.create({
     }, // later can add images of budtenders
 
     container: {
+        fontSize: 20,
         borderRadius: 5,// rounded corners
         marginHorizontal: 15,
         marginBottom: 10,
