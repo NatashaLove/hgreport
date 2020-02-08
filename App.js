@@ -13,7 +13,7 @@ const navigator = createStackNavigator(
   {
 //1.is our route configuration object so we list out all the possible screens that a user can navigate to
    
-Index: IndexScreen,
+    Index: IndexScreen,
     Show: ShowScreen,
     Create: CreateScreen,
     Edit: EditScreen

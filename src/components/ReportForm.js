@@ -42,7 +42,7 @@ const lines = [
         content: ''
     },
     {
-        title: 'test',
+        title: 'Name',
         content: 'test'
     }
 ];
@@ -76,11 +76,7 @@ const ReportForm = ( {onSubmit, lines} )=> {
 };
 
 ReportForm.defaultProps = {
-    initialValues : {
-        title: '',//need to have each title attached and no need to edit default ones
-        content: '',
-       
-    }
+    initialValues : {lines}
 };
 
 const styles = StyleSheet.create({

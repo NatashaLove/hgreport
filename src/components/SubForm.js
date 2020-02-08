@@ -42,13 +42,15 @@ const styles = StyleSheet.create({
         borderColor: 'black',
         marginHorizontal:5,//mRgins on both sides
         marginBottom:5,
-        paddingHorizontal:5 //to get a little bit spacing between the text and the border
-
+        paddingHorizontal:5, //to get a little bit spacing between the text and the border
+        flexDirection: 'row' // makes the label and the text show on the same line
     },
     label: {
         fontSize:20,
         marginBottom:5,
-        marginHorizontal:5
+        marginHorizontal:5,
+        flexDirection: 'row' // makes the label and the text show on the same line
+
     }
 
 });
