@@ -10,13 +10,13 @@ import Budtender from '../components/Budtender';
 //need to be able save the file or send somewhere else..
 //create a component in separate file with a name in touchable opacity (like searchbar)*3 names
 
-const IndexScreen = ({navigation}) => {
+const IndexScreen = ({budname, navigation}) => {
 
-    //const {budname}= useContext(Context);
+    //const {getBudname}= useContext(Context);
 
     return <View>
         <Text>Hello hg!</Text>
-        <TouchableOpacity onPress={()=> navigation.navigate('Create')} > 
+        <TouchableOpacity onPress={()=> navigation.navigate('Create', {budname})} > 
         <Budtender budname = "Art"/>
         </TouchableOpacity>
         <TouchableOpacity onPress={()=> navigation.navigate('Create')} > 

@@ -3,7 +3,7 @@ import { View, ScrollView, Text, StyleSheet, TextInput, Button, FlatList } from 
 import SubForm from '../components/SubForm';
 //import Constants from 'expo-constants';
 
-const ReportForm = ( {onSubmit, lines} )=> {
+const ReportForm = ( {onSubmit, id, lines} )=> {
 
     //const [content, setContent]= useState(lines.content);
     lines = [
@@ -63,7 +63,7 @@ const ReportForm = ( {onSubmit, lines} )=> {
             
             <Button 
                 title="Save Report" 
-                onPress={()=> onSubmit(lines)}
+                onPress={()=> onSubmit(id, lines)}
 //add on new prop - onPress and inside of it - run our onSubmit callback-
 //- that was passed in as a prop to blogpostform in CreateScreen.
 

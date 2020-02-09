@@ -5,13 +5,13 @@ import ReportForm from '../components/ReportForm';
 
 const EditScreen = ({navigation})=> {
     //the id came from ShowScreen-after clicking the edit/pencil
-    const title = navigation.getParam ('title');// to use directly 'title' var instead of blogPost.id
+    const title = navigation.getParam ('id');// to use directly 'title' var instead of blogPost.id
     const { state, editReport } =useContext(Context);
     //const {editBlogPost} = useContext(Context);
 //iterate through arr blogposts/state- all the posts and find one with the same I.D. -
 //as navigation.getparam (I.D) and assign it to const blogPost (current to edit):
     const report = state.find(
-        (report) => report.title('Date') === title // instead of === navigation.getParam('id')
+        (report) => report.id === id // instead of === navigation.getParam('id')
     );
    
 //add in some callback func to our editscreen and pass it down into blogpostform(separate component/file)-
@@ -22,7 +22,7 @@ const EditScreen = ({navigation})=> {
 //existing title and content values should be taken from -const blogPost - above (by id),
 //and passed down as some starting initial form values to our form:        
         <ReportForm 
-            initialValues={{ lines: report}}
+            initialValues={{ lines: report, id: report.id}}
 //blogpostform loads with data from the post            
             onSubmit={(lines) => {
 //after submitting it changes
@@ -30,7 +30,7 @@ const EditScreen = ({navigation})=> {
 // to have no errors before taking the same id for updated post- should delete the old post:
             //deleteBlogPost(blogPost.id);//in case it navigated to index screen and created 2 posts w/the same id
     
-            editReport(lines, () => navigation.pop());//navigation.navigate('Show', { id}));//last one is callback ()=>
+            editReport(lines, id, () => navigation.pop());//navigation.navigate('Show', { id}));//last one is callback ()=>
 //if instead of navigating to the show screen-We want to go back to previous screen:
 //navigation.pop func returns the user to the previous screen.
 
