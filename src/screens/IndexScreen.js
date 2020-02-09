@@ -2,6 +2,7 @@ import React from 'react';
 import { View, TouchableOpacity, StyleSheet, Text } from "react-native";
 import {withNavigation} from 'react-navigation';
 import Budtender from '../components/Budtender';
+//import { Context } from '../context/ReportContext';
 
 //flatlist with 3 names (budtenders)
 //array create on index screen here- eachelement wrap- with toachable opacity -
@@ -9,10 +10,9 @@ import Budtender from '../components/Budtender';
 //need to be able save the file or send somewhere else..
 //create a component in separate file with a name in touchable opacity (like searchbar)*3 names
 
+const IndexScreen = ({withNavigation}) => {
 
-
-const IndexScreen = ({budname}) => {
-
+    //const {budname}= useContext(Context);
 
     return <View>
         <Text>Hello hg!</Text>

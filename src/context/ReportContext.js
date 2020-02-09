@@ -6,6 +6,18 @@ import jsonServer from '../api/jsonServer';// importing axios instance to use it
 const reportReducer = (state, action)=>{
 //the difference with reducer is that we can very easily add additional case statements to switch and can modify our list of blog posts in different ways:
     switch (action.type) {
+
+        case 'add_report':
+//similar codes described below in comments from useState
+            return [
+                ...state,//array
+                { 
+                    lines: action.payload.lines,  //!we want to use payload from the method to set the user's title and the content!
+//instead of title- `Blog Post #${state.length + 1}`
+                    budname: action.payload.budname
+                }
+            ];//2 arg- action
+
         case 'get_reports':
             return action.payload; //that's enough! no need for [...state,...] etc, because
 // whenever we get a response back from the API -our assumption is that the API is always the total source of information inside of our app.
@@ -43,7 +55,7 @@ const getReports = dispatch => {
     return async () => {
 // response.data === [{}, {}, {}]   // 'response.data' property- array of objects -
 //---that's where our list of blog posts is going to be -every object is our blog:
-        const response = await jsonServer.get('/reports`${name}`') 
+        const response = await jsonServer.get('/reports') // `${name}`
 //any route that we put inside of here will be contaminated with a base URL -which is specified inside of our configuration (jsonServer);
 //the request returns response..
         dispatch({ type: 'get_reports', payload: response.data});
@@ -60,12 +72,12 @@ const getReports = dispatch => {
 const addReport = dispatch => {
 
 //must accept a third argument - 'callback'- because added a callback function in CreateScreen to addBlogPost(to navigate)
-    return async (lines, callback)=>{ //we can accept some arguments {title, content} -
+    return async (lines, budname, callback)=>{ //we can accept some arguments {title, content} -
 //that will come from our component (CreateScreen) and then pass those through to the dispatch function
-    await jsonServer.post(`/reports/${name}`, {lines});//request to the server (URL+'/blogposts') and data {title,content}.
-// this line is telling our Jason server to create a brand new blog post .
+    await jsonServer.post('/reports', {lines});//(${name}`)request to the server (URL+'/blogposts') and data {title,content}.
+// this line is telling our Jason server to create a brand new report .
 
-    // dispatch({ type: 'add_blogpost', payload: { title, content}});//add those both { title, content} in to a payload property
+    dispatch({ type: 'add_report', payload: { lines, budname}});//add those both { title, content} in to a payload property
 // don't need dispatch any more -because anytime now we add a blogpost- we call '/blogposts'-from the server and
 //then refresh the index screen and upload all posts in the app.
    if (callback){
@@ -84,10 +96,10 @@ const editReport = dispatch => {
 //to send updated title and content to our server -should use a PUT request;
 //PUT request is used any time that we want to update a record with a given I.D-first arg, 
 //and the updated object {title,content}-second arg:
-        await jsonServer.put(`/reports/${name.lines.title('Date')}`, {lines});
+        await jsonServer.put(`/reports/${lines.title('Date')}`, {lines});
         dispatch ({ 
             type: 'edit_report', 
-            payload: { lines} 
+            payload: { lines } 
         });//dispatch has 2 arg : type and payload
         if (callback){
             callback();// this call returns to the index screen
