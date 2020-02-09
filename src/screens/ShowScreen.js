@@ -24,7 +24,7 @@ const ShowScreen = ({budname, navigation})=> {
     return (
         <View>
             <Text>{budname}</Text>
-            <Text>{report.lines}</Text>
+            <Text>{report}</Text>
             
         </View>
     );

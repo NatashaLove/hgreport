@@ -72,9 +72,9 @@ const getReports = dispatch => {
 const addReport = dispatch => {
 
 //must accept a third argument - 'callback'- because added a callback function in CreateScreen to addBlogPost(to navigate)
-    return async (lines, budname, callback)=>{ //we can accept some arguments {title, content} -
+    return async (repID, [title,content], budname, callback)=>{ //we can accept some arguments {title, content} -
 //that will come from our component (CreateScreen) and then pass those through to the dispatch function
-    await jsonServer.post(`/reports/${budname}`, {lines});//(${name}`)request to the server (URL+'/blogposts') and data {title,content}.
+    await jsonServer.post('/reports', {repID}, [title,content]);//(${name}`)request to the server (URL+'/blogposts') and data {title,content}.
 // this line is telling our Jason server to create a brand new report .
 
     //dispatch({ type: 'add_report', payload: { lines, budname}});//add those both { title, content} in to a payload property
