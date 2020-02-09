@@ -18,7 +18,7 @@ const CreateScreen = ({ navigation})=> {
 //whenever blogpostform calls onSubmit it has to pass in the new title and content !
   return (
     <View>
-        <Text>budtender name</Text>
+        <Text>{budname}</Text>
         <ReportForm onSubmit={(lines)=> {
 //anytime the user submits the form -the blogpostform invokes this onSubmit prop-
 //(it's custom - should be in the form component as a var also..)-

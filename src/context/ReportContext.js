@@ -12,7 +12,7 @@ const reportReducer = (state, action)=>{
             return [
                 ...state,//array
                 { 
-                    lines: action.payload.lines,  //!we want to use payload from the method to set the user's title and the content!
+                    lines: action.payload.lines.content,  //!we want to use payload from the method to set the user's title and the content!
 //instead of title- `Blog Post #${state.length + 1}`
                     budname: action.payload.budname
                 }

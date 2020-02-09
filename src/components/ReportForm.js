@@ -1,5 +1,5 @@
 import React, { useState} from 'react';
-import { View, Text, StyleSheet, TextInput, Button, FlatList } from 'react-native';
+import { View, ScrollView, Text, StyleSheet, TextInput, Button, FlatList } from 'react-native';
 import SubForm from '../components/SubForm';
 //import Constants from 'expo-constants';
 
@@ -9,59 +9,59 @@ const ReportForm = ( {onSubmit, lines} )=> {
     lines = [
     
         {
-            title: 'Date',
+            title: 'Date:',
             content: ''
         },
         {
-            title: 'Total in drawer',
+            title: 'Total in drawer:',
             content: ''
         },
         {
-            title: 'Taxes',
+            title: 'Taxes:',
             content: ''
         },
         {
-            title: 'Rent',
+            title: 'Rent:',
             content: ''
         },
         {
-            title: 'HG Money',
+            title: 'HG Money:',
             content: ''
         },
         {
-            title: 'MM',
+            title: 'MM:',
             content: ''
         },
         {
-            title: 'PP',
+            title: 'PP:',
             content: ''
         },
         {
-            title: 'Poole Farms Flower',
+            title: 'Poole Farms Flower:',
             content: ''
         },
         {
-            title: 'Notes',
+            title: 'Notes:',
             content: ''
         },
         {
-            title: 'Name',
-            content: 'test'
+            title: 'Name:',
+            content: ''
         }
     ];
    
 
     return (
         <View>
-                        
-            <FlatList
+            <ScrollView>
+                <FlatList
                 data={lines}
                 keyExtractor={item => item.title}
-                renderItem={({ item }) => <SubForm title= {item.title} content={item.content} />}
+                renderItem={({ item }) => <SubForm title= {item.title} content={item.setContent} />}
 //!!! NEED to add a "+"(add subform)below- to add text input in case of new consignment
            
-           />
-
+                />
+            </ScrollView>
             <Button 
                 title="Save Report" 
                 onPress={()=> onSubmit(lines)}
@@ -70,6 +70,7 @@ const ReportForm = ( {onSubmit, lines} )=> {
 
               //  onPress={()=> {} }
              />
+             
         </View>
     );
 };

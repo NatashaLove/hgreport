@@ -1,14 +1,14 @@
 import React, { useState} from 'react';
 import { View, Text, StyleSheet, TextInput } from 'react-native';
 
-const SubForm = ({title, content})=> {
+const SubForm = ({title})=> {
     //const [title, setTitle]= useState(initialValues.title);
-    [content, setContent] = useState(content);
+    const [content, setContent] = useState('');
  
     return (
         <View style={styles.container}>
-            <Text style={styles.label}> {title}:</Text>
-            <Text style={styles.label}> {content}:</Text>
+            <Text style={styles.label}> {title}</Text>
+            <Text style={styles.label}> {content}</Text>
             <TextInput 
                 style={styles.input} 
                 value={content} 
@@ -38,17 +38,20 @@ const styles = StyleSheet.create({
         marginHorizontal:5,//mRgins on both sides
         marginBottom:5,
         paddingHorizontal:5, //to get a little bit spacing between the text and the border
-        flex: 1//takes the rest of the space
+        flex: 0//takes the rest of the space
         },
     label: {
         fontSize:20,
         marginBottom:5,
         marginHorizontal:5,
+
         flexDirection: 'row' // makes the label and the text show on the same line
 
     },
     container: {
-        flexDirection: 'row'
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        paddingHorizontal: 10
     }
 
 });
