@@ -1,18 +1,14 @@
 import React from 'react';
-import { View, StyleSheet, Text, Image, TouchableOpacity } from "react-native";
+import { View, StyleSheet, Text, Image } from "react-native";
 //import { Context } from '../context/ReportContext';// import can get access to our context
 
-const Budtender = ({budname},{navigation})=>{
-
+const Budtender = ({budname})=>{
+    
        return (
-        <TouchableOpacity onPress={()=> navigation.navigate('Create')} > 
         <View>
         <Text style={styles.container}>{budname}</Text>
         </View>
-        </TouchableOpacity>
     );
-    
-
 };
 
 const styles = StyleSheet.create({

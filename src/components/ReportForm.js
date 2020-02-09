@@ -53,7 +53,6 @@ const ReportForm = ( {onSubmit, lines} )=> {
 
     return (
         <View>
-            <ScrollView>
                 <FlatList
                 data={lines}
                 keyExtractor={item => item.title}
@@ -61,7 +60,7 @@ const ReportForm = ( {onSubmit, lines} )=> {
 //!!! NEED to add a "+"(add subform)below- to add text input in case of new consignment
            
                 />
-            </ScrollView>
+            
             <Button 
                 title="Save Report" 
                 onPress={()=> onSubmit(lines)}
