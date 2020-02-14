@@ -6,15 +6,38 @@ import jsonServer from '../api/jsonServer';// importing axios instance to use it
 const reportReducer = (state, action)=>{
 //the difference with reducer is that we can very easily add additional case statements to switch and can modify our list of blog posts in different ways:
     switch (action.type) {
+
+//new action create with map! to create new array!
+// The map() method creates a new array populated with the =report= after calling a provided function on every element in the array:
+        case 'populate_reportform':
+
+            return state.map((lines) => {
+                var subline = {
+
+                    id: lines.item.id,
+            
+                    title: lines.item.title,
+            
+                    content: lines.item.content
+            
+                };
+                return lines.subline.id === action.payload.id
+                ? lines.subline=action.payload
+                 //lines.item.title=action.payload.title 
+                : lines.subline='';
+                // payload = whole obj blogPost (action.payload)
+               
+            });
+            
 /*
         case 'add_report':
 //similar codes described below in comments from useState
             return [
                 ...state,//array
-                { 
-                    lines: action.payload.lines,  //!we want to use payload from the method to set the user's title and the content!
-//instead of title- `Blog Post #${state.length + 1}`
-                    budname: action.payload.budname
+                {   repID: action.payload.id,
+                    title: action.payload.title, 
+                    content: action.payload.content
+                    //budname: action.payload.budname
                 }
             ];//2 arg- action
 */
@@ -46,6 +69,15 @@ if (blogPost.id === action.payload.id) {
     }
   
 };
+
+const populateReportForm = dispatch => {
+    return (id, title, content, callback) => {
+        dispatch({ type: 'populate_reportform', payload: id, title, content});
+        if (callback){
+            callback();
+        }
+    };
+};
 //need to create a new action func to fetch posts, ie -to make request,get response and dispatch an action:
 //need to use "async -await" syntax, because we're going make a network request.
 //So going to mark this function as 'async' -then inside of here we can make our network request:
@@ -72,12 +104,12 @@ const getReports = dispatch => {
 const addReport = dispatch => {
 
 //must accept a third argument - 'callback'- because added a callback function in CreateScreen to addBlogPost(to navigate)
-    return async (repID, [title,content], budname, callback)=>{ //we can accept some arguments {title, content} -
+    return async ( lines, budname, callback)=>{ //we can accept some arguments {title, content} -
 //that will come from our component (CreateScreen) and then pass those through to the dispatch function
-    await jsonServer.post('/reports', {repID}, [title,content]);//(${name}`)request to the server (URL+'/blogposts') and data {title,content}.
+    await jsonServer.post('/reports', lines);//(${name}`)request to the server (URL+'/blogposts') and data {title,content}.
 // this line is telling our Jason server to create a brand new report .
 
-    //dispatch({ type: 'add_report', payload: { lines, budname}});//add those both { title, content} in to a payload property
+//dispatch({ type: 'add_report', payload: {repID, title, content, budname}});//add those both { title, content} in to a payload property
 // don't need dispatch any more -because anytime now we add a blogpost- we call '/blogposts'-from the server and
 //then refresh the index screen and upload all posts in the app.
    if (callback){
@@ -112,7 +144,7 @@ export const { Context, Provider}= createDataContext(
 //all 3 args from the function in the file: 1.reducer, 2.object that contains all the different actions that we want to have:
 // addblogpost etc, 3.initial default state value =an empty array :
     reportReducer, 
-    { addReport, editReport, getReports }, 
+    { addReport, editReport, getReports, populateReportForm }, 
     [] //empty []- initial state when our application first loads up- empty array means we do not yet have any blog posts at all.
 // we could put in some default blog post to appear when our application is first loaded:
 //inside of this array - put in an object with the title 'test post', content 'test content' and id:1:

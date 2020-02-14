@@ -11,7 +11,7 @@ const CreateScreen = ({budname, navigation})=> {
 //inside of main component (CreateScreen) call usecontext and pass in the context object and then -
 //-we're going to get back our whole big 'state' object and all its different action functions.
 //now we only care about addblogpost so I'm going to destructure out adblogpost  : 
-  const {addReport} = useContext(Context);
+  const {populateReportForm} = useContext(Context);
 
 //!!! to customize the form - 1st! here inside <BlogPostForm /> -we need to formulate -
 //-(make up var names) some set of props -that we're gonna pass into addblogpost form:
@@ -19,14 +19,14 @@ const CreateScreen = ({budname, navigation})=> {
   return (
     <View>
         <Text>{budname}</Text>
-        <ReportForm onSubmit={(repID, [title,content])=> {
+        <ReportForm onSubmit={(id, title, content)=> {
 //anytime the user submits the form -the blogpostform invokes this onSubmit prop-
 //(it's custom - should be in the form component as a var also..)-
 
 //Inside this callback function: 1.call addblogpost ;
 //-2.pass in the new title and content, that the user just created;
 //3.pass in a callback as a 3d arg -to navigate back to the show report screen using that navigation prop:
-            addReport(repID, [title,content], budname, () => navigation.navigate('Show'));
+          populateReportForm(id, title, content, () => navigation.navigate('Show'));
         }} 
         />
     </View>);

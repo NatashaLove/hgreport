@@ -1,9 +1,12 @@
-import React, { useState} from 'react';
-import { View, Text, StyleSheet, TextInput } from 'react-native';
+import React, { useState, useContext, useEffect} from 'react';
+import { View, Text, StyleSheet, TextInput, Button } from 'react-native';
+import { Context } from '../context/ReportContext';
 
-const SubForm = ({title})=> {
+const SubForm = ({id, title})=> {
     //const [title, setTitle]= useState(initialValues.title);
     const [content, setContent] = useState('');
+    //const {populateReportForm} = useContext(Context);
+    id=0;
  
     return (
         <View style={styles.container}>
@@ -12,8 +15,13 @@ const SubForm = ({title})=> {
             <TextInput 
                 style={styles.input} 
                 value={content} 
-                onChangeText={(text) => setContent(text)} 
+                onChangeText={(text) => setContent(text)}
+                id= {id+1}
+                
+                //useEffect(()=> {
+                  //   populateReportForm(id, content);})
             />
+           
            
         </View>
     );
