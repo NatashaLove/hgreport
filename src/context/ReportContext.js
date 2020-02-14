@@ -12,15 +12,7 @@ const reportReducer = (state, action)=>{
         case 'populate_reportform':
 
             return state.map((lines) => {
-                var subline = {
-
-                    id: lines.item.id,
-            
-                    title: lines.item.title,
-            
-                    content: lines.item.content
-            
-                };
+                
                 return lines.subline.id === action.payload.id
                 ? lines.subline=action.payload
                  //lines.item.title=action.payload.title 
