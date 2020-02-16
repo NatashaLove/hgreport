@@ -5,8 +5,12 @@ import { Context } from '../context/ReportContext';
 const SubForm = ({id, title})=> {
     //const [title, setTitle]= useState(initialValues.title);
     const [content, setContent] = useState('');
-    //const {populateReportForm} = useContext(Context);
+    const {populateReportForm} = useContext(Context);
+
     id=0;
+
+    useEffect(() => {populateReportForm([id, title, content]
+        )}, []);
  
     return (
         <View style={styles.container}>
@@ -15,11 +19,11 @@ const SubForm = ({id, title})=> {
             <TextInput 
                 style={styles.input} 
                 value={content} 
-                onChangeText={(text) => setContent(text)}
                 id= {id+1}
+                onChangeText={(text) => setContent(text)}
                 
-                //useEffect(()=> {
-                  //   populateReportForm(id, content);})
+                
+//for additional callback- use - useEffect(()=> { populateReportForm(id, content);})
             />
            
            

@@ -1,4 +1,4 @@
-import React, { useState, useContext} from 'react';
+import React, { useState, useContext, useEffect} from 'react';
 import { View, ScrollView, Text, StyleSheet, TextInput, Button, FlatList } from 'react-native';
 import SubForm from '../components/SubForm';
 import { Context } from '../context/ReportContext';
@@ -7,30 +7,49 @@ import { Context } from '../context/ReportContext';
 const ReportForm = ( {initialValues, onSubmit} )=> {
     const {populateReportForm} = useContext(Context);
     
-    const[arr, setArr] = useState(initialValues.lines);
+    const[lines, setLines] = useState(initialValues.lines);
     //const [content, setContent]= useState(lines.content);
-    
+    /*
+    useEffect(() => {
+        setLines(SubForm.id = {id}, Subform.title = {title}, Subform.content={content}),
         
+       // setLines([[id, title,content] = lines[id, title, content], 
+            ()=> console.log(lines)
+    });
+*/
+    
+       
    
     return (
         <View>
                 <FlatList
-                data={arr}
+                data={lines}
                 keyExtractor={item => item.title}
-                renderItem={({ item }) => {
-                return (
-                <SubForm id = {item.id} title = {item.title} content={item.content} 
-                 //onChange ={(content) => setArr(content), console.log(arr)}       
-                />);
-                }}
+                renderItem={({ item }) => (
+                  // return  (
+                    <SubForm id = {item.id} title = {item.title} content={item.content} 
+                // onChange ={(content) => setArr.item(content)}       
+                
+                />)}
 //!!! NEED to add a "+"(add subform)below- to add text input in case of new consignment
                 />
         
             <Button 
                 title="Save Report" 
-                onPress={()=> onSubmit(arr)  
+                onPress={() => {
+                   // onSubmit(setLines([{id, title, content}]))
+                    console.log(lines.title)
+                }}
+            /*
+            {
+                    setLines((lines) => ({
+                        ...lines, 
+                        [item.content]:lines[item.content]
+                    })
+                    )},
+            */
                    // populateReportForm(lines.id, lines.content), 
-                } // onSubmit(lines)}
+                
 //add on new prop - onPress and inside of it - run our onSubmit callback-
 //- that was passed in as a prop to blogpostform in CreateScreen.
 
