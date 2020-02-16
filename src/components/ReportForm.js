@@ -4,79 +4,33 @@ import SubForm from '../components/SubForm';
 import { Context } from '../context/ReportContext';
 //import Constants from 'expo-constants';
 
-const ReportForm = ( {state, onSubmit} )=> {
+const ReportForm = ( {initialValues, onSubmit} )=> {
     const {populateReportForm} = useContext(Context);
+    
+    const[arr, setArr] = useState(initialValues.lines);
     //const [content, setContent]= useState(lines.content);
     
-    const lines = [
-    
-        {
-            id: 1,
-            title: 'Date:',
-            content: ''
-        },
-        {
-            id: 2,
-            title: 'Total in drawer:',
-            content: ''
-        },
-        {
-            id: 3,
-            title: 'Taxes:',
-            content: ''
-        },
-        {
-            id: 4,
-            title: 'Rent:',
-            content: ''
-        },
-        {
-            id: 5,
-            title: 'HG Money:',
-            content: ''
-        },
-        {
-            id: 6,
-            title: 'MM:',
-            content: ''
-        },
-        {
-            id: 7,
-            title: 'PP:',
-            content: ''
-        },
-        {
-            id: 8,
-            title: 'Poole Farms Flower:',
-            content: ''
-        },
-        {
-            id: 9,
-            title: 'Notes:',
-            content: ''
-        },
-        {
-            id: 10,
-            title: 'Name:',
-            content: ''
-        }
-    ];
+        
    
     return (
         <View>
                 <FlatList
-                data={lines}
+                data={arr}
                 keyExtractor={item => item.title}
                 renderItem={({ item }) => {
-                return <SubForm id = {item.id} title = {item.title} content={item.content} />}}
+                return (
+                <SubForm id = {item.id} title = {item.title} content={item.content} 
+                 //onChange ={(content) => setArr(content), console.log(arr)}       
+                />);
+                }}
 //!!! NEED to add a "+"(add subform)below- to add text input in case of new consignment
                 />
-
+        
             <Button 
                 title="Save Report" 
-                onPress={()=> onSubmit(lines),  
+                onPress={()=> onSubmit(arr)  
                    // populateReportForm(lines.id, lines.content), 
-                   console.log(lines)} // onSubmit(lines)}
+                } // onSubmit(lines)}
 //add on new prop - onPress and inside of it - run our onSubmit callback-
 //- that was passed in as a prop to blogpostform in CreateScreen.
 
@@ -85,6 +39,69 @@ const ReportForm = ( {state, onSubmit} )=> {
              
         </View>
     );
+};
+
+ReportForm.defaultProps = {
+    initialValues : {
+        lines : [
+            //initial values
+                {
+                    id: 1,
+                    title: 'Date:',
+                    content: ''
+                },
+                {
+                    id: 2,
+                    title: 'Total in drawer:',
+                    content: ''
+                },
+                {
+                    id: 3,
+                    title: 'Salaries:',
+                    content: ''
+                },
+                {
+                    id: 4,
+                    title: 'Taxes:',
+                    content: ''
+                },
+                {
+                    id: 5,
+                    title: 'Rent:',
+                    content: ''
+                },
+                {
+                    id: 6,
+                    title: 'HG Money:',
+                    content: ''
+                },
+                {
+                    id: 7,
+                    title: 'MM:',
+                    content: ''
+                },
+                {
+                    id: 8,
+                    title: 'PP:',
+                    content: ''
+                },
+                {
+                    id: 9,
+                    title: 'Poole Farms Flower:',
+                    content: ''
+                },
+                {
+                    id: 10,
+                    title: 'Notes:',
+                    content: ''
+                },
+                {
+                    id: 11,
+                    title: 'Name:',
+                    content: ''
+                }
+            ]
+    }
 };
 
 const styles = StyleSheet.create({

@@ -63,7 +63,8 @@ if (blogPost.id === action.payload.id) {
 };
 
 const populateReportForm = dispatch => {
-    return (id, title, content, callback) => {
+    return async (id, title, content, callback) => {
+        //await jsonServer.post('/reports', {id, title, content});
         dispatch({ type: 'populate_reportform', payload: id, title, content});
         if (callback){
             callback();
@@ -88,9 +89,6 @@ const getReports = dispatch => {
 
 //making request to the API in all the functions:
 
-//!update: since we don't use dispath any more 
-//create a new temp helper func 'addReport' -I'm gonna pass this helper function down into my value prop -
-//so that my index screen can very easily dispatch in action to add in a new blog post
 //we must make sure that this add blog post function gets access to dispatch from another file (createdatacontext)-
 //-that's how we change our state- make sure that we call this function  with The (Dispatch)
 const addReport = dispatch => {

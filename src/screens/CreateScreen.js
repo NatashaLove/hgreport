@@ -19,14 +19,14 @@ const CreateScreen = ({budname, navigation})=> {
   return (
     <View>
         <Text>{budname}</Text>
-        <ReportForm onSubmit={(id, title, content)=> {
+        <ReportForm onSubmit={(arr)=> {
 //anytime the user submits the form -the blogpostform invokes this onSubmit prop-
 //(it's custom - should be in the form component as a var also..)-
 
 //Inside this callback function: 1.call addblogpost ;
 //-2.pass in the new title and content, that the user just created;
 //3.pass in a callback as a 3d arg -to navigate back to the show report screen using that navigation prop:
-          populateReportForm(id, title, content, () => navigation.navigate('Show'));
+console.log(arr);//populateReportForm(lines, () => navigation.navigate('Show'));
         }} 
         />
     </View>);
