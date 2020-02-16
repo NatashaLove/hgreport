@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';//useState here to control TextInput
 import { StyleSheet, View, Text } from 'react-native';
 import { Context } from '../context/ReportContext';// import can get access to our context
-import ReportForm from '../components/ReportForm';
+import Form from '../components/Form';
 import Budtender from '../components/Budtender';
 
 //need navigation prop ou of all - using navigate func to other screens
@@ -17,16 +17,17 @@ const CreateScreen = ({budname, navigation})=> {
 //-(make up var names) some set of props -that we're gonna pass into addblogpost form:
 //whenever blogpostform calls onSubmit it has to pass in the new title and content !
   return (
+    
     <View>
         <Text>{budname}</Text>
-        <ReportForm onSubmit={(arr)=> {
+        <Form onSubmit={(id, title, content)=> {
 //anytime the user submits the form -the blogpostform invokes this onSubmit prop-
 //(it's custom - should be in the form component as a var also..)-
 
 //Inside this callback function: 1.call addblogpost ;
 //-2.pass in the new title and content, that the user just created;
 //3.pass in a callback as a 3d arg -to navigate back to the show report screen using that navigation prop:
-console.log(arr);//populateReportForm(lines, () => navigation.navigate('Show'));
+console.log(id, title, content);//populateReportForm(lines, () => navigation.navigate('Show'));
         }} 
         />
     </View>);
