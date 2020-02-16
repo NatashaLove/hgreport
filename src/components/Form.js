@@ -22,26 +22,36 @@ const Form = ( {initialValues, onSubmit} )=> {
     
     //const {populateReportForm} = useContext(Context);
 
-    id=0;
+    //id=0;
 
    // useEffect(() => {populateReportForm([id, title, content]
      //   )}, []);
 
     return (
         <View style={styles.container}>
-            <Text style={styles.label}> {title}</Text>
-            <Text style={styles.label}> {content}</Text>
-            <TextInput 
-                style={styles.input} 
-                value={content} 
-                id= {id+1}
-                onChangeText={(text) => setContent(text)}
-                                
-    //for additional callback- use - useEffect(()=> { populateReportForm(id, content);})
+            <FlatList
+            data={initialValues.lines}
+            keyExtractor={item => item.title}
+            renderItem={({ item }) => (
+               <View>
+                    <Text style={styles.label}> {item.title}</Text>
+                    <Text style={styles.label}> {content}</Text>
+                    <TextInput 
+                        style={styles.input} 
+                        value={content} 
+                        //id= {id+1}
+                        onChangeText={(text) => setContent(text)}
+                                        
+            //for additional callback- use - useEffect(()=> { populateReportForm(id, content);})
+                    />
+                </View>
+            )}
+    //!!! NEED to add a "+"(add subform)below- to add text input in case of new consignment
             />
-              <Button 
+  
+            <Button 
                 title="Save Report" 
-                onPress={()=> onSubmit(id, title, content)}
+                onPress={()=> onSubmit(title, content)}
                 />
         </View>
     );
@@ -117,13 +127,21 @@ const styles = StyleSheet.create({
         borderColor: 'black',
         marginHorizontal:5,//mRgins on both sides
         marginBottom:5,
-        paddingHorizontal:5 //to get a little bit spacing between the text and the border
+        paddingHorizontal:5, //to get a little bit spacing between the text and the border
+        flex: 0//takes the rest of the space
+        },
+    label: {
+        fontSize:20,
+        marginBottom:5,
+        marginHorizontal:5,
+
+        flexDirection: 'row' // makes the label and the text show on the same line
 
     },
-    label: {
-        fontSize:15,
-        marginBottom:5,
-        marginHorizontal:5
+    container: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        paddingHorizontal: 10
     }
 
 });
