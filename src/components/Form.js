@@ -36,6 +36,16 @@ const Form = ( {initialValues, onSubmit} )=> {
             }
         }
     };
+
+    const getDataArr=()=>{
+        return [
+            id=dataArr[i].id,
+            title=dataArr[i].title,
+            content=dataArr[i].conten
+
+        ]
+       
+    };
    
     return (
 

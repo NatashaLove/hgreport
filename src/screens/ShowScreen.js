@@ -6,19 +6,23 @@ import React, { useContext } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { Context } from '../context/ReportContext';
 import {EvilIcons} from '@expo/vector-icons';
-import {dataArr} from './CreateScreen'
+//import {dataArr} from './CreateScreen'
+import {dataArr} from '../components/Form';
 
 // I.D. that we passed in is not provided directly as a prop -
 // we have to receive that {navigation} prop -the navigation prop has a function
 //called Get param- then pass in a string that will be the I.D. or some of the property name 
 //that we want to retrieve during that navigate call over here: console.log(navigation.getParam('id'));
-const ShowScreen = ({ navigation, route})=> {
-    const { params } = navigation.state;
+const ShowScreen = ({ navigation})=> {
+    //const { state } = props.navigation;
     //const itemId = params ? params.itemId : null;
-    const otherParam = params ? params.otherParam : null;
+    //const data = params ? params.otherParam : null;
    
     // const [report, setReport] = useState('');
-
+   // const report =[]; 
+    //report= [navigation.getParam('report')];
+    const { state } = useContext(Context);
+    //state={dataArr};
    // const byDate = (dataArr.title='Date');
   // const id = navigation.getParam ('id');
     // to use directly 'id' var
@@ -30,11 +34,18 @@ const ShowScreen = ({ navigation, route})=> {
 //const report = state.find(
  //   (report) => report.id === id //navigation.getParam('id')
   //  );
-
+  
     return (
         <View>
-        <Text>Report:</Text>
-    <Text>{JSON.stringify(otherParam)}</Text>
+            <Text>Report:</Text>
+            <Text> {dataArr.map((report) => {
+            return report.forEach(line => {
+               console.log(line.title),
+               console.log(line.content) 
+            });
+            })}      
+
+            </Text>
     
         </View>
     );

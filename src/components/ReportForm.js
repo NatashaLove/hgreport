@@ -38,7 +38,7 @@ const ReportForm = ( {initialValues, onSubmit} )=> {
                 title="Save Report" 
                 onPress={() => {
                    // onSubmit(setLines([{id, title, content}]))
-                    console.log(lines.title)
+                    //console.log(lines.title)
                 }}
             /*
             {
