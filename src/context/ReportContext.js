@@ -7,7 +7,7 @@ const reportReducer = (state, action)=>{
 //the difference with reducer is that we can very easily add additional case statements to switch and can modify our list of blog posts in different ways:
     switch (action.type) {
 
-//new action create with map! to create new array!
+       //new action create with map! to create new array!
 // The map() method creates a new array populated with the =report= after calling a provided function on every element in the array:
         case 'populate_reportform':
 
@@ -62,6 +62,7 @@ if (blogPost.id === action.payload.id) {
   
 };
 
+
 const populateReportForm = dispatch => {
     return async (id, title, content, callback) => {
         //await jsonServer.post('/reports', {id, title, content});
@@ -94,21 +95,21 @@ const getReports = dispatch => {
 const addReport = dispatch => {
 
 //must accept a third argument - 'callback'- because added a callback function in CreateScreen to addBlogPost(to navigate)
-    return async ( lines, budname, callback)=>{ //we can accept some arguments {title, content} -
+    return async ( lines, callback)=>{ //we can accept some arguments {title, content} -
 //that will come from our component (CreateScreen) and then pass those through to the dispatch function
-    await jsonServer.post('/reports', lines);//(${name}`)request to the server (URL+'/blogposts') and data {title,content}.
-// this line is telling our Jason server to create a brand new report .
+        await jsonServer.post('/reports/', lines);//(${name}`)request to the server (URL+'/blogposts') and data {title,content}.
+    // this line is telling our Jason server to create a brand new report .
 
-//dispatch({ type: 'add_report', payload: {repID, title, content, budname}});//add those both { title, content} in to a payload property
-// don't need dispatch any more -because anytime now we add a blogpost- we call '/blogposts'-from the server and
-//then refresh the index screen and upload all posts in the app.
-   if (callback){
-    callback();// this call returns to the index screen
+    //dispatch({ type: 'add_report', payload: {repID, title, content, budname}});//add those both { title, content} in to a payload property
+    // don't need dispatch any more -because anytime now we add a blogpost- we call '/blogposts'-from the server and
+    //then refresh the index screen and upload all posts in the app.
+    if (callback){
+        callback();// this call returns to the index screen
 //without providing a callback, the code would result in an error.(if we decide not to navigate the user somewhere else right away.)
 //to solve the issue is to wrap both these with :If callback exists then call callback.    
-    }
+        };
     
-};
+    };
 //anytime someone calls add blog post we're going to dispatch an action object, which is 'add_blogpost' from switch
 //it describes how we want to change our data.
 };
@@ -127,7 +128,8 @@ const editReport = dispatch => {
             callback();// this call returns to the index screen
         };
     }
-}
+};
+
 
 //new export statement: destructure out context and provider from create datacontext func:
 export const { Context, Provider}= createDataContext(

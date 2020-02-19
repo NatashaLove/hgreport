@@ -5,7 +5,7 @@ import Form from '../components/Form';
 import Budtender from '../components/Budtender';
 
 //need navigation prop ou of all - using navigate func to other screens
-const CreateScreen = ({budname, navigation})=> {
+const TestScreen = ({budname, navigation})=> {
   //????need to use name prop..
 // const {budname}= useContext(Context);
 //inside of main component (CreateScreen) call usecontext and pass in the context object and then -
@@ -19,13 +19,8 @@ const CreateScreen = ({budname, navigation})=> {
   return (
     
     <View>
-      <Form onSubmit={( dataArr)=> { 
-        addReport(dataArr, () => navigation.navigate('Show', { dataArr}));
-      }} >
-
-      </Form>
+     <Form></Form>
     </View>);
-    //
 //!in the blogpostform we're going to make sure that any time a user taps on that submit button -
 //we call onSubmit with a new title and content !   
 
@@ -36,5 +31,5 @@ const styles = StyleSheet.create({
     
 });
 
-export default CreateScreen;
+export default TestScreen;
 

@@ -6,6 +6,7 @@ import { Provider } from './src/context/ReportContext';// import in {}, because 
 import ShowScreen from './src/screens/ShowScreen';
 import CreateScreen from './src/screens/CreateScreen';
 import EditScreen from './src/screens/EditScreen';
+import TestScreen from './src/screens/TestScreen';
 
 //!!! import ShowReportScreen...
 
@@ -16,7 +17,8 @@ const navigator = createStackNavigator(
     Index: IndexScreen,
     Show: ShowScreen,
     Create: CreateScreen,
-    Edit: EditScreen
+    Edit: EditScreen,
+    Test: TestScreen
   }, 
   {
 //2.configuration options specifically for our stack Navigator: 

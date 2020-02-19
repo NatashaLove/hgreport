@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect} from 'react';
-import { View, ScrollView, Text, StyleSheet, TextInput, Button, FlatList } from 'react-native';
+import { View, ScrollView, Text, StyleSheet, TextInput, Button, FlatList, Image } from 'react-native';
 import SubForm from '../components/SubForm';
 import { Context } from '../context/ReportContext';
 //import Constants from 'expo-constants';
@@ -18,43 +18,57 @@ const Form = ( {initialValues, onSubmit} )=> {
     });
 */
     const [content, setContent] = useState(initialValues.lines.content);
-    const [title] = useState(initialValues.lines.title);
-    
+    const title = initialValues.lines.title;
+    const dataArr = initialValues.lines;
+    const byDate = (dataArr.title='Date');
     //const {populateReportForm} = useContext(Context);
 
-    //id=0;
-
-   // useEffect(() => {populateReportForm([id, title, content]
-     //   )}, []);
-
+    const setDataArr=(id, title, text)=> {
+        
+        for(let i=0; i<dataArr.length; i++){
+            const makeArrID=i+1;
+            
+            if(id===makeArrID){
+                return [
+                    dataArr[i].id=id,
+                    dataArr[i].title=title,
+                    dataArr[i].content=text]
+            }
+        }
+    };
+   
     return (
-        <View style={styles.container}>
-            <FlatList
+
+<View >
+        <FlatList 
             data={initialValues.lines}
             keyExtractor={item => item.title}
-            renderItem={({ item }) => (
-               <View>
-                    <Text style={styles.label}> {item.title}</Text>
-                    <Text style={styles.label}> {content}</Text>
-                    <TextInput 
+            renderItem={({ item }) => (                
+                <View style={styles.container}>
+                    <Text style={styles.label}> {item.title} </Text>
+                   
+                    <TextInput
                         style={styles.input} 
                         value={content} 
-                        //id= {id+1}
-                        onChangeText={(text) => setContent(text)}
-                                        
-            //for additional callback- use - useEffect(()=> { populateReportForm(id, content);})
+                        placeholder={item.title}
+                      
+                        onChangeText={(text) => setDataArr(item.id, item.title, {text})}
                     />
                 </View>
+                                  
             )}
     //!!! NEED to add a "+"(add subform)below- to add text input in case of new consignment
-            />
-  
-            <Button 
+        />
+        <Button style={styles.button}
                 title="Save Report" 
-                onPress={()=> onSubmit(title, content)}
+                onPress={()=> onSubmit(dataArr) }//}console.log()
                 />
         </View>
     );
+        
+            
+        
+    
 };
 
 Form.defaultProps = {
@@ -116,11 +130,18 @@ Form.defaultProps = {
                     title: 'Name:',
                     content: ''
                 }
-            ]
+        ]
     }
 };
 
 const styles = StyleSheet.create({
+
+    button: {
+//?
+        maxWidth:10,
+        maxHeight: 10
+    },
+
     input: {
         fontSize:18,
         borderWidth: 1,
@@ -128,7 +149,7 @@ const styles = StyleSheet.create({
         marginHorizontal:5,//mRgins on both sides
         marginBottom:5,
         paddingHorizontal:5, //to get a little bit spacing between the text and the border
-        flex: 0//takes the rest of the space
+        flex: 1//takes the rest of the space
         },
     label: {
         fontSize:20,
