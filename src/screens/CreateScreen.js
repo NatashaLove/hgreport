@@ -5,22 +5,23 @@ import Form from '../components/Form';
 import Budtender from '../components/Budtender';
 
 //need navigation prop ou of all - using navigate func to other screens
-const CreateScreen = ({budname, navigation})=> {
+const CreateScreen = ({route, navigation})=> {
   //????need to use name prop..
 // const {budname}= useContext(Context);
 //inside of main component (CreateScreen) call usecontext and pass in the context object and then -
 //-we're going to get back our whole big 'state' object and all its different action functions.
 //now we only care about addblogpost so I'm going to destructure out adblogpost  : 
-  const {addReport} = useContext(Context);
+const {addReport} = useContext(Context);
 
-//!!! to customize the form - 1st! here inside <BlogPostForm /> -we need to formulate -
+
 //-(make up var names) some set of props -that we're gonna pass into addblogpost form:
 //whenever blogpostform calls onSubmit it has to pass in the new title and content !
   return (
     
     <View>
-      <Form onSubmit={( dataArr)=> { 
-        addReport(dataArr, () => navigation.navigate('Show', { dataArr}));
+      <Form onSubmit={(dataArr)=> { 
+        
+        addReport(dataArr, () => navigation.navigate('Show', {otherParam: dataArr}));
       }} >
 
       </Form>

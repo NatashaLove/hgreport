@@ -9,18 +9,7 @@ const reportReducer = (state, action)=>{
 
        //new action create with map! to create new array!
 // The map() method creates a new array populated with the =report= after calling a provided function on every element in the array:
-        case 'populate_reportform':
-
-            return state.map((lines) => {
-                
-                return lines.subline.id === action.payload.id
-                ? lines.subline=action.payload
-                 //lines.item.title=action.payload.title 
-                : lines.subline='';
-                // payload = whole obj blogPost (action.payload)
-               
-            });
-            
+        
 /*
         case 'add_report':
 //similar codes described below in comments from useState
@@ -32,7 +21,11 @@ const reportReducer = (state, action)=>{
                     //budname: action.payload.budname
                 }
             ];//2 arg- action
+
 */
+        case 'show_report':
+            return action.payload.lines.id;
+
         case 'get_reports':
             return action.payload; //that's enough! no need for [...state,...] etc, because
 // whenever we get a response back from the API -our assumption is that the API is always the total source of information inside of our app.
@@ -63,47 +56,43 @@ if (blogPost.id === action.payload.id) {
 };
 
 
-const populateReportForm = dispatch => {
-    return async (id, title, content, callback) => {
-        //await jsonServer.post('/reports', {id, title, content});
-        dispatch({ type: 'populate_reportform', payload: id, title, content});
-        if (callback){
-            callback();
-        }
-    };
-};
 //need to create a new action func to fetch posts, ie -to make request,get response and dispatch an action:
 //need to use "async -await" syntax, because we're going make a network request.
 //So going to mark this function as 'async' -then inside of here we can make our network request:
 const getReports = dispatch => {
 //whenever we call 'dispatch', react is gonna take that object-and then automatically call our reducer-
 //That object is then going to be the second argument to our reducer:
-    return async (budname) => {
+    return async () => {
 // response.data === [{}, {}, {}]   // 'response.data' property- array of objects -
 //---that's where our list of blog posts is going to be -every object is our blog:
-        const response = await jsonServer.get(`/reports/${budname}`); // `${name}`
+        const response = await jsonServer.get('/reports'); // `${name}`
 //any route that we put inside of here will be contaminated with a base URL -which is specified inside of our configuration (jsonServer);
 //the request returns response..
         dispatch({ type: 'get_reports', payload: response.data});
     };
 };
 
+const reports=[];
 //making request to the API in all the functions:
 
 //we must make sure that this add blog post function gets access to dispatch from another file (createdatacontext)-
 //-that's how we change our state- make sure that we call this function  with The (Dispatch)
 const addReport = dispatch => {
-
+    
 //must accept a third argument - 'callback'- because added a callback function in CreateScreen to addBlogPost(to navigate)
-    return async ( lines, callback)=>{ //we can accept some arguments {title, content} -
+    return async ( lines, callback)=>{
+        
+        for (let i=0;i<=30; i++){   
+            lines.id= reports[i];  
+           };  
+        //we can accept some arguments {title, content} -
 //that will come from our component (CreateScreen) and then pass those through to the dispatch function
-        await jsonServer.post('/reports/', lines);//(${name}`)request to the server (URL+'/blogposts') and data {title,content}.
-    // this line is telling our Jason server to create a brand new report .
-
+    await jsonServer.post('/reports', lines);//(${name}`)request to the server (URL+'/blogposts') and data {title,content}.
+       // this line is telling our Json server to create a brand new report .
     //dispatch({ type: 'add_report', payload: {repID, title, content, budname}});//add those both { title, content} in to a payload property
     // don't need dispatch any more -because anytime now we add a blogpost- we call '/blogposts'-from the server and
     //then refresh the index screen and upload all posts in the app.
-    if (callback){
+     if (callback){
         callback();// this call returns to the index screen
 //without providing a callback, the code would result in an error.(if we decide not to navigate the user somewhere else right away.)
 //to solve the issue is to wrap both these with :If callback exists then call callback.    
@@ -114,8 +103,28 @@ const addReport = dispatch => {
 //it describes how we want to change our data.
 };
 
+const showReport = dispatch => {
+    //const reports=[];
+    return async (lines, callback) => {
+        for (let i=0;i<=30; i++){   
+            lines.id= reports[i];  
+           };  
+           
+        await jsonServer.get(`/reports/${lines.id}`, lines);
+        dispatch ({ 
+            type: 'show_report', 
+            payload: { lines } 
+            });//dispatch has 2 arg : type and payload
+        
+        if (callback){
+            callback();// this call returns to the index screen
+        };
+
+    }
+}
+
 const editReport = dispatch => {
-    return async (lines, id, callback) =>{
+    return async ( id, lines, callback) =>{
 //to send updated title and content to our server -should use a PUT request;
 //PUT request is used any time that we want to update a record with a given I.D-first arg, 
 //and the updated object {title,content}-second arg:
@@ -136,7 +145,7 @@ export const { Context, Provider}= createDataContext(
 //all 3 args from the function in the file: 1.reducer, 2.object that contains all the different actions that we want to have:
 // addblogpost etc, 3.initial default state value =an empty array :
     reportReducer, 
-    { addReport, editReport, getReports, populateReportForm }, 
+    { addReport, editReport, getReports, showReport }, 
     [] //empty []- initial state when our application first loads up- empty array means we do not yet have any blog posts at all.
 // we could put in some default blog post to appear when our application is first loaded:
 //inside of this array - put in an object with the title 'test post', content 'test content' and id:1:

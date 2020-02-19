@@ -17,13 +17,13 @@ const Form = ( {initialValues, onSubmit} )=> {
             ()=> console.log(lines)
     });
 */
-    const [content, setContent] = useState(initialValues.lines.content);
+    const content= initialValues.lines.content;
     const title = initialValues.lines.title;
     const dataArr = initialValues.lines;
-    const byDate = (dataArr.title='Date');
+    //const ID=0;
     //const {populateReportForm} = useContext(Context);
 
-    const setDataArr=(id, title, text)=> {
+    const setDataArr=(id, title, content)=> {
         
         for(let i=0; i<dataArr.length; i++){
             const makeArrID=i+1;
@@ -32,7 +32,7 @@ const Form = ( {initialValues, onSubmit} )=> {
                 return [
                     dataArr[i].id=id,
                     dataArr[i].title=title,
-                    dataArr[i].content=text]
+                    dataArr[i].content=content]
             }
         }
     };
@@ -61,6 +61,7 @@ const Form = ( {initialValues, onSubmit} )=> {
         />
         <Button style={styles.button}
                 title="Save Report" 
+            
                 onPress={()=> onSubmit(dataArr) }//}console.log()
                 />
         </View>
