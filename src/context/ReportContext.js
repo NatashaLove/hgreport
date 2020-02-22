@@ -24,7 +24,9 @@ const reportReducer = (state, action)=>{
 
 */
         case 'show_report':
-            return action.payload.lines.id;
+           
+            return state.filter((lines) => 
+                lines.id === action.payload.lines.id);
 
         case 'get_reports':
             return action.payload; //that's enough! no need for [...state,...] etc, because
@@ -72,24 +74,28 @@ const getReports = dispatch => {
     };
 };
 
-const reports=[];
+
 //making request to the API in all the functions:
 
 //we must make sure that this add blog post function gets access to dispatch from another file (createdatacontext)-
 //-that's how we change our state- make sure that we call this function  with The (Dispatch)
 const addReport = dispatch => {
-    
+    //arr for all reports
+    const reports=[];
 //must accept a third argument - 'callback'- because added a callback function in CreateScreen to addBlogPost(to navigate)
     return async ( lines, reportID, callback)=>{
-        
-        for (let i=0;i<=30; i++){   
-            lines.id= reports[i];  
-           };  
+       
+        reportID=lines.id;
+        //for (let i=0;i<=30; i++){   
+          //  reports[i]=lines;
+           //};  
         //we can accept some arguments {title, content} -
 //that will come from our component (CreateScreen) and then pass those through to the dispatch function
-    await jsonServer.post('/reports', lines);//(${name}`)request to the server (URL+'/blogposts') and data {title,content}.
+    await jsonServer.post('/reports', lines, reportID);//(${name}`)request to the server (URL+'/blogposts') and data {title,content}.
        // this line is telling our Json server to create a brand new report .
-    //dispatch({ type: 'add_report', payload: {repID, title, content, budname}});//add those both { title, content} in to a payload property
+      
+    
+       //dispatch({ type: 'add_report', payload: {repID, title, content, budname}});//add those both { title, content} in to a payload property
     // don't need dispatch any more -because anytime now we add a blogpost- we call '/blogposts'-from the server and
     //then refresh the index screen and upload all posts in the app.
      if (callback){
@@ -102,27 +108,27 @@ const addReport = dispatch => {
 //anytime someone calls add blog post we're going to dispatch an action object, which is 'add_blogpost' from switch
 //it describes how we want to change our data.
 };
-
-const showReport = dispatch => {
+/*
+const showReport = id = dispatch ({
     //const reports=[];
-    return async (lines, callback) => {
-        for (let i=0;i<=30; i++){   
+  //  return async (lines, callback, reportID) => {
+       /* for (let i=0;i<=30; i++){   
             lines.id= reports[i];  
            };  
-           
-        await jsonServer.get(`/reports/${lines.id}`, lines);
-        dispatch ({ 
+          
+       // await jsonServer.get('/reports', {lines});
+        return : { 
             type: 'show_report', 
-            payload: { lines } 
-            });//dispatch has 2 arg : type and payload
+            payload: id
+            },//dispatch has 2 arg : type and payload
         
         if (callback){
             callback();// this call returns to the index screen
-        };
+        }
 
-    }
-}
-
+    
+});
+*/
 const editReport = dispatch => {
     return async ( id, lines, callback) =>{
 //to send updated title and content to our server -should use a PUT request;
@@ -145,7 +151,7 @@ export const { Context, Provider}= createDataContext(
 //all 3 args from the function in the file: 1.reducer, 2.object that contains all the different actions that we want to have:
 // addblogpost etc, 3.initial default state value =an empty array :
     reportReducer, 
-    { addReport, editReport, getReports, showReport }, 
+    { addReport, editReport, getReports}, 
     [] //empty []- initial state when our application first loads up- empty array means we do not yet have any blog posts at all.
 // we could put in some default blog post to appear when our application is first loaded:
 //inside of this array - put in an object with the title 'test post', content 'test content' and id:1:

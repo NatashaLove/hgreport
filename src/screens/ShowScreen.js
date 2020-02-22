@@ -2,12 +2,13 @@
 //big report screen will be additional - with search/filter by date and name..(?)
 //for beginning just show all reports wothout filtering option..
 
-import React, { useContext } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import React, { useContext, useEffect } from 'react';
+import { View, Text, StyleSheet, TouchableOpacity, FlatList } from 'react-native';
 import { Context } from '../context/ReportContext';
 import {EvilIcons} from '@expo/vector-icons';
 //import {dataArr} from './CreateScreen'
 import {dataArr} from '../components/Form';
+import Report from '../components/Report';
 
 // I.D. that we passed in is not provided directly as a prop -
 // we have to receive that {navigation} prop -the navigation prop has a function
@@ -16,40 +17,23 @@ import {dataArr} from '../components/Form';
 const ShowScreen = ({ navigation})=> {
     //const { state } = props.navigation;
     //const itemId = params ? params.itemId : null;
-    //const data = params ? params.otherParam : null;
+   const {state, showReport } = useContext(Context); 
    
-    // const [report, setReport] = useState('');
-   // const report =[]; 
-    //report= [navigation.getParam('report')];
-    const { state } = useContext(Context);
-    //state={dataArr};
-   // const byDate = (dataArr.title='Date');
-  // const id = navigation.getParam ('id');
-    // to use directly 'id' var
-    //const report = [route.params];
-    //const { showReport, state } = useContext(Context);// going to pass data through context-where we get it from
-// find - helper func for arrays :  if the I.D. that was provided into this screen from Index screen
-// is equal to the blog post I.D.-We found the appropriate blog post. Let's assign it to that variable.
-//And now we can show it on the screen:    
-//const report = state.find(
- //   (report) => report.id === id //navigation.getParam('id')
-  //  );
-  
     return (
         <View>
-            <Text>Report:</Text>
-            <Text> {dataArr.map((report) => {
-            return report.forEach(line => {
-               console.log(line.title),
-               console.log(line.content) 
-            });
-            })}      
-
-            </Text>
-    
+            <Text>Report is ready!</Text>
+           <Report></Report>
         </View>
-    );
+    );  
+                
 };
+/*               
+return ( 
+                    item.forEach(line => {
+                    console.log(line.title),
+                    console.log(line.content)
+                }));
+                */
 /*
 when we want to show something inside the header- under our main component add in ShowScreen.navigationOptions = () =>
  and this is going to be a function that needs to return a configuration object that'll customize our header.

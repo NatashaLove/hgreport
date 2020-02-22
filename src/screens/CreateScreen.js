@@ -17,7 +17,7 @@ const getDataArr=()=>{
   return [
       id=dataArr[i].id,
       title=dataArr[i].title,
-      content=dataArr[i].conten
+      content=dataArr[i].content
 
   ]
  
@@ -28,21 +28,23 @@ const getDataArr=()=>{
   return (
     
     <View>
-      <Form onSubmit={(dataArr)=> { 
-        const reportID=0;
-        addReport(dataArr, reportID+1, () => // navigation.navigate('Show', {arr: dataArr})
+      <Form onSubmit={(dataArr, reportID)=> { 
+        //const reportID=0;
+        addReport(dataArr, reportID, () => navigation.navigate('Show'),
        // newArr= getDataArr()
+      // console.log(reportID),
       <View>
       <FlatList 
             data={dataArr}
             keyExtractor={item => item.title}
+            item={getDataArr}
             renderItem={({ item }) => (                
                 <View style={styles.container}>
-                    <Text style={styles.label}> {getDataArr} </Text>
+                    <Text style={styles.label}> {item.title}  {item.content} </Text>
                   
                 </View>
                                   
-            )}
+        )}
     //!!! NEED to add a "+"(add subform)below- to add text input in case of new consignment
         />
     </View>
