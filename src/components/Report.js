@@ -5,7 +5,7 @@ import { Context } from '../context/ReportContext';
 const Report = ({initialValues})=> {
     //const [title, setTitle]= useState(initialValues.title);
    // const [report, setReport] = useState(initialValues.lines);
-   // const {populateReportForm} = useContext(Context);
+   const {state} = useContext(Context);
 
     //id=0;
 
@@ -29,6 +29,16 @@ const Report = ({initialValues})=> {
                 }
             }
         };
+
+        const getDataArr=()=>{
+            return [
+                dataArr[i].id = id,
+                dataArr[i].title = title,
+                dataArr[i].content = content
+    
+            ]
+           
+        };
  
     return (
 
@@ -46,7 +56,7 @@ const Report = ({initialValues})=> {
     //!!! NEED to add a "+"(add subform)below- to add text input in case of new consignment
         />
         <Button style={styles.button}
-                title="Save Report" 
+                title="Confirm" 
             
                // onPress={()=> onSubmit(dataArr, reportID) }//}console.log()
                 />

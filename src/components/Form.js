@@ -2,9 +2,10 @@ import React, { useState, useContext, useEffect} from 'react';
 import { View, ScrollView, Text, StyleSheet, TextInput, Button, FlatList, Image } from 'react-native';
 import SubForm from '../components/SubForm';
 import { Context } from '../context/ReportContext';
+import { render } from 'react-dom';
 //import Constants from 'expo-constants';
 
-const Form = ( {initialValues, onSubmit} )=> {
+const Form = ( {initialValues, getDataArr, onSubmit} )=> {
     //const {populateReportForm} = useContext(Context);
     
     //const[lines, setLines] = useState(initialValues.lines);
@@ -17,6 +18,9 @@ const Form = ( {initialValues, onSubmit} )=> {
             ()=> console.log(lines)
     });
 */
+
+//Current date is {this.props.date} - FOR DATE!
+
     const content= initialValues.lines.content;
     const title = initialValues.lines.title;
     const dataArr = initialValues.lines;
@@ -32,16 +36,18 @@ const Form = ( {initialValues, onSubmit} )=> {
                 return [
                     dataArr[i].id=id,
                     dataArr[i].title=title,
-                    dataArr[i].content=content]
+                    dataArr[i].content=content
+                ]
             }
         }
     };
 
-    const getDataArr=()=>{
+   
+    getDataArr=(dataArr, callback)=>{
         return [
             id=dataArr[i].id,
             title=dataArr[i].title,
-            content=dataArr[i].conten
+            content=dataArr[i].content
 
         ]
        
@@ -72,7 +78,7 @@ const Form = ( {initialValues, onSubmit} )=> {
         <Button style={styles.button}
                 title="Save Report" 
             
-                onPress={()=> onSubmit(dataArr, reportID) }//}console.log()
+                onPress={()=> onSubmit(dataArr, reportID) }//}console.log()// 
                 />
         </View>
     );
@@ -141,7 +147,7 @@ Form.defaultProps = {
         ],
         
     }
-    
+
 };
 
 const styles = StyleSheet.create({

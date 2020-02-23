@@ -3,6 +3,7 @@ import { StyleSheet, View, Text, FlatList } from 'react-native';
 import { Context } from '../context/ReportContext';// import can get access to our context
 import Form from '../components/Form';
 import Budtender from '../components/Budtender';
+import Report from '../components/Report';
 
 //need navigation prop ou of all - using navigate func to other screens
 const CreateScreen = ({state, navigation})=> {
@@ -12,8 +13,8 @@ const CreateScreen = ({state, navigation})=> {
 //-we're going to get back our whole big 'state' object and all its different action functions.
 //now we only care about addblogpost so I'm going to destructure out adblogpost  : 
 const {addReport} = useContext(Context);
-
-const getDataArr=()=>{
+/*
+const getDataArr=(dataArr)=>{
   return [
       id=dataArr[i].id,
       title=dataArr[i].title,
@@ -22,43 +23,50 @@ const getDataArr=()=>{
   ]
  
 };
+*/
+//This function is used to show the selected array element on Button onPress :
+SampleFunction=(item)=>{
+ 
+  Alert.alert(item);
 
+}
 //-(make up var names) some set of props -that we're gonna pass into addblogpost form:
 //whenever blogpostform calls onSubmit it has to pass in the new title and content !
+const render=(dataArr)=> {
+  
+   return (
+     <View style={styles.container}>
+ 
+         { dataArr.map((item, key)=>(
+         <Text key={key} style={styles.label} onPress={ this.SampleFunction.bind(this, item) }> { item } </Text>)
+         )}
+ 
+     </View>
+   );
+ }
+
   return (
     
     <View>
-      <Form onSubmit={(dataArr, reportID)=> { 
-        //const reportID=0;
-        addReport(dataArr, reportID, () => navigation.navigate('Show'),
+      <Form onSubmit={(dataArr, reportID)=> { render(dataArr), console.log(dataArr)
+      //  (<Report lines={dataArr}/>, navigation.navigate('Show'))
+
+        //change: ->navigate with dataArr - to Report
+      //  addReport(dataArr, reportID, () => navigation.navigate('Show', {reportID}),
        // newArr= getDataArr()
       // console.log(reportID),
-      <View>
-      <FlatList 
-            data={dataArr}
-            keyExtractor={item => item.title}
-            item={getDataArr}
-            renderItem={({ item }) => (                
-                <View style={styles.container}>
-                    <Text style={styles.label}> {item.title}  {item.content} </Text>
-                  
-                </View>
-                                  
-        )}
-    //!!! NEED to add a "+"(add subform)below- to add text input in case of new consignment
-        />
-    </View>
-    
-   
-        );
-      }} >
+       // );
+
+      }}
+       >
 
       </Form>
     </View>
 
     
     );
-    //
+
+
 //!in the blogpostform we're going to make sure that any time a user taps on that submit button -
 //we call onSubmit with a new title and content !   
 

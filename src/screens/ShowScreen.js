@@ -7,7 +7,7 @@ import { View, Text, StyleSheet, TouchableOpacity, FlatList } from 'react-native
 import { Context } from '../context/ReportContext';
 import {EvilIcons} from '@expo/vector-icons';
 //import {dataArr} from './CreateScreen'
-import {dataArr} from '../components/Form';
+//import {dataArr} from '../components/Form';
 import Report from '../components/Report';
 
 // I.D. that we passed in is not provided directly as a prop -
@@ -15,14 +15,23 @@ import Report from '../components/Report';
 //called Get param- then pass in a string that will be the I.D. or some of the property name 
 //that we want to retrieve during that navigate call over here: console.log(navigation.getParam('id'));
 const ShowScreen = ({ navigation})=> {
+    //const id = navigation.getParam ('index');
+    const {dataArr} = useContext(Context);
+/*
+    const report = state.find(
+        (report) => report.index === id //navigation.getParam('id')
+        );
+*/
+
     //const { state } = props.navigation;
     //const itemId = params ? params.itemId : null;
-   const {state, showReport } = useContext(Context); 
+    
    
     return (
         <View>
             <Text>Report is ready!</Text>
-           <Report></Report>
+    <Report />
+    {console.log(Report.title)}
         </View>
     );  
                 
