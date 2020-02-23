@@ -16,7 +16,7 @@ import Report from '../components/Report';
 //that we want to retrieve during that navigate call over here: console.log(navigation.getParam('id'));
 const ShowScreen = ({ navigation})=> {
     //const id = navigation.getParam ('index');
-    const {dataArr} = useContext(Context);
+  //  const {dataArr} = useContext(Context);
 /*
     const report = state.find(
         (report) => report.index === id //navigation.getParam('id')
@@ -30,7 +30,7 @@ const ShowScreen = ({ navigation})=> {
     return (
         <View>
             <Text>Report is ready!</Text>
-    <Report />
+    <Report render={(dataArr)}/>
     {console.log(Report.title)}
         </View>
     );  

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';//useState here to control TextInput
+import React, { useContext, useState } from 'react';//useState here to control TextInput
 import { StyleSheet, View, Text, FlatList } from 'react-native';
 import { Context } from '../context/ReportContext';// import can get access to our context
 import Form from '../components/Form';
@@ -9,9 +9,7 @@ import Report from '../components/Report';
 const CreateScreen = ({state, navigation})=> {
   //????need to use name prop..
 // const {budname}= useContext(Context);
-//inside of main component (CreateScreen) call usecontext and pass in the context object and then -
-//-we're going to get back our whole big 'state' object and all its different action functions.
-//now we only care about addblogpost so I'm going to destructure out adblogpost  : 
+
 const {addReport} = useContext(Context);
 /*
 const getDataArr=(dataArr)=>{
@@ -24,6 +22,8 @@ const getDataArr=(dataArr)=>{
  
 };
 */
+
+const [dataArr, setDataArr]=useState([]);
 //This function is used to show the selected array element on Button onPress :
 SampleFunction=(item)=>{
  
@@ -48,7 +48,9 @@ const render=(dataArr)=> {
   return (
     
     <View>
-      <Form onSubmit={(dataArr, reportID)=> { render(dataArr), console.log(dataArr)
+      <Form onSubmit={ (dataArr, reportID)=> {
+        setDataArr ([...dataArr]), console.log(dataArr)
+      
       //  (<Report lines={dataArr}/>, navigation.navigate('Show'))
 
         //change: ->navigate with dataArr - to Report
@@ -58,10 +60,10 @@ const render=(dataArr)=> {
        // );
 
       }}
-       >
+       />
+      <Report />
 
-      </Form>
-    </View>
+      </View>
 
     
     );

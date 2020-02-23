@@ -57,7 +57,7 @@ const Form = ( {initialValues, getDataArr, onSubmit} )=> {
 
 <View >
         <FlatList 
-            data={initialValues.lines}
+            data={dataArr}
             keyExtractor={item => item.title}
             renderItem={({ item }) => (                
                 <View style={styles.container}>
@@ -76,7 +76,7 @@ const Form = ( {initialValues, getDataArr, onSubmit} )=> {
     //!!! NEED to add a "+"(add subform)below- to add text input in case of new consignment
         />
         <Button style={styles.button}
-                title="Save Report" 
+                title="Preview Report" 
             
                 onPress={()=> onSubmit(dataArr, reportID) }//}console.log()// 
                 />

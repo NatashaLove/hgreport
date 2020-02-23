@@ -1,10 +1,12 @@
 import React, { useState, useContext, useEffect} from 'react';
 import { View, Text, StyleSheet, Button, FlatList } from 'react-native';
 import { Context } from '../context/ReportContext';
+import Form from '../components/Form';
 
-const Report = ({initialValues})=> {
-    //const [title, setTitle]= useState(initialValues.title);
-   // const [report, setReport] = useState(initialValues.lines);
+const Report = ({ initialValues, onPress})=> {
+   //const [title, setTitle]= useState(initialValues.title);
+   //const [content, setContent]= useState(initialValues.content);
+  // const [dataArr, setDataArr] = useState(initialValues.lines);
    const {state} = useContext(Context);
 
     //id=0;
@@ -16,7 +18,7 @@ const Report = ({initialValues})=> {
    // useEffect(() => {populateReportForm([id, title, content]
      //   )}, []);
 
-        const setDataArr=(id, title, content)=> {
+   const setDataArr=(id, title, content)=> {
             reportID=dataArr.id;
             for(let i=0; i<dataArr.length; i++){
                 const makeArrID=i+1;
@@ -25,7 +27,8 @@ const Report = ({initialValues})=> {
                     return [
                         dataArr[i].id=id,
                         dataArr[i].title=title,
-                        dataArr[i].content=content]
+                        dataArr[i].content=content
+                    ]
                 }
             }
         };
@@ -39,28 +42,49 @@ const Report = ({initialValues})=> {
             ]
            
         };
+        
+//This function is used to show the selected array element on Button onPress :
+SampleFunction=(item)=>{
  
+    Alert.alert(item);
+  
+}
+const render=(dataArr)=> {
+  
+    return (
+         <View style={styles.container}>
+          
+            { dataArr.map((item, key)=>(
+             <Text key={key} style={styles.label} onPress={ this.SampleFunction.bind(this, item) }> { item } </Text>)
+             )}
+          
+        </View>
+     );
+}
+        
+  
     return (
 
-<View >
+        
+    <View >
         <FlatList 
-            data={dataArr}
-            keyExtractor={item => item.title}
-            renderItem={({ item }) => (                
-                <View style={styles.container}>
-                    <Text style={styles.label}> {item.title} {item.content}  </Text>
-                   
-                     </View>
+        data={dataArr}
+        keyExtractor={item => item.title}
+        renderItem={({ item }) => (                
+            <View style={styles.container}>
+                <Text style={styles.label} > {item.title} {item.content}  </Text>
+                
+            </View>
                                   
-            )}
+        )}
     //!!! NEED to add a "+"(add subform)below- to add text input in case of new consignment
         />
         <Button style={styles.button}
-                title="Confirm" 
+            title="Confirm" 
             
-               // onPress={()=> onSubmit(dataArr, reportID) }//}console.log()
-                />
-        </View>
+                // onPress={()=> onSubmit(dataArr, reportID) }//}console.log()
+        />
+    </View>
     );
         
 };
