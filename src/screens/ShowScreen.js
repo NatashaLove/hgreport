@@ -3,7 +3,7 @@
 //for beginning just show all reports wothout filtering option..
 
 import React, { useContext, useEffect } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, FlatList } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, FlatList, Button } from 'react-native';
 import { Context } from '../context/ReportContext';
 import {EvilIcons} from '@expo/vector-icons';
 //import {dataArr} from './CreateScreen'
@@ -33,12 +33,24 @@ const ShowScreen = ({navigation, state, setParams})=> {
 
  // <Text> User Name: {JSON.stringify(user_name)} </Text> - just {username} won't print!
    // <Text>Other Param: {JSON.stringify(other_param)}</Text>  };
-  // {console.log(lines)}   
+  //   
    
     return (
         <View>
+            {console.log(lines)} 
             <Text>Report is ready!</Text>
-            <Report dataArray={lines}>{console.log(lines)}</Report>
+            
+        {lines.map((item, key) => {
+            return ( <Text key={item.id}>{item.title.toString()} {JSON.stringify(item.content.text)}</Text>);
+
+        })}
+     {console.log(lines)} 
+        <Button style={styles.button}
+            title="Confirm" 
+            
+                // onPress={()=> onSubmit(dataArr, reportID) }//}console.log()
+        />
+            
   
         </View>
     );  
@@ -50,6 +62,9 @@ return (
                     console.log(line.title),
                     console.log(line.content)
                 }));
+
+
+  <Report dataArray={lines}>{console.log(lines)}</Report>              
                 */
 /*
 when we want to show something inside the header- under our main component add in ShowScreen.navigationOptions = () =>

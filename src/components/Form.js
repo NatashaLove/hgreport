@@ -9,7 +9,7 @@ const Form = ( {initialValues, getDataArr, onSubmit} )=> {
     //const {populateReportForm} = useContext(Context);
     
     //const[lines, setLines] = useState(initialValues.lines);
-    //const [content, setContent]= useState(lines.content);
+   // const [content, setContent]= useState('');
     /*
     useEffect(() => {
         setLines(SubForm.id = {id}, Subform.title = {title}, Subform.content={content}),
@@ -21,7 +21,7 @@ const Form = ( {initialValues, getDataArr, onSubmit} )=> {
 
 //Current date is {this.props.date} - FOR DATE!
 
-    const content= initialValues.lines.content;
+   const content= initialValues.lines.content;
     const title = initialValues.lines.title;
     const dataArr = initialValues.lines;
     //const ID=0;
