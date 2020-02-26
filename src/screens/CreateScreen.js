@@ -10,7 +10,7 @@ const CreateScreen = ({state, navigation})=> {
   //????need to use name prop..
 // const {budname}= useContext(Context);
 
-const {addReport} = useContext(Context);
+
 /*
 const getDataArr=(dataArr)=>{
   return [

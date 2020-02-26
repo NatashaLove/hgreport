@@ -74,17 +74,20 @@ when we want to show something inside the header- under our main component add i
 */
 ShowScreen.navigationOptions = ({navigation}) => {
     return {
+        /*
         headerRight : (
             <TouchableOpacity 
             onPress ={() => 
                 navigation.navigate('Edit', {id: navigation.getParam('id')})
-//because we get access to that same navigation prop - inside of our touchable opacity we can extend our navigate call :
+
+                //because we get access to that same navigation prop - inside of our touchable opacity we can extend our navigate call :
 //as a second argument We could put in an object{} that's going to have an I.D. property and that I.D. will come from navigation.getParam function
             }
         >
                 <EvilIcons name="pencil" size={35} />
             </TouchableOpacity>
         )
+        */
     };
 };
 

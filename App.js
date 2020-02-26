@@ -22,7 +22,7 @@ const navigator = createStackNavigator(
   }, 
   {
 //2.configuration options specifically for our stack Navigator: 
-    initialRouteName: 'Create',
+    initialRouteName: 'Index',
     defaultNavigationOptions: {
 //this title is set inside of the header.
       title: 'HG Report'

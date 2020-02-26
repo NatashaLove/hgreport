@@ -1,8 +1,8 @@
-import React from 'react';
-import { View, TouchableOpacity, StyleSheet, Text } from "react-native";
+import React, { useContext} from 'react';
+import { View, TouchableOpacity, StyleSheet, Text, Button } from "react-native";
 import {withNavigation} from 'react-navigation';
 import Budtender from '../components/Budtender';
-//import { Context } from '../context/ReportContext';
+import { Context } from '../context/ReportContext';
 
 //flatlist with 3 names (budtenders)
 //array create on index screen here- eachelement wrap- with toachable opacity -
@@ -12,7 +12,7 @@ import Budtender from '../components/Budtender';
 
 const IndexScreen = ({budname, navigation}) => {
 
-    //const {getBudname}= useContext(Context);
+    const {state, getReports}= useContext(Context);
 
     return <View>
         <Text>Hello hg!</Text>
@@ -25,10 +25,23 @@ const IndexScreen = ({budname, navigation}) => {
         <TouchableOpacity onPress={()=> navigation.navigate('Create')} > 
         <Budtender budname = "Natasha"/>
         </TouchableOpacity>
+
+        <Button style={styles.button}
+            title="Get Reports"
+            onPress={()=> getReports() }
+            
+            />
     </View>
 };
 
 const styles = StyleSheet.create({
+
+    button: {
+        //?
+                maxWidth:10,
+                maxHeight: 10
+            },
+
     image: {
 //image must have style with heihjt and width - otherwise it folds
         height: 200,
