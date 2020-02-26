@@ -16,8 +16,8 @@ import Report from '../components/Report';
 //that we want to retrieve during that navigate call over here: console.log(navigation.getParam('id'));
 const ShowScreen = ({navigation, state, setParams})=> {
     
-    const user_name = navigation.getParam('userName', 'NO-User');  
-    const other_param = navigation.getParam('otherParam', 'some default value');  
+    const {addReport} = useContext(Context);
+   
   //  const {dataArr} = useContext(Context);
 //const { navigation } = this.props;  
   const lines = navigation.getParam ('data',[]);
@@ -41,14 +41,16 @@ const ShowScreen = ({navigation, state, setParams})=> {
             <Text>Report is ready!</Text>
             
         {lines.map((item, key) => {
-            return ( <Text key={item.id}>{item.title.toString()} {JSON.stringify(item.content.text)}</Text>);
+            return ( <Text key={item.id}>{item.title.toString()} {JSON.stringify(item.content.text)} </Text>);
 
         })}
      {console.log(lines)} 
         <Button style={styles.button}
             title="Confirm" 
             
-                // onPress={()=> onSubmit(dataArr, reportID) }//}console.log()
+            onPress={()=>  {
+                addReport(lines, reportID, () => navigation.navigate('Index'))
+            }}//}console.log()
         />
             
   
