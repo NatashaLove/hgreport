@@ -3,7 +3,7 @@
 //for beginning just show all reports wothout filtering option..
 
 import React, { useContext, useEffect } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, FlatList, Button } from 'react-native';
+import { View, Alert, Text, StyleSheet, TouchableOpacity, FlatList, Button } from 'react-native';
 import { Context } from '../context/ReportContext';
 import {EvilIcons} from '@expo/vector-icons';
 //import {dataArr} from './CreateScreen'
@@ -34,22 +34,35 @@ const ShowScreen = ({navigation, state, setParams})=> {
  // <Text> User Name: {JSON.stringify(user_name)} </Text> - just {username} won't print!
    // <Text>Other Param: {JSON.stringify(other_param)}</Text>  };
   //   
-   
+   const date= new Date().getDate();
+   const month = new Date().getMonth() + 1;
+   const year = new Date().getFullYear();
+   const today = (date + '-' + month + '-' + year);
+
+   ShowCurrentDate=(date)=>{
+ 
+      
+    Alert.alert(date + '-' + month + '-' + year);
+
+   }
+
     return (
+        
+
         <View>
-            {console.log(lines)} 
+            
             <Text>Report is ready!</Text>
             
         {lines.map((item, key) => {
             return ( <Text key={item.id}>{item.title.toString()} {JSON.stringify(item.content.text)} </Text>);
 
         })}
-     {console.log(lines)} 
+     <Text >Date:{today}</Text>
         <Button style={styles.button}
             title="Confirm" 
             
             onPress={()=>  {
-                addReport(lines, reportID, () => navigation.navigate('Index'))
+                addReport(lines, reportID, date, () => navigation.navigate('Index'))
             }}//}console.log()
         />
             

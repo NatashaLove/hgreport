@@ -28,7 +28,7 @@ const IndexScreen = ({budname, navigation}) => {
 
         <Button style={styles.button}
             title="Get Reports"
-            onPress={()=> console.log(getReports())}
+            onPress={()=> getReports(), console.log(state.getReports)}
             
             />
     </View>
