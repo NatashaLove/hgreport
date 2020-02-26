@@ -37,7 +37,7 @@ const ShowScreen = ({navigation, state, setParams})=> {
    const date= new Date().getDate();
    const month = new Date().getMonth() + 1;
    const year = new Date().getFullYear();
-   const today = (date + '-' + month + '-' + year);
+   const today = (month + '/' + date + '/' + year);
 
    ShowCurrentDate=(date)=>{
  
@@ -57,7 +57,7 @@ const ShowScreen = ({navigation, state, setParams})=> {
             return ( <Text key={item.id}>{item.title.toString()} {JSON.stringify(item.content.text)} </Text>);
 
         })}
-     <Text >Date:{today}</Text>
+     <Text >Date: {today}</Text>
         <Button style={styles.button}
             title="Confirm" 
             
