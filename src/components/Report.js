@@ -68,7 +68,7 @@ const render=(dataArr)=> {
         
     <View >
         <FlatList 
-        data={dataArr}
+        data={getDataArr}
         keyExtractor={item => item.title}
         renderItem={({ item }) => (                
             <View style={styles.container}>

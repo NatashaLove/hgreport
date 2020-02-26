@@ -38,7 +38,7 @@ const render=(dataArr)=> {
      <View style={styles.container}>
  
          { dataArr.map((item, key)=>(
-         <Text key={key} style={styles.label} onPress={ this.SampleFunction.bind(this, item) }> { item } </Text>)
+         <Text key={key} style={styles.label} onPress={ this.SampleFunction.bind(this, item) }> { item.title } { item.content }  </Text>)
          )}
  
      </View>
@@ -49,7 +49,9 @@ const render=(dataArr)=> {
     
     <View>
       <Form onSubmit={ (dataArr, reportID)=> {
-        setDataArr ([...dataArr]), console.log(dataArr)
+      
+      navigation.navigate('Show', {data: dataArr})
+      //  setDataArr ([...dataArr])
       
       //  (<Report lines={dataArr}/>, navigation.navigate('Show'))
 
@@ -61,7 +63,7 @@ const render=(dataArr)=> {
 
       }}
        />
-      <Report />
+      
 
       </View>
 

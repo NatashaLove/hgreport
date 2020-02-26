@@ -14,9 +14,14 @@ import Report from '../components/Report';
 // we have to receive that {navigation} prop -the navigation prop has a function
 //called Get param- then pass in a string that will be the I.D. or some of the property name 
 //that we want to retrieve during that navigate call over here: console.log(navigation.getParam('id'));
-const ShowScreen = ({ navigation})=> {
-    //const id = navigation.getParam ('index');
+const ShowScreen = ({navigation, state, setParams})=> {
+    
+    const user_name = navigation.getParam('userName', 'NO-User');  
+    const other_param = navigation.getParam('otherParam', 'some default value');  
   //  const {dataArr} = useContext(Context);
+//const { navigation } = this.props;  
+  const lines = navigation.getParam ('data',[]);
+  //const params = state.params || {};
 /*
     const report = state.find(
         (report) => report.index === id //navigation.getParam('id')
@@ -25,13 +30,16 @@ const ShowScreen = ({ navigation})=> {
 
     //const { state } = props.navigation;
     //const itemId = params ? params.itemId : null;
-    
+
+ // <Text> User Name: {JSON.stringify(user_name)} </Text> - just {username} won't print!
+   // <Text>Other Param: {JSON.stringify(other_param)}</Text>  };
+  // {console.log(lines)}   
    
     return (
         <View>
             <Text>Report is ready!</Text>
-    <Report render={(dataArr)}/>
-    {console.log(Report.title)}
+            <Report dataArray={lines}>{console.log(lines)}</Report>
+  
         </View>
     );  
                 
