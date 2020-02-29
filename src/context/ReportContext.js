@@ -85,7 +85,7 @@ const addReport = dispatch => {
 //must accept a third argument - 'callback'- because added a callback function in CreateScreen to addBlogPost(to navigate)
     return async ( report, callback)=>{
        
-       // reportID=lines.id;
+        reportID=report.id;
         //for (let i=0;i<=30; i++){   
           //  reports[i]=lines;
            //};  
