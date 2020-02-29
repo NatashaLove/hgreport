@@ -52,10 +52,23 @@ const Form = ( {initialValues, getDataArr, onSubmit} )=> {
         ]
        
     };
+
+    const ddate= new Date().getDate();
+   const month = new Date().getMonth() + 1;
+   const year = new Date().getFullYear();
+   const today = (month + '/' + ddate + '/' + year);
+
+   ShowCurrentDate=(date)=>{
+ 
+      
+    Alert.alert(ddate + '-' + month + '-' + year);
+
+   }
    
     return (
 
 <View >
+    <Text >Date: {today}</Text>
         <FlatList 
             data={dataArr}
             keyExtractor={item => item.title}
@@ -78,7 +91,7 @@ const Form = ( {initialValues, getDataArr, onSubmit} )=> {
         <Button style={styles.button}
                 title="Preview Report" 
             
-                onPress={()=> onSubmit(dataArr, reportID) }//}console.log()// 
+                onPress={()=> onSubmit(dataArr, today, reportID) }//}console.log()// 
                 />
         </View>
     );
@@ -87,65 +100,62 @@ const Form = ( {initialValues, getDataArr, onSubmit} )=> {
 
 Form.defaultProps = {
     initialValues : {
-        lines : [
-            //initial values
-                {
-                    id: 1,
-                    title: 'Date:',
-                    content: ''
-                },
-                {
-                    id: 2,
-                    title: 'Total in drawer:',
-                    content: ''
-                },
-                {
-                    id: 3,
-                    title: 'Salaries:',
-                    content: ''
-                },
-                {
-                    id: 4,
-                    title: 'Taxes:',
-                    content: ''
-                },
-                {
-                    id: 5,
-                    title: 'Rent:',
-                    content: ''
-                },
-                {
-                    id: 6,
-                    title: 'HG Money:',
-                    content: ''
-                },
-                {
-                    id: 7,
-                    title: 'MM:',
-                    content: ''
-                },
-                {
-                    id: 8,
-                    title: 'PP:',
-                    content: ''
-                },
-                {
-                    id: 9,
-                    title: 'Poole Farms Flower:',
-                    content: ''
-                },
-                {
-                    id: 10,
-                    title: 'Notes:',
-                    content: ''
-                },
-                {
-                    id: 11,
-                    title: 'Name:',
-                    content: ''
-                }
-        ],
+       
+
+            date:'',
+
+            lines : [
+                //initial values
+                    {
+                        id: 1,
+                        title: 'Name:',
+                        content: ''
+                    },
+                    {
+                        id: 2,
+                        title: 'Total in drawer:',
+                        content: ''
+                    },
+                    {
+                        id: 3,
+                        title: 'Salaries:',
+                        content: ''
+                    },
+                    {
+                        id: 4,
+                        title: 'Taxes:',
+                        content: ''
+                    },
+                    {
+                        id: 5,
+                        title: 'Rent:',
+                        content: ''
+                    },
+                    {
+                        id: 6,
+                        title: 'HG Money:',
+                        content: ''
+                    },
+                    {
+                        id: 7,
+                        title: 'MM:',
+                        content: ''
+                    },
+                    {
+                        id: 8,
+                        title: 'PP:',
+                        content: ''
+                    },
+                    {
+                        id: 9,
+                        title: 'Notes:',
+                        content: ''
+                    },
+                  
+            ],
+
         
+                
     }
 
 };

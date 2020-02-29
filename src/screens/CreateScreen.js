@@ -48,9 +48,9 @@ const render=(dataArr)=> {
   return (
     
     <View>
-      <Form onSubmit={ (dataArr, reportID)=> {
+      <Form onSubmit={ (dataArr, today, reportID)=> {
       
-      navigation.navigate('Show', {data: dataArr})
+      navigation.navigate('Show', {data: dataArr, today})
       //  setDataArr ([...dataArr])
       
       //  (<Report lines={dataArr}/>, navigation.navigate('Show'))

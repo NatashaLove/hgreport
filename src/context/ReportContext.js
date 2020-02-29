@@ -83,15 +83,15 @@ const addReport = dispatch => {
     //arr for all reports
     const reports=[];
 //must accept a third argument - 'callback'- because added a callback function in CreateScreen to addBlogPost(to navigate)
-    return async ( lines, reportID, date, callback)=>{
+    return async ( report, callback)=>{
        
-        reportID=lines.id;
+       // reportID=lines.id;
         //for (let i=0;i<=30; i++){   
           //  reports[i]=lines;
            //};  
         //we can accept some arguments {title, content} -
 //that will come from our component (CreateScreen) and then pass those through to the dispatch function
-    await jsonServer.post('/reports', lines, date, reportID);//(${name}`)request to the server (URL+'/blogposts') and data {title,content}.
+    await jsonServer.post('/reports', report);//(${name}`)request to the server (URL+'/blogposts') and data {title,content}.
        // this line is telling our Json server to create a brand new report .
       
     

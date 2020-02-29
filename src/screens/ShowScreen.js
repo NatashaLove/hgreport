@@ -21,6 +21,7 @@ const ShowScreen = ({navigation, state, setParams})=> {
   //  const {dataArr} = useContext(Context);
 //const { navigation } = this.props;  
   const lines = navigation.getParam ('data',[]);
+  //const today = navigation.getParam ('prop', '')
   //const params = state.params || {};
 /*
     const report = state.find(
@@ -28,23 +29,26 @@ const ShowScreen = ({navigation, state, setParams})=> {
         );
 */
 
+const date= new Date().getDate();
+const month = new Date().getMonth() + 1;
+const year = new Date().getFullYear();
+const today = (month + '/' + date + '/' + year);
+
+ShowCurrentDate=(date)=>{
+
+   
+ Alert.alert(date + '-' + month + '-' + year);
+
+};
+
     //const { state } = props.navigation;
     //const itemId = params ? params.itemId : null;
 
  // <Text> User Name: {JSON.stringify(user_name)} </Text> - just {username} won't print!
    // <Text>Other Param: {JSON.stringify(other_param)}</Text>  };
   //   
-   const date= new Date().getDate();
-   const month = new Date().getMonth() + 1;
-   const year = new Date().getFullYear();
-   const today = (month + '/' + date + '/' + year);
-
-   ShowCurrentDate=(date)=>{
- 
-      
-    Alert.alert(date + '-' + month + '-' + year);
-
-   }
+   
+const report=[today, lines];
 
     return (
         
@@ -57,12 +61,13 @@ const ShowScreen = ({navigation, state, setParams})=> {
             return ( <Text key={item.id}>{item.title.toString()} {JSON.stringify(item.content.text)} </Text>);
 
         })}
-     <Text >Date: {today}</Text>
+         <Text>{today.toString()}</Text>
+       
         <Button style={styles.button}
             title="Confirm" 
             
             onPress={()=>  {
-                addReport(lines, reportID, date, () => navigation.navigate('Index'))
+                addReport(report, () => navigation.navigate('Index'), console.log(report))
             }}//}console.log()
         />
             
