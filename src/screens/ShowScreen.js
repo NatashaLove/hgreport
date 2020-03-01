@@ -21,7 +21,8 @@ const ShowScreen = ({navigation, state, setParams})=> {
   //  const {dataArr} = useContext(Context);
 //const { navigation } = this.props;  
   const lines = navigation.getParam ('data',[]);
-  //const today = navigation.getParam ('prop', '')
+  const today = navigation.getParam ('date', '');
+ // const rID= navigation.getParam('id', '');
   //const params = state.params || {};
 /*
     const report = state.find(
@@ -32,7 +33,7 @@ const ShowScreen = ({navigation, state, setParams})=> {
 const date= new Date().getDate();
 const month = new Date().getMonth() + 1;
 const year = new Date().getFullYear();
-const today = (month + '/' + date + '/' + year);
+//const today = (month + '/' + date + '/' + year);
 
 ShowCurrentDate=(date)=>{
 
@@ -61,7 +62,7 @@ const report=[today, lines];
             return ( <Text key={item.id}>{item.title.toString()} {JSON.stringify(item.content.text)} </Text>);
 
         })}
-         <Text>{today.toString()}</Text>
+         <Text>{today.toString()} </Text>
        
         <Button style={styles.button}
             title="Confirm" 

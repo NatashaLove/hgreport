@@ -81,11 +81,11 @@ const getReports = dispatch => {
 //-that's how we change our state- make sure that we call this function  with The (Dispatch)
 const addReport = dispatch => {
     //arr for all reports
-    const reports=[];
+   // const reports=[];
 //must accept a third argument - 'callback'- because added a callback function in CreateScreen to addBlogPost(to navigate)
     return async ( report, callback)=>{
        
-        reportID=report.id;
+      //  reportID=report.id;
         //for (let i=0;i<=30; i++){   
           //  reports[i]=lines;
            //};  

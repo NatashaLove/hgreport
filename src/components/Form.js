@@ -24,11 +24,11 @@ const Form = ( {initialValues, getDataArr, onSubmit} )=> {
    const content= initialValues.lines.content;
     const title = initialValues.lines.title;
     const dataArr = initialValues.lines;
-    //const ID=0;
+  // const reportID=initialValues.reportID;
     //const {populateReportForm} = useContext(Context);
 
     const setDataArr=(id, title, content)=> {
-        reportID=dataArr.id;
+       //  dataArr.id=reportID;
         for(let i=0; i<dataArr.length; i++){
             const makeArrID=i+1;
             
@@ -91,7 +91,7 @@ const Form = ( {initialValues, getDataArr, onSubmit} )=> {
         <Button style={styles.button}
                 title="Preview Report" 
             
-                onPress={()=> onSubmit(dataArr, today, reportID) }//}console.log()// 
+                onPress={()=> onSubmit(dataArr, today) }//}console.log()// 
                 />
         </View>
     );
@@ -101,7 +101,6 @@ const Form = ( {initialValues, getDataArr, onSubmit} )=> {
 Form.defaultProps = {
     initialValues : {
        
-
             date:'',
 
             lines : [
