@@ -1,4 +1,4 @@
-import React, {useEffect, useContext} from 'react';
+import React, {useEffect, useContext, useState} from 'react';
 import { View, TextInput, FlatList, TouchableOpacity, StyleSheet, Text, ScrollView, Button } from "react-native";
 import {withNavigation} from 'react-navigation';
 import Budtender from '../components/Budtender';
@@ -6,6 +6,8 @@ import { Context } from '../context/ReportContext';
 
 const GetReportsScreen = ({navigation}) => {
     const {state, getReports } = useContext(Context);
+    const [date, setDate] = useState('');
+
 //inside useEffect - callback func runs only first time when app rendered:   
     useEffect(()=> {
         getReports();
@@ -25,12 +27,12 @@ const GetReportsScreen = ({navigation}) => {
     }, []);// empty array right there means that we only want to run that error function 
     //exactly one time when our component first shows up on the screen.
 
-    var theDate= '00/00/0000';//state - all reports; i-a report, [0]- first obj=date,
-   var lines= [];// [1]- second obj - lines
+  //  var theDate= '00/00/0000';//state - all reports; i-a report, [0]- first obj=date,
+   //var lines= [];// [1]- second obj - lines
 
- 
+ /*
   const repDetail= (date) =>state.forEach(report => {
-        id= report[0];
+     
         theDate= report[1];
         lines= report[2];
         if(date===theDate) {
@@ -45,7 +47,7 @@ const GetReportsScreen = ({navigation}) => {
        return lines;
     });
   
-
+*/
   // state.forEach(report => {   } );
 
  // { if(theDate=='02/29/2020') const repDetails=lines};
@@ -59,22 +61,22 @@ const GetReportsScreen = ({navigation}) => {
             //value={date} 
             placeholder={'00/00/0000'}
                       
-            onChangeText={(newDate) => repDetail({newDate})}
+            onChangeText={(newDate) => setDate({newDate})}
         />
         <Button
          title="show" 
             
-         onPress={()=> navigation.navigate('ShowRepByDate', {date: theDate, array: lines }) }
+         onPress={()=> navigation.navigate('ShowRepByDate', {date:date}) }
         />
         <FlatList 
-            data={r}
-            keyExtractor={item => item.id}
+            data={state}
+            keyExtractor={item => item.date}
             renderItem={({ item}) =>  (  
                           
                 <View style={styles.container}>
-                    <Text style={styles.label}>Report Date: {report[0]}</Text>
-                    {lines.map((item, key) => {
-            return ( <Text style={styles.label} key={item.id}>{item.title.toString()} {JSON.stringify(item.content.text)} </Text>);
+                    <Text style={styles.label}>Report Date: {item.date}</Text>
+                    {item.lines.map((i, key) => {
+            return ( <Text style={styles.label} key={i.id}>{i.title.toString()} {JSON.stringify(i.content.text)} </Text>);
 
         })}
 

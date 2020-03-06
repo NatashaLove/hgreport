@@ -5,18 +5,21 @@ import { Context } from '../context/ReportContext';
 
 const ShowRepByDateScreen = ({ navigation})=> {
     
-const date = navigation.getParam ('data','');
-const lines = navigation.getParam ('array', []);
-/*
+const date = navigation.getParam ('date','');
+//const lines = navigation.getParam ('array', []);
+
 const {state} = useContext(Context);
-const report = state.find(
-    (report) => report[0] === date //navigation.getParam('data')
+
+ const [lines] = state.find(
+    (report) => report.date === date //navigation.getParam('data')
     );
-*/
+
+   // const theDate=date;
+
 return (
     <>
             
-<Text  style={styles.label}>Report for {date}</Text>
+<Text  style={styles.label}>Report for {theDate}</Text>
     
 <View style={styles.container}>
                   
