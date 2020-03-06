@@ -14,7 +14,7 @@ import Report from '../components/Report';
 // we have to receive that {navigation} prop -the navigation prop has a function
 //called Get param- then pass in a string that will be the I.D. or some of the property name 
 //that we want to retrieve during that navigate call over here: console.log(navigation.getParam('id'));
-const ShowScreen = ({navigation, state, setParams})=> {
+const ShowScreen = ({navigation})=> {
     
     const {addReport} = useContext(Context);
    
@@ -22,15 +22,16 @@ const ShowScreen = ({navigation, state, setParams})=> {
 //const { navigation } = this.props;  
   const lines = navigation.getParam ('data',[]);
   const today = navigation.getParam ('date', '');
+  //const id = navigation.getParam('id', '');
  // const rID= navigation.getParam('id', '');
   //const params = state.params || {};
 /*
     const report = state.find(
         (report) => report.index === id //navigation.getParam('id')
         );
-*/
 
-const date= new Date().getDate();
+
+//const date= new Date().getDate();
 const month = new Date().getMonth() + 1;
 const year = new Date().getFullYear();
 //const today = (month + '/' + date + '/' + year);
@@ -41,7 +42,7 @@ ShowCurrentDate=(date)=>{
  Alert.alert(date + '-' + month + '-' + year);
 
 };
-
+*/
     //const { state } = props.navigation;
     //const itemId = params ? params.itemId : null;
 
@@ -52,8 +53,7 @@ ShowCurrentDate=(date)=>{
 const report=[today, lines];
 
     return (
-        
-
+ 
         <View>
             
             <Text>Report is ready!</Text>
@@ -68,7 +68,7 @@ const report=[today, lines];
             title="Confirm" 
             
             onPress={()=>  {
-                addReport(report, () => navigation.navigate('Index'), console.log(report))
+                addReport(today, lines, () => navigation.navigate('Index'));
             }}//}console.log()
         />
             

@@ -10,6 +10,7 @@ const GetReportsScreen = ({navigation}) => {
     useEffect(()=> {
         getReports();
 
+        /*
         const listener = navigation.addListener('didFocus', () => {
             getReports();
         });//arrow function here tells react navigation that anytime the index screen gains focus (becomes the primary screen on the device)-
@@ -20,17 +21,18 @@ const GetReportsScreen = ({navigation}) => {
         };// this action will be invoked in case we decide not to show index screen any more - and completely removed it..
 //-the callback func in the return- cleans up after the listner-so there's no memory leak.
 
-
+*/
     }, []);// empty array right there means that we only want to run that error function 
     //exactly one time when our component first shows up on the screen.
 
-    //const theDate= state[i, 0];//state - all reports; i-a report, [0]- first obj=date,
-  //  const lines= state[i, 1];// [1]- second obj - lines
+    var theDate= '00/00/0000';//state - all reports; i-a report, [0]- first obj=date,
+   var lines= [];// [1]- second obj - lines
 
  
   const repDetail= (date) =>state.forEach(report => {
-        const theDate= report[0];
-       const lines= report[1];
+        id= report[0];
+        theDate= report[1];
+        lines= report[2];
         if(date===theDate) {
         return lines;
         } 
@@ -59,25 +61,28 @@ const GetReportsScreen = ({navigation}) => {
                       
             onChangeText={(newDate) => repDetail({newDate})}
         />
+        <Button
+         title="show" 
+            
+         onPress={()=> navigation.navigate('ShowRepByDate', {date: theDate, array: lines }) }
+        />
         <FlatList 
-            data={state}
-            keyExtractor={report => report[0]}
-            renderItem={({ item}) => {  
-                return (  
-                   console.log("new",item),       
+            data={r}
+            keyExtractor={item => item.id}
+            renderItem={({ item}) =>  (  
+                          
                 <View style={styles.container}>
-                    <Text style={styles.label}>Report Date: {item[0]}</Text>
-                    {item[1].map((i, key) => {
-            return ( <Text style={styles.label} key={i.id}>{i.title.toString()} {JSON.stringify(i.content.text)} </Text>);
+                    <Text style={styles.label}>Report Date: {report[0]}</Text>
+                    {lines.map((item, key) => {
+            return ( <Text style={styles.label} key={item.id}>{item.title.toString()} {JSON.stringify(item.content.text)} </Text>);
 
         })}
 
                 </View>
-                );
-            }}
+                )
+            }
         />
-                
-              
+                             
     </>
     );
 };

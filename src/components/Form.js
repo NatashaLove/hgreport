@@ -5,7 +5,7 @@ import { Context } from '../context/ReportContext';
 import { render } from 'react-dom';
 //import Constants from 'expo-constants';
 
-const Form = ( {initialValues, getDataArr, onSubmit} )=> {
+const Form = ( {initialValues, onSubmit} )=> {
     //const {populateReportForm} = useContext(Context);
     
     //const[lines, setLines] = useState(initialValues.lines);
@@ -100,7 +100,7 @@ const Form = ( {initialValues, getDataArr, onSubmit} )=> {
 
 Form.defaultProps = {
     initialValues : {
-       
+            
             date:'',
 
             lines : [

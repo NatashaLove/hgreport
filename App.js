@@ -8,6 +8,7 @@ import CreateScreen from './src/screens/CreateScreen';
 import EditScreen from './src/screens/EditScreen';
 import TestScreen from './src/screens/TestScreen';
 import GetReportsScreen from './src/screens/GetReportsScreen';
+import ShowRepByDateScreen from './src/screens/ShowRepByDateScreen';
 
 //!!! import ShowReportScreen...
 
@@ -20,7 +21,8 @@ const navigator = createStackNavigator(
     Create: CreateScreen,
     Edit: EditScreen,
     Test: TestScreen,
-    Reports: GetReportsScreen
+    Reports: GetReportsScreen,
+    ShowRepByDate: ShowRepByDateScreen
 
   }, 
   {

@@ -83,7 +83,7 @@ const addReport = dispatch => {
     //arr for all reports
    // const reports=[];
 //must accept a third argument - 'callback'- because added a callback function in CreateScreen to addBlogPost(to navigate)
-    return async ( report, callback)=>{
+    return async ( date, lines, callback)=>{
        
       //  reportID=report.id;
         //for (let i=0;i<=30; i++){   
@@ -91,11 +91,17 @@ const addReport = dispatch => {
            //};  
         //we can accept some arguments {title, content} -
 //that will come from our component (CreateScreen) and then pass those through to the dispatch function
-    await jsonServer.post('/reports', report);//(${name}`)request to the server (URL+'/blogposts') and data {title,content}.
+//try {    
+await jsonServer.post('/reports', {date, lines});//(${name}`)request to the server (URL+'/blogposts') and data {title,content}.
        // this line is telling our Json server to create a brand new report .
-      
-    
-       //dispatch({ type: 'add_report', payload: {repID, title, content, budname}});//add those both { title, content} in to a payload property
+//console.log(id, date, lines);
+       /*
+} catch (err) {
+    err='cannot post';
+    console.log(err);
+}     
+    */
+       //dispatch({ type: 'add_report', payload: {report: report, id: id}});//add those both { title, content} in to a payload property
     // don't need dispatch any more -because anytime now we add a blogpost- we call '/blogposts'-from the server and
     //then refresh the index screen and upload all posts in the app.
      if (callback){

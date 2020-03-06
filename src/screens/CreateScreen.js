@@ -23,7 +23,7 @@ const getDataArr=(dataArr)=>{
 };
 */
 
-const [dataArr, setDataArr]=useState([]);
+//const [dataArr, setDataArr]=useState([]);
 //This function is used to show the selected array element on Button onPress :
 SampleFunction=(item)=>{
  
