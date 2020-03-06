@@ -7,22 +7,6 @@ const reportReducer = (state, action)=>{
 //the difference with reducer is that we can very easily add additional case statements to switch and can modify our list of blog posts in different ways:
     switch (action.type) {
 
-       //new action create with map! to create new array!
-// The map() method creates a new array populated with the =report= after calling a provided function on every element in the array:
-        
-/*
-        case 'add_report':
-//similar codes described below in comments from useState
-            return [
-                ...state,//array
-                {   repID: action.payload.id,
-                    title: action.payload.title, 
-                    content: action.payload.content
-                    //budname: action.payload.budname
-                }
-            ];//2 arg- action
-
-*/
         case 'show_report':
            
             return state.filter((lines) => 
@@ -85,56 +69,18 @@ const addReport = dispatch => {
 //must accept a third argument - 'callback'- because added a callback function in CreateScreen to addBlogPost(to navigate)
     return async ( date, lines, callback)=>{
        
-      //  reportID=report.id;
-        //for (let i=0;i<=30; i++){   
-          //  reports[i]=lines;
-           //};  
-        //we can accept some arguments {title, content} -
-//that will come from our component (CreateScreen) and then pass those through to the dispatch function
-//try {    
-await jsonServer.post('/reports', {date, lines});//(${name}`)request to the server (URL+'/blogposts') and data {title,content}.
-       // this line is telling our Json server to create a brand new report .
+//error 500- unhandled promise, id:(0) - was because [report] was not destructurized: but working with {date, lines} and generates id normally
+        await jsonServer.post('/reports', {date, lines});//(${name}`)request to the server (URL+'/blogposts') and data {title,content}.
+// this line is telling our Json server to create a brand new report :
+//-object with 3 props: date, lines [] and id (generated automatically by the server)
 //console.log(id, date, lines);
-       /*
-} catch (err) {
-    err='cannot post';
-    console.log(err);
-}     
-    */
-       //dispatch({ type: 'add_report', payload: {report: report, id: id}});//add those both { title, content} in to a payload property
-    // don't need dispatch any more -because anytime now we add a blogpost- we call '/blogposts'-from the server and
-    //then refresh the index screen and upload all posts in the app.
-     if (callback){
+      if (callback){
         callback();// this call returns to the index screen
-//without providing a callback, the code would result in an error.(if we decide not to navigate the user somewhere else right away.)
-//to solve the issue is to wrap both these with :If callback exists then call callback.    
         };
     
     };
-//anytime someone calls add blog post we're going to dispatch an action object, which is 'add_blogpost' from switch
-//it describes how we want to change our data.
 };
-/*
-const showReport = id = dispatch ({
-    //const reports=[];
-  //  return async (lines, callback, reportID) => {
-       /* for (let i=0;i<=30; i++){   
-            lines.id= reports[i];  
-           };  
-          
-       // await jsonServer.get('/reports', {lines});
-        return : { 
-            type: 'show_report', 
-            payload: id
-            },//dispatch has 2 arg : type and payload
-        
-        if (callback){
-            callback();// this call returns to the index screen
-        }
 
-    
-});
-*/
 const editReport = dispatch => {
     return async ( id, lines, callback) =>{
 //to send updated title and content to our server -should use a PUT request;
