@@ -66,7 +66,7 @@ const GetReportsScreen = ({navigation}) => {
         <Button
          title="show" 
             
-         onPress={()=> navigation.navigate('ShowRepByDate', {date:date}) }
+         onPress={()=> navigation.navigate('ShowRepByDate', {id: navigation.getParam('id')}) }
         />
         <FlatList 
             data={state}
