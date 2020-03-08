@@ -5,33 +5,28 @@ import { Context } from '../context/ReportContext';
 
 const ShowRepByDateScreen = ({ navigation, initialValues})=> {
     
-const id = navigation.getParam ('id');
-//const lines = navigation.getParam ('array', []);
+const date = navigation.getParam ('date', '');
+//const lines = navigation.getParam ('lines', []);
 
 const {state} = useContext(Context);
 
-const date = initialValues.date;
-const lines = initialValues.lines;
+const result = state.find(report => report.date === date);
 
- const setReport= (id) => {state.find(
-    (report) => {
-     if (report.id === id) {
-        date= report.date,
-        lines= report.lines
+//const date = initialValues.date;
+//const lines = initialValues.lines;
 
-     }}
- )};
+ 
 
    // const theDate=date;
 
 return (
     <>
             
-<Text  style={styles.label} >Report for {setReport.date}</Text>
+<Text  style={styles.label} >Report for {date}</Text>
     
 <View style={styles.container}>
                   
-<Text> {console.log(lines)}</Text>
+<Text> {console.log("The report-", result)}</Text>
 
                 </View>
 
@@ -52,13 +47,6 @@ return (
 
 };
 
-ShowRepByDateScreen.defaultProps = {
-    initialValues : {
-            
-            date:'',
-
-            lines : []
-    }};
 
 const styles = StyleSheet.create({});
 

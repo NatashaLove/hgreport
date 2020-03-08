@@ -71,9 +71,9 @@ const addReport = dispatch => {
        
 //error 500- unhandled promise, id:(0) - was because [report] was not destructurized: but working with {date, lines} and generates id normally
         await jsonServer.post('/reports', {date, lines});//(${name}`)request to the server (URL+'/blogposts') and data {title,content}.
-// this line is telling our Json server to create a brand new report :
-//-object with 3 props: date, lines [] and id (generated automatically by the server)
-//console.log(id, date, lines);
+// this line is telling our Json server to create a brand new object with props date and lines[]
+//and id (generated automatically by the server) as a third prop.
+console.log (date, lines);
       if (callback){
         callback();// this call returns to the index screen
         };

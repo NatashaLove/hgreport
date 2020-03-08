@@ -7,50 +7,23 @@ import { Context } from '../context/ReportContext';
 const GetReportsScreen = ({navigation}) => {
     const {state, getReports } = useContext(Context);
     const [date, setDate] = useState('');
+    const [lines, setLines]= useState([]);
 
 //inside useEffect - callback func runs only first time when app rendered:   
     useEffect(()=> {
         getReports();
 
-        /*
-        const listener = navigation.addListener('didFocus', () => {
-            getReports();
-        });//arrow function here tells react navigation that anytime the index screen gains focus (becomes the primary screen on the device)-
-// then this callback function will be invoked with { getBlogPosts();}
-
-        return () => {
-            listener.remove();
-        };// this action will be invoked in case we decide not to show index screen any more - and completely removed it..
-//-the callback func in the return- cleans up after the listner-so there's no memory leak.
-
-*/
     }, []);// empty array right there means that we only want to run that error function 
     //exactly one time when our component first shows up on the screen.
 
-  //  var theDate= '00/00/0000';//state - all reports; i-a report, [0]- first obj=date,
-   //var lines= [];// [1]- second obj - lines
-
- /*
-  const repDetail= (date) =>state.forEach(report => {
-     
-        theDate= report[1];
-        lines= report[2];
-        if(date===theDate) {
-        return lines;
-        } 
-    });
-    const r= repDetail;
-    
-    const rep= state.forEach(report => {
-        const theDate= report[0];
-       const lines= report[1];
-       return lines;
-    });
-  
-*/
-  // state.forEach(report => {   } );
-
- // { if(theDate=='02/29/2020') const repDetails=lines};
+ const setReport= (date) => {state.find(
+    (report) => {
+     if (report.date === date) {
+         return console.log("set report", date) ,
+         setDate (report.date),
+         setLines(report.lines)
+     }}
+ )};
 
     return (
         <>
@@ -61,14 +34,16 @@ const GetReportsScreen = ({navigation}) => {
             //value={date} 
             placeholder={'00/00/0000'}
                       
-            onChangeText={(newDate) => setDate({newDate})}
+            onChangeText={(newDate) => setDate(newDate) 
+            }
         />
         <Button
          title="show" 
             
-         onPress={()=> navigation.navigate('ShowRepByDate', {id: navigation.getParam('id')}) }
+         onPress={()=> navigation.navigate('ShowRepByDate', {date:date}) }
         />
-        <FlatList 
+        < FlatList 
+            
             data={state}
             keyExtractor={item => item.date}
             renderItem={({ item}) =>  (  
@@ -120,6 +95,7 @@ const styles = StyleSheet.create({
         marginHorizontal:5,
         borderWidth: 1,
         borderColor: 'black',
+        justifyContent: 'space-between',
         
         flexDirection: 'row' // makes the label and the text show on the same line
 
