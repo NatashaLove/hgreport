@@ -12,7 +12,7 @@ const {state} = useContext(Context);
 
 const result = state.find(report => report.date === date);
 
-const {TheDate, lines} = result;
+const {theDate, lines} = result;
 //const lines = initialValues.lines;
 
  
@@ -22,7 +22,7 @@ const {TheDate, lines} = result;
 return (
     <>
             
-<Text  style={styles.label} >Report for {TheDate}</Text>
+<Text  style={styles.label} >Report for {theDate}</Text>
     
 <View style={styles.container}>
     {lines.map((item, key) => {
