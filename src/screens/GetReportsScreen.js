@@ -34,9 +34,15 @@ const GetReportsScreen = ({navigation}) => {
             //value={date} 
             placeholder={'00/00/0000'}
                       
-            onChangeText={(newDate) => setDate(newDate) 
-            }
+            onChangeText={(newDate) => {
+               
+                    newDate!==null ?
+                     setDate(newDate):
+                     setDate('00/00/0000');
+               
+                }}
         />
+        
         <Button
          title="show" 
             

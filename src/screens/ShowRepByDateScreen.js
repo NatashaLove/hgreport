@@ -5,7 +5,7 @@ import { Context } from '../context/ReportContext';
 
 const ShowRepByDateScreen = ({ navigation, initialValues})=> {
     
-const date = navigation.getParam ('date', '');
+const date = navigation.getParam ('date', '00/00/0000');
 //const lines = navigation.getParam ('lines', []);
 
 const {state} = useContext(Context);
@@ -13,14 +13,18 @@ const {state} = useContext(Context);
 const result = state.find(report => report.date === date);
 
 const {theDate, lines} = result;
-//const lines = initialValues.lines;
-
- 
+/*
+if (theDate===null) {
+    console.log("no date entered");
+    //Alert.alert("no date entered");
+}
+ */
 
    // const theDate=date;
 
 return (
-    <>
+
+       <>
             
 <Text  style={styles.label} >Report for {theDate}</Text>
     

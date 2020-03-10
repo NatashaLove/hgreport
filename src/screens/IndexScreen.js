@@ -1,8 +1,9 @@
 import React, { useContext} from 'react';
-import { View, TouchableOpacity, StyleSheet, Text, Button } from "react-native";
+import { View, TouchableOpacity, StyleSheet, Text, Button, ImageBackground } from "react-native";
 import {withNavigation} from 'react-navigation';
 import Budtender from '../components/Budtender';
 import { Context } from '../context/ReportContext';
+//import ImageDetail from '../components/ImageDetail';
 
 //flatlist with 3 names (budtenders)
 //array create on index screen here- eachelement wrap- with toachable opacity -
@@ -14,32 +15,57 @@ const IndexScreen = ({budname, navigation}) => {
 
     const {state, getReports}= useContext(Context);
 
-    return <View>
-        <Text>Hello hg!</Text>
-        <TouchableOpacity onPress={()=> navigation.navigate('Create', {budname})} > 
-        <Budtender budname = "Art"/>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={()=> navigation.navigate('Create')} > 
-        <Budtender budname = "Dane"/>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={()=> navigation.navigate('Create')} > 
-        <Budtender budname = "Natasha"/>
-        </TouchableOpacity>
+    return <ImageBackground style={styles.container}
+    source={require('../../assets/hg.jpeg')}>
+        <Text style={styles.text}>Hello, HighGarden!</Text>
+        <Button style={styles.button}
+            title="CREATE REPORT"
+            onPress={()=> navigation.navigate('Create')}
+        />
+              
 
         <Button style={styles.button}
             title="Get Reports"
             onPress={()=>navigation.navigate('Reports') }
             
             />
-    </View>
+    </ImageBackground>
 };
 
 const styles = StyleSheet.create({
 
+    text: {
+        fontStyle: 'italic',
+        fontWeight: 'bold',
+        fontSize: 30,
+        alignSelf:'center',
+        color: 'green'
+    },
+
+    container: {
+        //fontSize: 20,
+        borderRadius: 55,// rounded corners
+        marginHorizontal: 25,
+        //marginBottom: 60,
+        flex: 10,
+        justifyContent: 'space-between',
+        marginTop: 50,
+        marginBottom: 100,
+        
+       // flexDirection: 'column'
+    },
+
     button: {
-        //?
-                maxWidth:10,
-                maxHeight: 10
+        //?     
+        maxWidth:30,
+        maxHeight: 30,
+        fontSize: 100,
+        fontWeight: 'bold',
+        backgroundColor: 'green',
+        position: 'absolute',
+        opacity: 50
+
+                //borderBottomEndRadius: 80
             },
 
     image: {

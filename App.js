@@ -30,7 +30,9 @@ const navigator = createStackNavigator(
     initialRouteName: 'Index',
     defaultNavigationOptions: {
 //this title is set inside of the header.
-      title: 'HG Report'
+      
+      title: 'HighGarden Report',
+      
     }
   }
 );
