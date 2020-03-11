@@ -1,5 +1,5 @@
 import React, { useContext} from 'react';
-import { View, TouchableOpacity, StyleSheet, Text, Button, ImageBackground } from "react-native";
+import { View, TouchableOpacity, StyleSheet, Text, Button, Image } from "react-native";
 import {withNavigation} from 'react-navigation';
 import Budtender from '../components/Budtender';
 import { Context } from '../context/ReportContext';
@@ -15,63 +15,94 @@ const IndexScreen = ({budname, navigation}) => {
 
     const {state, getReports}= useContext(Context);
 
-    return <ImageBackground style={styles.container}
-    source={require('../../assets/hg.jpeg')}>
+    return <View style={styles.container}>
         <Text style={styles.text}>Hello, HighGarden!</Text>
-        <Button style={styles.button}
+        <View style={[{ width: "50%", margin: 5, maxWidth:70,
+        maxHeight: 30,
+        marginTop:25,
+        alignSelf:'center',
+        
+        fontWeight: 'bold' }]}>
+        <Button 
             title="CREATE REPORT"
+            color='rgb(150,200,100)'
+            borderRadius='70'
+            fontWeight= 'bold'
             onPress={()=> navigation.navigate('Create')}
         />
-              
+        </View>
 
+    <Image style={styles.image}
+    source={require('../../assets/hg.jpeg')}>
+    </Image>
+        
+       
+              
+        <View style={[{ width: "50%", margin: 5, maxWidth:70,
+        maxHeight: 30,
+        marginBottom: 10,
+        alignSelf:'center',
+        fontSize: 30,
+        fontWeight: 'bold' }]}>
         <Button style={styles.button}
             title="Get Reports"
+            color='rgb(120,0,60)'
+            borderRadius='70'
+            fontWeight= 'bold'
             onPress={()=>navigation.navigate('Reports') }
             
             />
-    </ImageBackground>
+            </View>
+           
+    
+    </View>
 };
 
 const styles = StyleSheet.create({
 
     text: {
-        fontStyle: 'italic',
+       // fontStyle: 'italic',
         fontWeight: 'bold',
-        fontSize: 30,
+        fontSize: 25,
         alignSelf:'center',
-        color: 'green'
+        color: 'green',
+        
     },
 
     container: {
         //fontSize: 20,
         borderRadius: 55,// rounded corners
-        marginHorizontal: 25,
+        marginHorizontal: 15,
         //marginBottom: 60,
-        flex: 10,
+        flex:1,
         justifyContent: 'space-between',
-        marginTop: 50,
-        marginBottom: 100,
+        //justifyContent: 'space-around',
+        justifyContent: 'space-evenly',
+        marginTop: 20,
+        marginBottom: 60,
         
        // flexDirection: 'column'
     },
 
     button: {
-        //?     
+//! button doesn't have styles.prop!
+//has to be customized 
         maxWidth:30,
         maxHeight: 30,
         fontSize: 100,
         fontWeight: 'bold',
         backgroundColor: 'green',
         position: 'absolute',
-        opacity: 50
+        
+        
 
                 //borderBottomEndRadius: 80
             },
 
     image: {
 //image must have style with heihjt and width - otherwise it folds
-        height: 200,
-        width: 300
+        height: 350,
+        width: 350
     }
 });
 
