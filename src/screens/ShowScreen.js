@@ -54,19 +54,26 @@ const report=[today, lines];
 
     return (
  
-        <View>
+        <View style={styles.container}>
             
-            <Text>Report is ready!</Text>
+            <Text style={styles.headtext}>Report is ready!</Text>
             
         {lines.map((item, key) => {
-            return ( <Text key={item.id}>{item.title.toString()} {JSON.stringify(item.content.text)} </Text>);
+            return ( <Text style={styles.text} key={item.id}>{item.title.toString()} {JSON.stringify(item.content.text)} </Text>);
 
         })}
-         <Text>{today.toString()} </Text>
+         <Text style={styles.headtext}>{today.toString()} </Text>
        
+        <View style={styles.warn}>
+            <Text> </Text>
+            <Text style={styles.wtext}>Please, make a screenshot on your phone before clicking the button!</Text>
+            <Text style={styles.wtext}>Send the screenshot to Ray separately through the Signal!</Text>
+            <Text> </Text>
+        </View>
+
         <Button style={styles.button}
             title="Confirm" 
-            
+            color='rgb(120,0,60)'
             onPress={()=>  {
                 addReport(today, lines, () => navigation.navigate('Index'));
             }}//}console.log()
@@ -110,6 +117,73 @@ ShowScreen.navigationOptions = ({navigation}) => {
     };
 };
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+    text: {
+        // fontStyle: 'italic',
+         fontWeight: 'bold',
+         fontSize: 20,
+         //alignSelf:'center',
+         color: 'black',
+         justifyContent:'space-between'
+         
+     },
+     headtext: {
+         fontStyle: 'italic',
+         fontWeight: 'bold',
+         fontSize: 25,
+         alignSelf:'center',
+         color: 'rgb(120,0,60)',
+         paddingBottom:10
+         
+     },
+ 
+     container: {
+         //fontSize: 20,
+         borderRadius: 55,// rounded corners
+         marginHorizontal: 15,
+         //marginBottom: 60,
+         flex:1,
+         justifyContent: 'space-between',
+         //justifyContent: 'space-around',
+        // justifyContent: 'space-evenly',
+         marginTop: 20,
+         marginBottom: 60,
+         fontWeight: 'bold',
+         fontSize: 25,
+         //alignSelf:'center',
+         
+         
+        // flexDirection: 'column'
+     },
+     warn: {
+        //fontSize: 20,
+        borderRadius: 55,// rounded corners
+        //marginHorizontal: 15,
+        backgroundColor: 'black',
+        //marginBottom: 60,
+        flex:0,
+        justifyContent: 'space-between',
+        //justifyContent: 'space-around',
+        justifyContent: 'space-evenly',
+        marginTop: 10,
+        marginBottom: 20,
+        fontStyle: 'italic',
+        fontSize: 15,
+        //alignSelf:'center',
+        
+        
+       // flexDirection: 'column'
+    },
+    wtext: {
+         fontStyle: 'italic',
+        // fontWeight: 'bold',
+         fontSize: 17,
+         marginLeft:14,
+         marginRight:6,
+         alignSelf:'center',
+         color: 'red',
+         
+     },
+});
 
 export default ShowScreen;

@@ -28,9 +28,9 @@ const GetReportsScreen = ({navigation}) => {
     return (
         <>
       
-        <Text>enter the date</Text>
+        <Text style={styles.text}  >Enter the date</Text>
         <TextInput
-            //style={styles.input} 
+            style={styles.input} 
             //value={date} 
             placeholder={'00/00/0000'}
                       
@@ -43,11 +43,13 @@ const GetReportsScreen = ({navigation}) => {
                 }}
         />
         
+        <View style={styles.button}>
         <Button
          title="show" 
-            
-         onPress={()=> navigation.navigate('ShowRepByDate', {date:date}) }
+         color='blue'   
+         onPress={()=> navigation.navigate('ShowRepByDate', {date:date}), console.log(date) }
         />
+        </View>
         < FlatList 
             
             data={state}
@@ -55,9 +57,9 @@ const GetReportsScreen = ({navigation}) => {
             renderItem={({ item}) =>  (  
                           
                 <View style={styles.container}>
-                    <Text style={styles.label}>Report Date: {item.date}</Text>
+                    <Text style={styles.text}>Report Date: {item.date}</Text>
                     {item.lines.map((i, key) => {
-            return ( <Text style={styles.label} key={i.id}>{i.title.toString()} {JSON.stringify(i.content.text)} </Text>);
+            return ( <Text style={styles.label} key={i.id}>     {i.title.toString()}              {JSON.stringify(i.content.text)} </Text>);
 
         })}
 
@@ -81,27 +83,36 @@ const GetReportsScreen = ({navigation}) => {
 const styles = StyleSheet.create({
 
     button: {
-//?
-        maxWidth:10,
-        maxHeight: 10
+//?through <View>
+        width: "50%", 
+        margin: 5, 
+        maxWidth:70,
+        maxHeight: 30,
+        marginBottom: 10,
+        borderRadius:55,
+        alignSelf:'center',
+        fontSize: 30,
+        fontWeight: 'bold'
     },
 
     input: {
         fontSize:18,
+        color: 'blue',
         borderWidth: 1,
         borderColor: 'black',
-        marginHorizontal:5,//mRgins on both sides
+        marginHorizontal:10,//mRgins on both sides
         marginBottom:5,
         paddingHorizontal:5, //to get a little bit spacing between the text and the border
-        flex: 1//takes the rest of the space
+       // flex: 1//takes the rest of the space
         },
     label: {
         fontSize:15,
-        marginBottom:5,
+        marginBottom:1,
         marginHorizontal:5,
         borderWidth: 1,
-        borderColor: 'black',
-        justifyContent: 'space-between',
+       borderBottomColor: 'blue',
+       // borderColor: 'black',
+       // justifyContent: 'space-between',
         
         flexDirection: 'row' // makes the label and the text show on the same line
 
@@ -112,8 +123,18 @@ const styles = StyleSheet.create({
         borderColor: 'black',
         justifyContent: 'space-between',
         paddingHorizontal: 10,
-        flex: 1
-    }
+        //flex: 0
+    },
+    text: {
+        // fontStyle: 'italic',
+         fontWeight: 'bold',
+         fontSize: 16,
+         //alignSelf:'base',
+         color: 'blue',
+         margin: 5,
+         marginLeft:10
+         
+     },
 
 });
 

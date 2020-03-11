@@ -17,16 +17,11 @@ const IndexScreen = ({budname, navigation}) => {
 
     return <View style={styles.container}>
         <Text style={styles.text}>Hello, HighGarden!</Text>
-        <View style={[{ width: "50%", margin: 5, maxWidth:70,
-        maxHeight: 35,
-        marginTop:25,
-        alignSelf:'center',
-        
-        fontWeight: 'bold' }]}>
+        <View style={styles.button}>
         <Button 
             title="CREATE REPORT"
             color='rgb(150,200,100)'
-            borderRadius='70'
+            borderRadius='55'
             fontWeight= 'bold'
             onPress={()=> navigation.navigate('Create')}
         />
@@ -38,16 +33,11 @@ const IndexScreen = ({budname, navigation}) => {
         
        
               
-        <View style={[{ width: "50%", margin: 5, maxWidth:70,
-        maxHeight: 30,
-        marginBottom: 10,
-        alignSelf:'center',
-        fontSize: 30,
-        fontWeight: 'bold' }]}>
+        <View style={styles.button}>
         <Button style={styles.button}
             title="Get Reports"
             color='rgb(120,0,60)'
-            borderRadius='70'
+            borderRadius='55'
             fontWeight= 'bold'
             onPress={()=>navigation.navigate('Reports') }
             
@@ -87,12 +77,16 @@ const styles = StyleSheet.create({
     button: {
 //! button doesn't have styles.prop!
 //has to be customized 
-        maxWidth:30,
+       
+        width: "50%", 
+        margin: 5, 
+        maxWidth:70,
         maxHeight: 30,
-        fontSize: 100,
-        fontWeight: 'bold',
-        backgroundColor: 'green',
-        position: 'absolute',
+        marginBottom: 10,
+        borderRadius:55,
+        alignSelf:'center',
+        fontSize: 30,
+        fontWeight: 'bold'
         
         
 

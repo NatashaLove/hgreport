@@ -67,8 +67,8 @@ const Form = ( {initialValues, onSubmit} )=> {
    
     return (
 
-<View >
-    <Text >Date: {today}</Text>
+<View>
+    <Text style={styles.text} >Date: {today}</Text>
         <FlatList 
             data={dataArr}
             keyExtractor={item => item.title}
@@ -90,6 +90,7 @@ const Form = ( {initialValues, onSubmit} )=> {
         />
         <Button style={styles.button}
                 title="Preview Report" 
+                color="blue"
             
                 onPress={()=> onSubmit(dataArr, today) }//}console.log()// 
                 />
@@ -147,11 +148,16 @@ Form.defaultProps = {
                     },
                     {
                         id: 9,
-                        title: 'Consingment Flower: ',
+                        title: 'Consingment Flower 1: ',
                         content: ''
                     },
                     {
                         id: 10,
+                        title: 'Consingment Flower 2: ',
+                        content: ''
+                    },
+                    {
+                        id: 11,
                         title: 'Notes:      ',
                         content: ''
                     },
@@ -171,6 +177,16 @@ const styles = StyleSheet.create({
         maxWidth:10,
         maxHeight: 10
     },
+
+    text: {
+        // fontStyle: 'italic',
+         fontWeight: 'bold',
+         fontSize: 20,
+         //alignSelf:'base',
+         color: 'blue',
+         margin: 15
+         
+     },
 
     input: {
         fontSize:18,

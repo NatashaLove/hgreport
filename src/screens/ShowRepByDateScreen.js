@@ -26,7 +26,7 @@ return (
 
        <>
             
-<Text  style={styles.label} >Report for {theDate}</Text>
+<Text  style={styles.label} >Report for {date}</Text>
     
 <View style={styles.container}>
     {lines.map((item, key) => {
