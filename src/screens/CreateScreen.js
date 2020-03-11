@@ -77,6 +77,14 @@ const render=(dataArr)=> {
 };
 
 const styles = StyleSheet.create({
+  text: {
+    // fontStyle: 'italic',
+     fontWeight: 'bold',
+     fontSize: 25,
+     alignSelf:'center',
+     color: 'green',
+     
+ },
   label: {
     fontSize:20,
     marginBottom:5,

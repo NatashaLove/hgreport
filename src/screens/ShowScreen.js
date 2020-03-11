@@ -3,7 +3,7 @@
 //for beginning just show all reports wothout filtering option..
 
 import React, { useContext, useEffect } from 'react';
-import { View, Alert, Text, StyleSheet, TouchableOpacity, FlatList, Button } from 'react-native';
+import { ScrollView, View, Alert, Text, StyleSheet, TouchableOpacity, FlatList, Button } from 'react-native';
 import { Context } from '../context/ReportContext';
 import {EvilIcons} from '@expo/vector-icons';
 //import {dataArr} from './CreateScreen'
@@ -54,19 +54,19 @@ const report=[today, lines];
 
     return (
  
-        <View style={styles.container}>
+        <ScrollView style={styles.container}>
             
             <Text style={styles.headtext}>Report is ready!</Text>
             
         {lines.map((item, key) => {
-            return ( <Text style={styles.text} key={item.id}>{item.title.toString()} {JSON.stringify(item.content.text)} </Text>);
+            return ( <Text style={styles.text} key={item.id}>{item.title.toString()} --- {JSON.stringify(item.content.text)} </Text>);
 
         })}
          <Text style={styles.headtext}>{today.toString()} </Text>
        
         <View style={styles.warn}>
             <Text> </Text>
-            <Text style={styles.wtext}>Please, make a screenshot on your phone before clicking the button!</Text>
+            <Text style={styles.wtext}>Please, make a screenshot of your report before clicking the button below!</Text>
             <Text style={styles.wtext}>Send the screenshot to Ray separately through the Signal!</Text>
             <Text> </Text>
         </View>
@@ -80,7 +80,7 @@ const report=[today, lines];
         />
             
   
-        </View>
+        </ScrollView>
     );  
                 
 };
@@ -124,7 +124,9 @@ const styles = StyleSheet.create({
          fontSize: 20,
          //alignSelf:'center',
          color: 'black',
-         justifyContent:'space-between'
+         justifyContent:'space-evenly',
+         borderWidth:1,
+         borderColor: 'blue'
          
      },
      headtext: {
@@ -133,7 +135,8 @@ const styles = StyleSheet.create({
          fontSize: 25,
          alignSelf:'center',
          color: 'rgb(120,0,60)',
-         paddingBottom:10
+         paddingBottom:5,
+         paddingTop:10
          
      },
  
@@ -143,7 +146,7 @@ const styles = StyleSheet.create({
          marginHorizontal: 15,
          //marginBottom: 60,
          flex:1,
-         justifyContent: 'space-between',
+        // justifyContent: 'space-between',
          //justifyContent: 'space-around',
         // justifyContent: 'space-evenly',
          marginTop: 20,

@@ -11,7 +11,16 @@ const GetReportsScreen = ({navigation}) => {
 
 //inside useEffect - callback func runs only first time when app rendered:   
     useEffect(()=> {
-        getReports();
+       // getReports();
+
+        const listener = navigation.addListener('didFocus', () => {
+            getReports();
+        });//arrow function here tells react navigation that anytime the index screen gains focus (becomes the primary screen on the device)-
+// then this callback function will be invoked with { getBlogPosts();}
+
+        return () => {
+            listener.remove();
+        };
 
     }, []);// empty array right there means that we only want to run that error function 
     //exactly one time when our component first shows up on the screen.
@@ -47,7 +56,7 @@ const GetReportsScreen = ({navigation}) => {
         <Button
          title="show" 
          color='blue'   
-         onPress={()=> navigation.navigate('ShowRepByDate', {date:date}), console.log(date) }
+         onPress={()=> navigation.navigate('ShowRepByDate', {date:date}) }
         />
         </View>
         < FlatList 
@@ -121,9 +130,9 @@ const styles = StyleSheet.create({
         //flexDirection: 'row',
         borderWidth: 1,
         borderColor: 'black',
-        justifyContent: 'space-between',
+       // justifyContent: 'space-between',
         paddingHorizontal: 10,
-        //flex: 0
+        flex: 0
     },
     text: {
         // fontStyle: 'italic',
