@@ -1,19 +1,10 @@
 import React, { useContext} from 'react';
 import { View, TouchableOpacity, StyleSheet, Text, Button, Image } from "react-native";
-import {withNavigation} from 'react-navigation';
-import Budtender from '../components/Budtender';
 import { Context } from '../context/ReportContext';
-//import ImageDetail from '../components/ImageDetail';
 
-//flatlist with 3 names (budtenders)
-//array create on index screen here- eachelement wrap- with toachable opacity -
-//to navigate onto personal screen with form- when it saved- loads "showscreen" with all reports..
-//need to be able save the file or send somewhere else..
-//create a component in separate file with a name in touchable opacity (like searchbar)*3 names
+const IndexScreen = ({navigation}) => {
 
-const IndexScreen = ({budname, navigation}) => {
-
-    const {state, getReports}= useContext(Context);
+   // const {state, getReports}= useContext(Context);
 
     return <View style={styles.container}>
         <Text style={styles.text}>Hello, HighGarden!</Text>
@@ -27,9 +18,9 @@ const IndexScreen = ({budname, navigation}) => {
         />
         </View>
 
-    <Image style={styles.image}
-    source={require('../../assets/hg.jpeg')}>
-    </Image>
+        <Image style={styles.image}
+        source={require('../../assets/hg.jpeg')}>
+        </Image>
         
        
               
@@ -41,9 +32,8 @@ const IndexScreen = ({budname, navigation}) => {
             fontWeight= 'bold'
             onPress={()=>navigation.navigate('Reports') }
             
-            />
-            </View>
-           
+        />
+        </View>
     
     </View>
 };
@@ -90,8 +80,8 @@ const styles = StyleSheet.create({
         
         
 
-                //borderBottomEndRadius: 80
-            },
+     //borderBottomEndRadius: 80
+    },
 
     image: {
 //image must have style with heihjt and width - otherwise it folds

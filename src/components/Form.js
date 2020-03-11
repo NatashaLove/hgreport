@@ -1,34 +1,16 @@
-import React, { useState, useContext, useEffect} from 'react';
+import React, { useState} from 'react';
 import { View, ScrollView, Text, StyleSheet, TextInput, Button, FlatList, Image } from 'react-native';
-import SubForm from '../components/SubForm';
-import { Context } from '../context/ReportContext';
-import { render } from 'react-dom';
-//import Constants from 'expo-constants';
 
 const Form = ( {initialValues, onSubmit} )=> {
-    //const {populateReportForm} = useContext(Context);
-    
-    //const[lines, setLines] = useState(initialValues.lines);
-   // const [content, setContent]= useState('');
-    /*
-    useEffect(() => {
-        setLines(SubForm.id = {id}, Subform.title = {title}, Subform.content={content}),
-        
-       // setLines([[id, title,content] = lines[id, title, content], 
-            ()=> console.log(lines)
-    });
-*/
 
 //Current date is {this.props.date} - FOR DATE!
 
-   const content= initialValues.lines.content;
+    const content= initialValues.lines.content;
     const title = initialValues.lines.title;
     const dataArr = initialValues.lines;
-  // const reportID=initialValues.reportID;
-    //const {populateReportForm} = useContext(Context);
-
+  
     const setDataArr=(id, title, content)=> {
-       //  dataArr.id=reportID;
+       
         for(let i=0; i<dataArr.length; i++){
             const makeArrID=i+1;
             
@@ -42,29 +24,12 @@ const Form = ( {initialValues, onSubmit} )=> {
         }
     };
 
-   /*
-    getDataArr=(dataArr, callback)=>{
-        return [
-            id=dataArr[i].id,
-            title=dataArr[i].title,
-            content=dataArr[i].content
-
-        ]
-       
-    };
-*/
+   
     const ddate= new Date().getDate();
-   const month = new Date().getMonth() + 1;
-   const year = new Date().getFullYear();
-   const today = (month + '/' + ddate + '/' + year);
-/*
-   ShowCurrentDate=(date)=>{
- 
-      
-    Alert.alert(ddate + '-' + month + '-' + year);
+    const month = new Date().getMonth() + 1;
+    const year = new Date().getFullYear();
+    const today = (month + '/' + ddate + '/' + year);
 
-   }
-   */
     return (
 
 <View>
@@ -102,69 +67,67 @@ const Form = ( {initialValues, onSubmit} )=> {
 Form.defaultProps = {
     initialValues : {
             
-            date:'',
+        date:'',
 
-            lines : [
+        lines : [
                 //initial values
-                    {
-                        id: 1,
-                        title: 'Name:                 ',
-                        content: ''
-                    },
-                    {
-                        id: 2,
-                        title: 'Total in drawer:       ',
-                        content: ''
-                    },
-                    {
-                        id: 3,
-                        title: 'Salaries:            ',
-                        content: ''
-                    },
-                    {
-                        id: 4,
-                        title: 'Taxes:               ',
-                        content: ''
-                    },
-                    {
-                        id: 5,
-                        title: 'Rent:                 ',
-                        content: ''
-                    },
-                    {
-                        id: 6,
-                        title: 'HG Money:              ',
-                        content: ''
-                    },
-                    {
-                        id: 7,
-                        title: 'MM:                   ',
-                        content: ''
-                    },
-                    {
-                        id: 8,
-                        title: 'PP:                     ',
-                        content: ''
-                    },
-                    {
-                        id: 9,
-                        title: 'Consingment# 1:    ',
-                        content: ''
-                    },
-                    {
-                        id: 10,
-                        title: 'Consingment# 2:     ',
-                        content: ''
-                    },
-                    {
-                        id: 11,
-                        title: 'Notes:                    ',
-                        content: ''
-                    },
-                  
-            ],
+            {
+                id: 1,
+                title: 'Name:               ',
+                content: ''
+            },
+            {
+                id: 2,
+                title: 'Total in drawer:     ',
+                content: ''
+            },
+            {
+                id: 3,
+                title: 'Salaries:            ',
+                content: ''
+            },
+            {
+                id: 4,
+                title: 'Taxes:               ',
+                content: ''
+            },
+            {
+                id: 5,
+                title: 'Rent:                 ',
+                content: ''
+            },
+            {
+                id: 6,
+                title: 'HG Money:              ',
+                content: ''
+            },
+            {
+                id: 7,
+                title: 'MM:                   ',
+                content: ''
+            },
+            {
+                id: 8,
+                title: 'PP:                    ',
+                content: ''
+            },
+            {
+                id: 9,
+                title: 'Consingment# 1:    ',
+                content: ''
+            },
+            {
+                id: 10,
+                title: 'Consingment# 2:    ',
+                content: ''
+            },
+            {
+                id: 11,
+                title: 'Notes:               ',
+                content: ''
+            },
 
-        
+        ],
                 
     }
 

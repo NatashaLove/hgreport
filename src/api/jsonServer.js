@@ -6,8 +6,4 @@ export default axios.create({
     baseURL: 'http://7564cabb.ngrok.io' // taking baseURL from cmd terminal (w/tunnel)-but have to update it every few hours..
    
 });
-/*
-validateStatus: function (status) {
-    return status < 500; //you can change this with another value
-}
-*/
+//error 500 was not because of axios, but because the object props ({lines}) had to be destructured in the program..

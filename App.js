@@ -1,3 +1,7 @@
+//The app created by Natalia Love for HighGarden LLC
+//Tools used: React Native, JavaScript, Visual Studio code, expo-cli, cmd and Gitbash terminals etc
+// Date: 3/11/2020
+
 import React from 'react';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
@@ -45,4 +49,4 @@ export default () =>{
     <App />
   </Provider>
   };
-//{children} is a var declared in BlogContext and - initialized in App.js as <App>
+//{children} is a var declared in ReportContext and - initialized in App.js as <App>

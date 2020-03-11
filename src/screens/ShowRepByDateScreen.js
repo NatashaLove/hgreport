@@ -31,16 +31,14 @@ return (
     
 <View style={styles.container}>
     {lines.map((item, key) => {
-            return ( 
-            <Text  key={item.id} style={styles.text}>{item.title.toString()} ---  {JSON.stringify(item.content.text)}</Text>      
-            );
-           
+        return ( 
+        <Text  key={item.id} style={styles.text}>{item.title.toString()} ---  {JSON.stringify(item.content.text)}</Text>      
+         );
                 
     }
             
     )}
 </View> 
-
 
     <Button style={styles.button}
     title="back to all reports" 
@@ -50,16 +48,12 @@ return (
         navigation.pop() 
     }}//}console.log()
 />
-    
-
+ 
 </>
-
 
 );
 
-
 };
-
 
 const styles = StyleSheet.create({
     text: {
@@ -71,8 +65,7 @@ const styles = StyleSheet.create({
          //justifyContent:'space-between',
          borderBottomColor: 'blue',
          borderWidth:1,
-         
-         
+          
      },
      headtext: {
          fontStyle: 'italic',
@@ -102,8 +95,7 @@ const styles = StyleSheet.create({
          paddingHorizontal: 10,
         // width: "100%"
          //alignSelf:'center',
-         
-         
+ 
         // flexDirection: 'column'
      },
 });

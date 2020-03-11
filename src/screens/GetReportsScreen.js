@@ -1,39 +1,28 @@
 import React, {useEffect, useContext, useState} from 'react';
-import { View, TextInput, FlatList, TouchableOpacity, StyleSheet, Text, ScrollView, Button } from "react-native";
-import {withNavigation} from 'react-navigation';
-import Budtender from '../components/Budtender';
+import { View, TextInput, FlatList, StyleSheet, Text, ScrollView, Button } from "react-native";
 import { Context } from '../context/ReportContext';
 
 const GetReportsScreen = ({navigation}) => {
     const {state, getReports } = useContext(Context);
     const [date, setDate] = useState('');
-    const [lines, setLines]= useState([]);
-
+    
 //inside useEffect - callback func runs only first time when app rendered:   
     useEffect(()=> {
        // getReports();
 
         const listener = navigation.addListener('didFocus', () => {
             getReports();
-        });//arrow function here tells react navigation that anytime the index screen gains focus (becomes the primary screen on the device)-
-// then this callback function will be invoked with { getBlogPosts();}
+        });//arrow function here tells react navigation that anytime the screen gains focus (becomes the primary screen on the device)-
+// then this callback function will be invoked with { getReports();}
 
         return () => {
             listener.remove();
         };
 
-    }, []);// empty array right there means that we only want to run that error function 
+    }, []);// empty array right there means that we only want to run that arrow function 
     //exactly one time when our component first shows up on the screen.
 
- const setReport= (date) => {state.find(
-    (report) => {
-     if (report.date === date) {
-         return console.log("set report", date) ,
-         setDate (report.date),
-         setLines(report.lines)
-     }}
- )};
-
+ 
     return (
         <>
       
@@ -68,31 +57,23 @@ const GetReportsScreen = ({navigation}) => {
                 <View style={styles.container}>
                     <Text style={styles.text}>Report Date: {item.date}</Text>
                     {item.lines.map((i, key) => {
-            return ( <Text style={styles.label} key={i.id}>     {i.title.toString()}              {JSON.stringify(i.content.text)} </Text>);
+            return ( <Text style={styles.label} key={i.id}>     {i.title.toString()}              
+            {JSON.stringify(i.content.text)} </Text>);
 
         })}
 
                 </View>
                 )
             }
-        />
-                             
+        />                    
     </>
     );
 };
 
-
-// {report.map((item, key) => {
- //   return ( <Text key={item.id}>{item.title.toString()} {JSON.stringify(item.content.text)} </Text>);
-// })}
-
-
-//getReports(), console.log(state.getReports)
-
 const styles = StyleSheet.create({
 
     button: {
-//?through <View>
+//style through <View>
         width: "50%", 
         margin: 5, 
         maxWidth:70,
@@ -109,7 +90,7 @@ const styles = StyleSheet.create({
         color: 'blue',
         borderWidth: 1,
         borderColor: 'black',
-        marginHorizontal:10,//mRgins on both sides
+        marginHorizontal:10,//margins on both sides
         marginBottom:5,
         paddingHorizontal:5, //to get a little bit spacing between the text and the border
        // flex: 1//takes the rest of the space
@@ -146,9 +127,6 @@ const styles = StyleSheet.create({
      },
 
 });
-
-
-
 
 
 export default GetReportsScreen;
