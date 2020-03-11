@@ -18,7 +18,7 @@ const IndexScreen = ({budname, navigation}) => {
     return <View style={styles.container}>
         <Text style={styles.text}>Hello, HighGarden!</Text>
         <View style={[{ width: "50%", margin: 5, maxWidth:70,
-        maxHeight: 30,
+        maxHeight: 35,
         marginTop:25,
         alignSelf:'center',
         
