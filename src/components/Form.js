@@ -73,57 +73,57 @@ Form.defaultProps = {
                 //initial values
             {
                 id: 1,
-                title: 'Name:               ',
+                title: 'Name:              ',
                 content: ''
             },
             {
                 id: 2,
-                title: 'Total in drawer:     ',
+                title: 'Total in drawer:    ',
                 content: ''
             },
             {
                 id: 3,
-                title: 'Salaries:            ',
+                title: 'Salaries:           ',
                 content: ''
             },
             {
                 id: 4,
-                title: 'Taxes:               ',
+                title: 'Taxes:              ',
                 content: ''
             },
             {
                 id: 5,
-                title: 'Rent:                 ',
+                title: 'Rent:               ',
                 content: ''
             },
             {
                 id: 6,
-                title: 'HG Money:              ',
+                title: 'HG Money:           ',
                 content: ''
             },
             {
                 id: 7,
-                title: 'MM:                   ',
+                title: 'Consingment# 1:     ',
                 content: ''
             },
             {
                 id: 8,
-                title: 'PP:                    ',
+                title: 'Consingment# 2:     ',
                 content: ''
             },
             {
                 id: 9,
-                title: 'Consingment# 1:    ',
+                title: 'Consingment# 3:     ',
                 content: ''
             },
             {
                 id: 10,
-                title: 'Consingment# 2:    ',
+                title: 'Consingment# 4:     ',
                 content: ''
             },
             {
                 id: 11,
-                title: 'Notes:               ',
+                title: 'Notes:              ',
                 content: ''
             },
 
