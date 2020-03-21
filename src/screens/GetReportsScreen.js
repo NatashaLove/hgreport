@@ -30,7 +30,7 @@ const GetReportsScreen = ({navigation}) => {
         <TextInput
             style={styles.input} 
             //value={date} 
-            placeholder={'00/00/0000'}
+            placeholder={'0/0/0000'}
                       
             onChangeText={(newDate) => {
                

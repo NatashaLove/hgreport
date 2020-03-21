@@ -26,7 +26,7 @@ const IndexScreen = ({navigation}) => {
               
         <View style={styles.button}>
         <Button style={styles.button}
-            title="Get Reports"
+            title="GET REPORTS"
             color='rgb(120,0,60)'
             borderRadius='55'
             fontWeight= 'bold'
@@ -70,12 +70,12 @@ const styles = StyleSheet.create({
        
         width: "50%", 
         margin: 5, 
-        maxWidth:70,
+        maxWidth:90,
         maxHeight: 30,
         marginBottom: 10,
         borderRadius:55,
         alignSelf:'center',
-        fontSize: 30,
+        fontSize: 40,
         fontWeight: 'bold'
         
         

@@ -10,8 +10,15 @@ const date = navigation.getParam ('date', '00/00/0000');
 
 const {state} = useContext(Context);
 
-const result = state.find(report => report.date === date);
-
+const result = state.find(report => report.date === date
+//    ? report
+//    :initialValues.state
+    );
+    /*
+if(date !== report.date) {
+    Alert.alert("WRONG DATE!")
+};
+*/
 const {theDate, lines} = result;//need to destructurize-to get the lines arr from the object result.
 
 /*
@@ -99,5 +106,14 @@ const styles = StyleSheet.create({
         // flexDirection: 'column'
      },
 });
+
+ShowRepByDateScreen.defaultProps = {
+    initialValues : {
+        state: [{
+            "date": "0/0/2020",
+            "lines": [{}]
+        }]
+    }
+};
 
 export default ShowRepByDateScreen;

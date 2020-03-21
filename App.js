@@ -9,7 +9,7 @@ import IndexScreen from './src/screens/IndexScreen';
 import { Provider } from './src/context/ReportContext';// import in {}, because it's not a default export, but a variable to export
 import ShowScreen from './src/screens/ShowScreen';
 import CreateScreen from './src/screens/CreateScreen';
-import EditScreen from './src/screens/EditScreen';
+//import EditScreen from './src/screens/EditScreen';
 import TestScreen from './src/screens/TestScreen';
 import GetReportsScreen from './src/screens/GetReportsScreen';
 import ShowRepByDateScreen from './src/screens/ShowRepByDateScreen';
@@ -23,7 +23,7 @@ const navigator = createStackNavigator(
     Index: IndexScreen,
     Show: ShowScreen,
     Create: CreateScreen,
-    Edit: EditScreen,
+   // Edit: EditScreen,
     Test: TestScreen,
     Reports: GetReportsScreen,
     ShowRepByDate: ShowRepByDateScreen
