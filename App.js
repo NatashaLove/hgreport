@@ -13,7 +13,7 @@ import CreateScreen from './src/screens/CreateScreen';
 import TestScreen from './src/screens/TestScreen';
 import GetReportsScreen from './src/screens/GetReportsScreen';
 import ShowRepByDateScreen from './src/screens/ShowRepByDateScreen';
-
+import { Asset } from 'expo-asset';
 //!!! import ShowReportScreen...
 
 const navigator = createStackNavigator(
@@ -33,7 +33,7 @@ const navigator = createStackNavigator(
 //2.configuration options specifically for our stack Navigator: 
     initialRouteName: 'Index',
     defaultNavigationOptions: {
-//this title is set inside of the header.
+//3.this title is set inside of the header.
       
       title: 'HighGarden Report',
       
@@ -41,12 +41,34 @@ const navigator = createStackNavigator(
   }
 );
 
+const cacheImages = (images)=> {
+  return images.map(image => {
+    if (typeof image === 'string') {
+      return Image.prefetch(image);
+    } else {
+      return Asset.fromModule(image).downloadAsync();
+    }
+  });
+}
+
+ //async function _loadAssetsAsync() {
+  const imageAssets = cacheImages([
+      require('./assets/icon.png'),
+      require('./assets/hg.jpeg')
+  ]);
+
+ // await Promise.all([...imageAssets]);
+//}
+
 const App = createAppContainer(navigator);
 
 export default () =>{
   //passing <app> as children to <Provider>
   return <Provider>
-    <App />
+    <App 
+     asset={imageAssets}
+
+    />
   </Provider>
   };
 //{children} is a var declared in ReportContext and - initialized in App.js as <App>

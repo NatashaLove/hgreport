@@ -2,13 +2,16 @@
   "expo": {
     "name": "HGreport",
     "slug": "hgreport",
-    "privacy": "public",
+    "privacy": "unlisted",
     "sdkVersion": "36.0.0",
-    "platforms": [
-      "ios",
-      "android",
-      "web"
-    ],
+    "owner": "HighGarden",
+    "ios": {
+      "bundleIdentifier": "com.natasha1ove.hgreport",
+      "supportsTablet": true
+    },
+    "android": {
+      "package": "com.natasha1ove.hgreport"
+    },
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -21,11 +24,10 @@
       "fallbackToCacheTimeout": 0
     },
     "assetBundlePatterns": [
-      "**/*"
+      "assets/icon.png",
+      "assets/hg.jpeg",
+      "assets/splash.png"
     ],
-    "ios": {
-      "supportsTablet": true
-    },
     "description": "App for creating end shift report (for HighGarden Dispensary)"
   }
 }
