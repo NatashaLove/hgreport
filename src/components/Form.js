@@ -123,9 +123,14 @@ Form.defaultProps = {
             },
             {
                 id: 11,
-                title: 'Notes:              ',
+                title: 'Left in Drawer:     ',
                 content: ''
             },
+            {
+                id: 12,
+                title: 'Notes:              ',
+                content: ''
+            }
 
         ],
                 

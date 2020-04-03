@@ -30,8 +30,8 @@ const report=[today, lines];
        
         <View style={styles.warn}>
             <Text> </Text>
-            <Text style={styles.wtext}>Please, make a screenshot of your report before clicking the button below!</Text>
-            <Text style={styles.wtext}>Send the screenshot to Ray separately through the Signal!</Text>
+            <Text style={styles.wtext}>Please, make a screenshot!</Text>
+            <Text style={styles.wtext}>Send the screenshot to Ray!</Text>
             <Text> </Text>
         </View>
 

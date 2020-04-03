@@ -1,0 +1,12 @@
+1. ngrok w/free account- allows to work in test (expo cli)- no need to restart server every 8 hours.
+But app is on while my comp and wifi- on, not asleep.
+
+2. continue this way- w/all android devices (rely on my comp etc) + download expo xlient from App store to apple devices- test if working!- if yes- don't have to make screenshots-
+now can download them.. (but better still do screenshots). 
+3. -while working on more style/ studying forms, buttons, other UI + add functioning..etc. 
+
+after it's more ready and good-looking:
+4. I download to play store (25$ - I pay) - independent app.
+
+5. if want on iPhone- who will pay 100$ for the account?
+
