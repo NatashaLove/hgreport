@@ -1,6 +1,8 @@
 import React, { useContext, useEffect } from 'react';
 import { ScrollView, View, Alert, Text, StyleSheet, TouchableOpacity, FlatList, Button } from 'react-native';
 import { Context } from '../context/ReportContext';
+import { Container, Header, Content, List, ListItem, Left, Right } from 'native-base';
+
 import {EvilIcons} from '@expo/vector-icons';
 
 // data that we passed in is not provided directly as a prop -

@@ -14,6 +14,7 @@ import TestScreen from './src/screens/TestScreen';
 import GetReportsScreen from './src/screens/GetReportsScreen';
 import ShowRepByDateScreen from './src/screens/ShowRepByDateScreen';
 import { Asset } from 'expo-asset';
+import TestUI from './src/screens/TestUI';
 //!!! import ShowReportScreen...
 
 const navigator = createStackNavigator(
@@ -26,7 +27,8 @@ const navigator = createStackNavigator(
    // Edit: EditScreen,
     Test: TestScreen,
     Reports: GetReportsScreen,
-    ShowRepByDate: ShowRepByDateScreen
+    ShowRepByDate: ShowRepByDateScreen,
+    TestUI: TestUI
 
   }, 
   {
