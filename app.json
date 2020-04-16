@@ -12,7 +12,7 @@
     "android": {
       "package": "com.natasha1ove.hgreport"
     },
-    "version": "1.0.0",
+    "version": "1.0.1",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
@@ -21,7 +21,7 @@
       "backgroundColor": "#ffffff"
     },
     "updates": {
-      "fallbackToCacheTimeout": 0
+      "fallbackToCacheTimeout": 9000
     },
     "assetBundlePatterns": [
       "assets/icon.png",
