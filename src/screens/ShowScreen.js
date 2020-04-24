@@ -25,11 +25,18 @@ const report=[today, lines];
             <Text style={styles.headtext}>Report is ready!</Text>
             
         {lines.map((item, key) => {
-            return ( <Text style={styles.text} key={item.id}>{item.title.toString()} --- {JSON.stringify(item.content.text)} </Text>);
+            return ( <Text style={styles.text} key={item.id}>{item.title.toString()} -- {JSON.stringify(item.content.text)} </Text>);
 
         })}
          <Text style={styles.headtext}>{today.toString()} </Text>
        
+         <Button style={styles.button}
+            title="Confirm" 
+            color='rgb(120,0,60)'
+            onPress={()=>  {
+                addReport(today, lines, () => navigation.navigate('Index'));
+            }}//}console.log()
+        />
         <View style={styles.warn}>
             <Text> </Text>
             <Text style={styles.wtext}>Please, make a screenshot!</Text>
@@ -37,13 +44,7 @@ const report=[today, lines];
             <Text> </Text>
         </View>
 
-        <Button style={styles.button}
-            title="Confirm" 
-            color='rgb(120,0,60)'
-            onPress={()=>  {
-                addReport(today, lines, () => navigation.navigate('Index'));
-            }}//}console.log()
-        />
+        
             
   
         </ScrollView>

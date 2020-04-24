@@ -45,7 +45,7 @@ const Form = ( {initialValues, onSubmit} )=> {
                         style={styles.input} 
                         value={content} 
                         placeholder={item.title}
-                      
+
                         onChangeText={(text) => setDataArr(item.id, item.title, {text})}
                     />
                 </View>
@@ -83,7 +83,7 @@ Form.defaultProps = {
             },
             {
                 id: 3,
-                title: 'Salaries:           ',
+                title: 'Wages:           ',
                 content: ''
             },
             {
@@ -98,36 +98,41 @@ Form.defaultProps = {
             },
             {
                 id: 6,
-                title: 'HG Money:           ',
+                title: 'Consingment# HG :   ',
                 content: ''
             },
             {
                 id: 7,
-                title: 'Consingment# 1:     ',
+                title: 'Consingment# Buffalo Roze:',
                 content: ''
             },
             {
                 id: 8,
-                title: 'Consingment# 2:     ',
+                title: 'Consingment# Poole Farms:',
                 content: ''
             },
             {
                 id: 9,
-                title: 'Consingment# 3:     ',
+                title: 'Consingment# Pure Pressure:',
                 content: ''
             },
             {
                 id: 10,
-                title: 'Consingment# 4:     ',
+                title: 'Consingment# Dankland:',
                 content: ''
             },
             {
                 id: 11,
-                title: 'Left in Drawer:     ',
+                title: 'Consingment# :',
                 content: ''
             },
             {
                 id: 12,
+                title: 'Left in Drawer:     ',
+                content: ''
+            },
+            {
+                id: 13,
                 title: 'Notes:              ',
                 content: ''
             }
