@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-//import { Container, Header, Content, List, ListItem, Text, Left, Right } from 'native-base';
-import { Button, ListItem  } from 'react-native-elements';
+import { Container, Header, Content, List, ListItem, Text, Left, Right, View } from 'native-base';
+//import { Button, ListItem  } from 'react-native-elements';
 
 const TestUI = ({navigation})=> {
 
@@ -34,24 +34,79 @@ const TestUI = ({navigation})=> {
           }
     }
   ];
+/*
+  const renderItem = ({ item }) => {
+   
+      return (
+        <ListItem >
+          <Left />
+          <Body style={{ marginRight: 40 }}>
+            <Text style={{ fontWeight: "bold" }}>
+              {item.title}
+            </Text>
+          </Body>
+          <Right >
+            <Text> {item.content.text} </Text>
+          </Right>
+        </ListItem>
+      );
+  };
 
-   return ( // map-формула ниже с какой-то логич ошибкой- не загружается..
-//en-elements is working - with button ex..
-    <View>     
-      {lines.map((item, i) => ( 
-      //  i=item.id,
-          <ListItem style={styles.text} 
-            key={i}
-            title={item.title}
-            leftElement={item.content.text}
-            bottomDivider
-            
-         />   
-         ))};
-        
-        </View>  
 
-   );
+  ---
+// not working. some logic error..
+
+  <FlatList
+        data={lines}
+        keyExtractor={item => item.title}
+        renderItem={({ item }) => (
+            <ListItem >
+              <Left />
+              <Body style={{ marginRight: 40 }}>
+                <Text style={{ fontWeight: "bold" }}>
+                  {item.title}
+                </Text>
+              </Body>
+              <Right >
+                <Text> {item.content.text} </Text>
+              </Right>
+            </ListItem>
+          )
+        }
+      />
+
+      // just text is working.. native base..
+      //need to check little by little..
+*/
+  
+    return (
+      
+<Container>
+<Header>
+<Text> Report is Ready!</Text>
+</Header>
+<Content>
+  <List>
+    <ListItem noIndent style={{ backgroundColor: "#cde1f9" }}>
+      <Left>
+        <Text>Simon Mignolet</Text>
+      </Left>
+      <Right>
+      <Text>SimMig</Text>
+      </Right>
+    </ListItem>
+    <ListItem >
+     <Left>
+        <Text>Nathaniel Clyne</Text>
+      </Left>
+      <Right>
+      <Text>NatCly</Text>
+      </Right>
+    </ListItem>
+    </List>
+        </Content>
+      </Container>
+    );
 
 };
 
