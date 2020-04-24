@@ -19,7 +19,10 @@ const ShowScreen = ({navigation})=> {
 const report=[today, lines];
 
     return (
- 
+ // scrollview== List ? (from native base) -> lines.map ...return :ListItem ->
+ //Left / Right -> Text...
+ //ListItem- is every line: title+content
+
         <ScrollView style={styles.container}>
             
             <Text style={styles.headtext}>Report is ready!</Text>
