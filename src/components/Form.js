@@ -40,7 +40,7 @@ const Form = ( {initialValues, onSubmit} )=> {
             keyExtractor={item => item.title}
             renderItem={({ item }) => (             
                 
-                <ListItem style={ { height: 41, borderWidth:1, borderColor: 'blue'} }>
+                <ListItem style={ { height: 41, borderWidth:1, borderColor: 'blue', marginRight:10} }>
                      <Left>
                          <Text style={styles.label}>{item.title}</Text>
                     </Left>
@@ -162,9 +162,10 @@ const styles = StyleSheet.create({
         // fontStyle: 'italic',
          fontWeight: 'bold',
          fontSize: 20,
-         //alignSelf:'base',
+         alignSelf:'center',
          color: 'blue',
-         margin: 15
+         margin: 6,
+         paddingBottom:2
          
      },
 

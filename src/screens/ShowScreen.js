@@ -31,7 +31,7 @@ const ShowScreen = ({navigation})=> {
       keyExtractor={item => item.id}
       renderItem={({item}) => {
         return (
-          <ListItem style={ { height: 41, borderWidth:1, borderColor: 'blue'} }>
+          <ListItem style={ { height: 41, borderWidth:1, borderColor: 'blue', marginRight:10} }>
             <Left>
               <Text style={styles.text}>{item.title}</Text>
             </Left>
@@ -106,7 +106,7 @@ const styles = StyleSheet.create({
      container: {
          //fontSize: 20,
          //borderRadius: 55,// rounded corners
-         marginHorizontal: 10,
+         //paddingHorizontal: 10,
          //marginBottom: 60,
          flex:1,
         // justifyContent: 'space-between',

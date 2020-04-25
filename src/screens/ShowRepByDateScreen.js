@@ -44,7 +44,7 @@ return (
       keyExtractor={item => item.id}
       renderItem={({item}) => {
         return (
-          <ListItem style={ { height: 41, borderWidth:1, borderColor: 'blue'} }>
+          <ListItem style={ { marginRight:10, height: 41, borderWidth:1, borderColor: 'blue'} }>
             <Left>
               <Text style={styles.text}>{item.title}</Text>
             </Left>
@@ -115,7 +115,7 @@ const styles = StyleSheet.create({
          fontWeight: 'bold',
          fontSize: 15,
         // flexDirection: 'row',
-         paddingHorizontal: 10,
+        // paddingHorizontal: 10,
         // width: "100%"
          //alignSelf:'center',
  
