@@ -31,16 +31,14 @@ const ShowScreen = ({navigation})=> {
       keyExtractor={item => item.id}
       renderItem={({item}) => {
         return (
-          <ListItem style={ { height: 10, borderWidth:1, borderColor: 'blue' } }>
+          <ListItem style={ { height: 41, borderWidth:1, borderColor: 'blue'} }>
             <Left>
               <Text style={styles.text}>{item.title}</Text>
             </Left>
             <Body >
                 <Text style={{color: 'blue', fontSize: 15, fontWeight: 'bold'}}>{item.content.text}</Text>
             </Body>
-            <Right>
-               
-            </Right>
+            
             
           </ListItem>
         );
@@ -57,10 +55,7 @@ const ShowScreen = ({navigation})=> {
             }}//}console.log()
         />
         <View style={styles.warn}>
-            <Text> </Text>
-            <Text style={styles.wtext}>Please, make a screenshot!</Text>
-            <Text style={styles.wtext}>Send the screenshot to Ray!</Text>
-            <Text> </Text>
+          <Text style={styles.wtext}>Send the screenshot to Ray!</Text>
         </View>
   
         </View>
@@ -100,27 +95,27 @@ const styles = StyleSheet.create({
      headtext: {
          fontStyle: 'italic',
          fontWeight: 'bold',
-         fontSize: 25,
+         fontSize: 20,
          alignSelf:'center',
          color: 'rgb(120,0,60)',
-         paddingBottom:5,
-         paddingTop:10
+         paddingBottom:3,
+         paddingTop:3
          
      },
  
      container: {
          //fontSize: 20,
-         borderRadius: 55,// rounded corners
+         //borderRadius: 55,// rounded corners
          marginHorizontal: 5,
          //marginBottom: 60,
          flex:1,
         // justifyContent: 'space-between',
          //justifyContent: 'space-around',
         // justifyContent: 'space-evenly',
-         marginTop: 10,
-         marginBottom: 10,
+         marginTop: 2,
+         marginBottom: 1,
          fontWeight: 'bold',
-         fontSize: 18,
+         fontSize: 15,
          //alignSelf:'center',
          
          
@@ -130,7 +125,7 @@ const styles = StyleSheet.create({
         //fontSize: 20,
         borderRadius: 55,// rounded corners
         //marginHorizontal: 15,
-        backgroundColor: 'black',
+      //  backgroundColor: 'black',
         //marginBottom: 60,
         flex:3,
         justifyContent: 'space-between',
