@@ -33,7 +33,7 @@ const navigator = createStackNavigator(
   }, 
   {
 //2.configuration options specifically for our stack Navigator: 
-    initialRouteName: 'TestUI',
+    initialRouteName: 'Index',
     defaultNavigationOptions: {
 //3.this title is set inside of the header.
       

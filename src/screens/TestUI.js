@@ -9,47 +9,24 @@ const TestUI = ({initialValues})=> {
   const title = initialValues.lines.title;
   const dataArr = initialValues.lines;
 
-  renderItem = ({ item }) => {
-    return (
-      <ListItem>
-         <Left>
-         <Text >{item.title}</Text> 
-         </Left>
-          <Body >
-          <Text > - </Text>
-          </Body>
-          <Right>
-          <Text >{item.content.text}</Text> 
-          </Right>
-
-      </ListItem>
-    )
-  };
-
   return (
-
-      <FlatList
-            data={dataArr}
-            keyExtractor={item => item.title}
-            renderItem={({item}) => {
-              return (
-
-                <ListItem>
-                 <Left>
-                    <Text>
-                      {item.title}
-                    </Text>
-                  </Left>
-                  <Right>
-                    <Text>
-                      {item.content.text}
-                    </Text>
-                  </Right>
-                </ListItem>
-              );
-            }}
-      />
-   );
+    <FlatList
+      data={dataArr}
+      keyExtractor={item => item.title}
+      renderItem={({item}) => {
+        return (
+          <ListItem>
+            <Left>
+              <Text>{item.title}</Text>
+            </Left>
+            <Right>
+              <Text>{item.content.text}</Text>
+            </Right>
+          </ListItem>
+        );
+      }}
+    />
+  );
 
 };
 

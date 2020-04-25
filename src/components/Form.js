@@ -73,52 +73,52 @@ Form.defaultProps = {
                 //initial values
             {
                 id: 1,
-                title: 'Name:              ',
+                title: 'Name:',
                 content: ''
             },
             {
                 id: 2,
-                title: 'Total in drawer:    ',
+                title: 'Total in drawer: ',
                 content: ''
             },
             {
                 id: 3,
-                title: 'Wages:           ',
+                title: 'Wages:',
                 content: ''
             },
             {
                 id: 4,
-                title: 'Taxes:              ',
+                title: 'Taxes:',
                 content: ''
             },
             {
                 id: 5,
-                title: 'Rent:               ',
+                title: 'Rent:',
                 content: ''
             },
             {
                 id: 6,
-                title: 'Consingment# HG :   ',
+                title: 'HighGarden:',
                 content: ''
             },
             {
                 id: 7,
-                title: 'Consingment# Buffalo Roze:',
+                title: 'Buffalo Roze:',
                 content: ''
             },
             {
                 id: 8,
-                title: 'Consingment# Poole Farms:',
+                title: 'Poole Farms:',
                 content: ''
             },
             {
                 id: 9,
-                title: 'Consingment# Pure Pressure:',
+                title: 'Pure Pressure:',
                 content: ''
             },
             {
                 id: 10,
-                title: 'Consingment# Dankland:',
+                title: 'Dankland:',
                 content: ''
             },
             {
@@ -128,12 +128,12 @@ Form.defaultProps = {
             },
             {
                 id: 12,
-                title: 'Left in Drawer:     ',
+                title: 'Left in Drawer:',
                 content: ''
             },
             {
                 id: 13,
-                title: 'Notes:              ',
+                title: 'Notes:',
                 content: ''
             }
 

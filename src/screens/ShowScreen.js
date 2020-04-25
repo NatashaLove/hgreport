@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import { ScrollView, View, Alert, Text, StyleSheet, TouchableOpacity, FlatList, Button } from 'react-native';
 import { Context } from '../context/ReportContext';
-import { Container, Header, Content, List, ListItem, Left, Right } from 'native-base';
+import { Container, Header, Content, List, ListItem, Left, Right, Body } from 'native-base';
 
 import {EvilIcons} from '@expo/vector-icons';
 
@@ -13,24 +13,40 @@ const ShowScreen = ({navigation})=> {
     
     const {addReport} = useContext(Context);
    
-  const lines = navigation.getParam ('data',[]);
-  const today = navigation.getParam ('date', '');
+    const lines = navigation.getParam ('data',[]);
+    const today = navigation.getParam ('date', '');
      
-const report=[today, lines];
+    const report=[today, lines];
 
     return (
- // scrollview== List ? (from native base) -> lines.map ...return :ListItem ->
- //Left / Right -> Text...
- //ListItem- is every line: title+content
-
-        <ScrollView style={styles.container}>
+ 
+        <View style={styles.container}>
             
             <Text style={styles.headtext}>Report is ready!</Text>
             
-        {lines.map((item, key) => {
-            return ( <Text style={styles.text} key={item.id}>{item.title.toString()} -- {JSON.stringify(item.content.text)} </Text>);
-
-        })}
+        
+       
+    <FlatList 
+      data={lines}
+      keyExtractor={item => item.id}
+      renderItem={({item}) => {
+        return (
+          <ListItem style={ { height: 10, borderWidth:1, borderColor: 'blue' } }>
+            <Left>
+              <Text style={styles.text}>{item.title}</Text>
+            </Left>
+            <Body >
+                <Text style={{color: 'blue', fontSize: 15, fontWeight: 'bold'}}>{item.content.text}</Text>
+            </Body>
+            <Right>
+               
+            </Right>
+            
+          </ListItem>
+        );
+      }}
+    />
+ 
          <Text style={styles.headtext}>{today.toString()} </Text>
        
          <Button style={styles.button}
@@ -46,14 +62,16 @@ const report=[today, lines];
             <Text style={styles.wtext}>Send the screenshot to Ray!</Text>
             <Text> </Text>
         </View>
-
-        
-            
   
-        </ScrollView>
+        </View>
     );  
                 
 };
+
+//previously: map function to display list items:
+//{lines.map((item, key) => {
+//    return ( <Text style={styles.text} key={item.id}>{item.title.toString()} -- {JSON.stringify(item.content.text)} </Text>);
+//})}
 
 /*
 when we want to show something inside the header- under our main component add in ShowScreen.navigationOptions = () =>
@@ -69,12 +87,14 @@ const styles = StyleSheet.create({
     text: {
         // fontStyle: 'italic',
          fontWeight: 'bold',
-         fontSize: 20,
+         fontSize: 18,
          //alignSelf:'center',
          color: 'black',
          justifyContent:'space-evenly',
-         borderWidth:1,
-         borderColor: 'blue'
+      //  borderWidth:1,
+         //borderColor: 'blue'
+         flex:1,
+         //minWidth:100
          
      },
      headtext: {
@@ -91,16 +111,16 @@ const styles = StyleSheet.create({
      container: {
          //fontSize: 20,
          borderRadius: 55,// rounded corners
-         marginHorizontal: 15,
+         marginHorizontal: 5,
          //marginBottom: 60,
          flex:1,
         // justifyContent: 'space-between',
          //justifyContent: 'space-around',
         // justifyContent: 'space-evenly',
-         marginTop: 20,
-         marginBottom: 60,
+         marginTop: 10,
+         marginBottom: 10,
          fontWeight: 'bold',
-         fontSize: 25,
+         fontSize: 18,
          //alignSelf:'center',
          
          
@@ -112,12 +132,12 @@ const styles = StyleSheet.create({
         //marginHorizontal: 15,
         backgroundColor: 'black',
         //marginBottom: 60,
-        flex:0,
+        flex:3,
         justifyContent: 'space-between',
         //justifyContent: 'space-around',
         justifyContent: 'space-evenly',
-        marginTop: 10,
-        marginBottom: 20,
+        marginTop: 5,
+        marginBottom: 5,
         fontStyle: 'italic',
         fontSize: 15,
         //alignSelf:'center',
