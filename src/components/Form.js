@@ -1,5 +1,6 @@
 import React, { useState} from 'react';
 import { View, ScrollView, Text, StyleSheet, TextInput, Button, FlatList, Image } from 'react-native';
+import { Container, Header, Content, List, ListItem, Left, Right, Body } from 'native-base';
 
 const Form = ( {initialValues, onSubmit} )=> {
 
@@ -37,10 +38,13 @@ const Form = ( {initialValues, onSubmit} )=> {
         <FlatList 
             data={dataArr}
             keyExtractor={item => item.title}
-            renderItem={({ item }) => (                
-                <View style={styles.container}>
-                    <Text style={styles.label}> {item.title} </Text>
-                   
+            renderItem={({ item }) => (             
+                
+                <ListItem style={ { height: 41, borderWidth:1, borderColor: 'blue'} }>
+                     <Left>
+                         <Text style={styles.label}>{item.title}</Text>
+                    </Left>
+                    <Body >
                     <TextInput
                         style={styles.input} 
                         value={content} 
@@ -48,7 +52,10 @@ const Form = ( {initialValues, onSubmit} )=> {
 
                         onChangeText={(text) => setDataArr(item.id, item.title, {text})}
                     />
-                </View>
+                    </Body>
+            
+                </ListItem>
+
                                   
             )}
     //!!! NEED to add a "+"(add subform)below- to add text input in case of new consignment
@@ -163,12 +170,14 @@ const styles = StyleSheet.create({
 
     input: {
         fontSize:18,
-        borderWidth: 1,
-        borderColor: 'black',
-        marginHorizontal:5,//mRgins on both sides
-        marginBottom:5,
-        paddingHorizontal:5, //to get a little bit spacing between the text and the border
-        flex: 1//takes the rest of the space
+        height: 20,
+        color: 'blue',
+       // borderWidth: 1,
+        //borderColor: 'black',
+       // marginHorizontal:5,//mRgins on both sides
+        //marginBottom:5,
+        //paddingHorizontal:5, //to get a little bit spacing between the text and the border
+        flex: 0//takes the rest of the space
         },
     label: {
         fontSize:20,
