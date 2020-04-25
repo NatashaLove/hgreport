@@ -2,6 +2,7 @@
 import React, { useContext, useEffect } from 'react';
 import { View, Alert, Text, StyleSheet, TouchableOpacity, FlatList, Button } from 'react-native';
 import { Context } from '../context/ReportContext';
+import { Container, Header, Content, List, ListItem, Left, Right, Body } from 'native-base';
 
 const ShowRepByDateScreen = ({ navigation, initialValues})=> {
     
@@ -34,17 +35,29 @@ return (
 
        <>
             
-<Text  style={styles.headtext} >Report for {date}</Text>
+<Text  style={styles.headtext} >Report for {date}  </Text>
     
 <View style={styles.container}>
-    {lines.map((item, key) => {
-        return ( 
-        <Text  key={item.id} style={styles.text}>{item.title.toString()} ---  {JSON.stringify(item.content.text)}</Text>      
-         );
-                
-    }
+
+<FlatList 
+      data={lines}
+      keyExtractor={item => item.id}
+      renderItem={({item}) => {
+        return (
+          <ListItem style={ { height: 41, borderWidth:1, borderColor: 'blue'} }>
+            <Left>
+              <Text style={styles.text}>{item.title}</Text>
+            </Left>
+            <Body >
+                <Text style={{color: 'blue', fontSize: 15, fontWeight: 'bold'}}>{item.content.text}</Text>
+            </Body>
             
-    )}
+            
+          </ListItem>
+        );
+      }}
+    />
+ 
 </View> 
 
     <Button style={styles.button}
@@ -66,21 +79,24 @@ const styles = StyleSheet.create({
     text: {
         // fontStyle: 'italic',
          fontWeight: 'bold',
-         fontSize: 20,
+         fontSize: 18,
          //alignSelf:'center',
          color: 'black',
          //justifyContent:'space-between',
-         borderBottomColor: 'blue',
-         borderWidth:1,
+       //  borderBottomColor: 'blue',
+        // borderWidth:1,
           
      },
      headtext: {
          fontStyle: 'italic',
          fontWeight: 'bold',
-         fontSize: 25,
+         fontSize: 20,
          alignSelf:'center',
          color: 'rgb(120,0,60)',
-         paddingBottom:10
+         //justifyContent:'space-between',
+         paddingBottom:3,
+         marginRight:5
+        // borderRadius: 5
          
      },
  
@@ -88,16 +104,16 @@ const styles = StyleSheet.create({
          //fontSize: 20,
          alignItems: 'stretch',
          //borderRadius: 55,// rounded corners
-         marginHorizontal: 10,
+        // marginHorizontal: 5,
          //marginBottom: 60,
          flex:0,
          justifyContent: 'space-between',
          //justifyContent: 'space-around',
          //justifyContent: 'space-evenly',
          //marginTop: 20,
-         marginBottom: 6,
+         marginBottom: 2,
          fontWeight: 'bold',
-         fontSize: 25,
+         fontSize: 15,
         // flexDirection: 'row',
          paddingHorizontal: 10,
         // width: "100%"
@@ -117,3 +133,15 @@ ShowRepByDateScreen.defaultProps = {
 };
 
 export default ShowRepByDateScreen;
+
+//Flatlist instead of:
+/*
+  {lines.map((item, key) => {
+        return ( 
+        <Text  key={item.id} style={styles.text}>{item.title.toString()} ---  {JSON.stringify(item.content.text)}</Text>      
+         );
+                
+    }
+            
+    )}
+*/

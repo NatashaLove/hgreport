@@ -22,7 +22,7 @@ const ShowScreen = ({navigation})=> {
  
         <View style={styles.container}>
             
-            <Text style={styles.headtext}>Report is ready!</Text>
+            <Text style={styles.headtext}>Report is ready!  </Text>
             
         
        
@@ -106,7 +106,7 @@ const styles = StyleSheet.create({
      container: {
          //fontSize: 20,
          //borderRadius: 55,// rounded corners
-         marginHorizontal: 5,
+         marginHorizontal: 10,
          //marginBottom: 60,
          flex:1,
         // justifyContent: 'space-between',
