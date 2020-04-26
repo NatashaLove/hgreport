@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';//useState here to control T
 import { StyleSheet, View, Text, FlatList } from 'react-native';
 import { Context } from '../context/ReportContext';// import can get access to our context
 import Form from '../components/Form';
-import { Container, Header, Content, List, ListItem, Left, Right, Body } from 'native-base';
+import { Container, Header, Content, List, ListItem, Left, Right, Body, Spinner } from 'native-base';
 
 const CreateScreen = ({state, navigation})=> {
   

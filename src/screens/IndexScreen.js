@@ -1,35 +1,35 @@
 import React, { useContext} from 'react';
-import { View, TouchableOpacity, StyleSheet, Text, Button, Image } from "react-native";
+import { View, TouchableOpacity, StyleSheet, Text, Image } from "react-native";
 import { Context } from '../context/ReportContext';
-
+import { Button } from 'react-native-elements';
 const IndexScreen = ({navigation}) => {
 
    // const {state, getReports}= useContext(Context);
 
     return <View style={styles.container}>
-        <Text style={styles.text}>Hello, HighGarden!</Text>
-        <View style={styles.button}>
+       
+       
+       <View style={{width:110, marginTop:20, alignSelf:'center'}}>
         <Button 
+            buttonStyle={styles.button1}
             title="CREATE REPORT"
-            color='rgb(150,200,100)'
-            borderRadius='55'
-            fontWeight= 'bold'
+            raised
+
             onPress={()=> navigation.navigate('Create')}
         />
-        </View>
+       </View>
 
         <Image style={styles.image}
-        source={require('../../assets/hg.jpeg')}>
+             source={require('../../assets/hg.jpeg')}>
         </Image>
-        
-       
-              
-        <View style={styles.button}>
-        <Button style={styles.button}
+        <View style={{width:110, marginTop:20, alignSelf:'center'}}>
+        <Button 
+            buttonStyle={styles.button2}
+            raised={true}
             title="GET REPORTS"
-            color='rgb(120,0,60)'
-            borderRadius='55'
-            fontWeight= 'bold'
+                  
+            //backgroundColor= 'green'
+           // titleStyle={{ color: 'pink' }}
             onPress={()=>navigation.navigate('Reports') }
             
         />
@@ -64,29 +64,48 @@ const styles = StyleSheet.create({
        // flexDirection: 'column'
     },
 
-    button: {
+    button1: {
+        //! button doesn't have styles.prop!
+        //has to be customized 
+               
+                width: "90%", 
+                paddingVertical: 5, 
+                maxWidth:90,
+                height: 70,
+              //  marginVertical: 5,
+            
+                borderRadius:35,
+                alignSelf:'center',
+                fontSize: 40,
+                fontWeight: 'bold',
+                backgroundColor:'rgb(45,120,75)'      
+               
+             //borderBottomEndRadius: 80
+            },
+        
+    button2: {
 //! button doesn't have styles.prop!
 //has to be customized 
        
-        width: "50%", 
-        margin: 5, 
+        width: "90%", 
+        paddingVertical: 5, 
         maxWidth:90,
-        maxHeight: 30,
-        marginBottom: 10,
-        borderRadius:55,
+        height: 70,
+        //marginVertical: 5,
+        borderRadius:35,
         alignSelf:'center',
         fontSize: 40,
-        fontWeight: 'bold'
-        
-        
-
+        fontWeight: 'bold',
+        backgroundColor:'rgb(120,0,60)'       
+       
      //borderBottomEndRadius: 80
     },
 
     image: {
 //image must have style with heihjt and width - otherwise it folds
         height: 350,
-        width: 350
+        width: 350,
+        paddingVertical:1
     }
 });
 
