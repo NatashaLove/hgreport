@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';//useState here to control TextInput
-import { StyleSheet, View, Text, FlatList } from 'react-native';
+import { StyleSheet, ScrollView, Text, FlatList } from 'react-native';
 import { Context } from '../context/ReportContext';// import can get access to our context
 import Form from '../components/Form';
 import { Container, Header, Content, List, ListItem, Left, Right, Body, Spinner } from 'native-base';
@@ -8,7 +8,7 @@ const CreateScreen = ({state, navigation})=> {
   
   return (
     
-    <View>
+    <ScrollView>
       <Form onSubmit={ (dataArr, today)=> {
       
       navigation.navigate('Show', {data: dataArr, date:today})
@@ -16,7 +16,7 @@ const CreateScreen = ({state, navigation})=> {
       }}
        />
       
-    </View>
+    </ScrollView>
     
     );
 };

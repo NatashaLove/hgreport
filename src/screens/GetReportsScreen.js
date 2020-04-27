@@ -1,6 +1,7 @@
 import React, {useEffect, useContext, useState} from 'react';
 import { View, TextInput, FlatList, StyleSheet, Text, ScrollView, Button } from "react-native";
 import { Context } from '../context/ReportContext';
+import { DatePicker} from "native-base";
 
 const GetReportsScreen = ({navigation}) => {
     const {state, getReports } = useContext(Context);
@@ -22,25 +23,31 @@ const GetReportsScreen = ({navigation}) => {
     }, []);// empty array right there means that we only want to run that arrow function 
     //exactly one time when our component first shows up on the screen.
 
- 
+       
     return (
         <>
       
-        <Text style={styles.text}  >Enter the date</Text>
-        <TextInput
-            style={styles.input} 
-            //value={date} 
-            placeholder={'0/0/0000'}
-                      
-            onChangeText={(newDate) => {
-               
-                    newDate!==null ?
-                     setDate(newDate):
-                     setDate('00/00/0000');
-               
-                }}
-        />
+        <Text style={styles.text}  >Select the date</Text>
+       
         
+        <DatePicker
+            defaultDate={new Date(2020, 2, 23)}
+            minimumDate={new Date(2020, 2, 23)}
+            maximumDate={new Date(2020, 12, 31)}
+            locale={"en"}
+            timeZoneOffsetInMinutes={undefined}
+            modalTransparent={false}
+            animationType={"fade"}
+            androidMode={"default"}
+            placeHolderText="Select date"
+            textStyle={{ color: "green" }}
+            placeHolderTextStyle={{ color: "#d3d3d3" }}
+            onDateChange={(setDate) }
+           
+          />
+         
+        
+
         <View style={styles.button}>
         <Button
          title="show" 
@@ -130,3 +137,20 @@ const styles = StyleSheet.create({
 
 
 export default GetReportsScreen;
+
+/*
+//manual date input
+ <TextInput
+            style={styles.input} 
+            //value={date} 
+            placeholder={'0/0/0000'}
+                      
+            onChangeText={(newDate) => {
+               
+                    newDate!==null ?
+                     setDate(newDate):
+                     setDate('00/00/0000');
+               
+                }}
+        />
+*/
