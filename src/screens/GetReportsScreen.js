@@ -6,7 +6,9 @@ import { DatePicker} from "native-base";
 const GetReportsScreen = ({navigation}) => {
     const {state, getReports } = useContext(Context);
      const [date, setDate] = useState(new Date());
-    
+   const d = date.toLocaleDateString();
+
+   console.log(d);
 //inside useEffect - callback func runs only first time when app rendered:   
     useEffect(()=> {
        // getReports();
@@ -36,7 +38,7 @@ const GetReportsScreen = ({navigation}) => {
             defaultDate={new Date(2020, 2, 23)}
             minimumDate={new Date(2020, 2, 23)}
             maximumDate={new Date(2020, 12, 31)}
-            locale={"en"}
+            locale={"en-US"}
             timeZoneOffsetInMinutes={undefined}
             modalTransparent={false}
             animationType={"fade"}
