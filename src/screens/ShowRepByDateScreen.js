@@ -6,25 +6,25 @@ import { Container, Header, Content, List, ListItem, Left, Right, Body } from 'n
 
 const ShowRepByDateScreen = ({ navigation, initialValues})=> {
     
-const date = navigation.getParam ('date', '2020-03-23T05:00:00.000Z');
+const date = navigation.getParam ('date', '00/00/0000');
 //const lines = navigation.getParam ('lines', []);
 // bring the ISO date var to this screen and here convert to correct format..
 
 const {state} = useContext(Context);
 
-//! const result = state.find(report => report.date === date
+const result = state.find(report => report.date === date
 
 
 //    ? report
 //    :initialValues.state
-//!    );
+    );
     /*
 if(date !== report.date) {
     Alert.alert("WRONG DATE!")
 };
 */
 
-//! const {theDate, lines} = result;//need to destructurize-to get the lines arr from the object result.
+ const {theDate, lines} = result;//need to destructurize-to get the lines arr from the object result.
 
 /*
 if (theDate===null) {
@@ -37,11 +37,11 @@ if (theDate===null) {
 
 return (
   console.log(date),
-  <Text  style={styles.headtext} >Report for now  </Text>
-/*
+  
+
        <>
             
-<Text  style={styles.headtext} >Report for {date}  </Text>
+<Text  style={styles.headtext} >Report for now </Text>
     
 <View style={styles.container}>
 
@@ -76,7 +76,7 @@ return (
 />
  
 </>
-*/
+
 );
 
 };

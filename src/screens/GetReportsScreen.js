@@ -58,7 +58,7 @@ const GetReportsScreen = ({navigation}) => {
         <Button
          title="show" 
          color='blue'   
-         onPress={()=> navigation.navigate('ShowRepByDate', {date:date}) } //console.log(date)}
+         onPress={()=> navigation.navigate('ShowRepByDate', {date:d}) } //console.log(date)}
         />
         </View>
         < FlatList 

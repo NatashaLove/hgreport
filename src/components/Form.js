@@ -26,15 +26,16 @@ const Form = ( {initialValues, onSubmit} )=> {
     };
 
    
-    const ddate= new Date().getDate();
+    const ddate= new Date();
+    const d = ddate.toLocaleDateString();
     const month = new Date().getMonth() + 1;
     const year = new Date().getFullYear();
-    const today = (month + '-' + ddate + '-' + year);
+    const today = (month + '/' + ddate + '/' + year);
 
     return (
 
 <View>
-    <Text style={styles.text} >Date: {today}</Text>
+    <Text style={styles.text} >Date: {d}</Text>
         <FlatList 
             data={dataArr}
             keyExtractor={item => item.title}
@@ -64,7 +65,7 @@ const Form = ( {initialValues, onSubmit} )=> {
                 title="Preview Report" 
                 color="blue"
             
-                onPress={()=> onSubmit(dataArr, today) }//}console.log()// 
+                onPress={()=> onSubmit(dataArr, d) }//}console.log()// 
                 />
         </View>
     );
