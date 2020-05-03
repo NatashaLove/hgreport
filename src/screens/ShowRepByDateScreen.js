@@ -41,7 +41,7 @@ return (
 
        <>
             
-<Text  style={styles.headtext} >Report for now </Text>
+<Text  style={styles.headtext} >Report for {date}  </Text>
     
 <View style={styles.container}>
 
