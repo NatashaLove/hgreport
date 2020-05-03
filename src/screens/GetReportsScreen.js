@@ -1,7 +1,8 @@
 import React, {useEffect, useContext, useState} from 'react';
 import { View, TextInput, FlatList, StyleSheet, Text, ScrollView, Button } from "react-native";
 import { Context } from '../context/ReportContext';
-import { DatePicker} from "native-base";
+
+import {DatePicker, Container, Header, Content, List, ListItem, Left, Right, Body } from 'native-base';
 
 const GetReportsScreen = ({navigation}) => {
     const {state, getReports } = useContext(Context);
@@ -31,33 +32,33 @@ const GetReportsScreen = ({navigation}) => {
         
         <>
       
-        <Text style={styles.text}  >Select the date</Text>
-       
-        
         <DatePicker
-            defaultDate={new Date(2020, 2, 23)}
+            defaultDate={date}
             minimumDate={new Date(2020, 2, 23)}
-            maximumDate={new Date(2020, 12, 31)}
+            maximumDate={date}
             locale={"en-US"}
             timeZoneOffsetInMinutes={undefined}
             modalTransparent={false}
             animationType={"fade"}
             androidMode={"default"}
-            placeHolderText="Select date"
+            placeHolderText="--->>> CLICK HERE TO SELECT DATE! <<<---"
             textStyle={{ color: "green" }}
-            placeHolderTextStyle={{ color: "#d3d3d3" }}
-            onDateChange={setDate}
+            placeHolderTextStyle={{ color: "#e95805" }}
+            onDateChange={setDate }
+            
            //newDate = {date.getFullYear()+'-' + (date.getMonth()+1) + '-'+date.getDate()}    
                //(setDate) => navigation.navigate('ShowRepByDate', {date:date})}
 
           />
          
-        
-
+     
         <View style={styles.button} >
         <Button
          title="show" 
-         color='blue'   
+         color='#e95805'
+         
+          
+        // disabled
          onPress={()=> navigation.navigate('ShowRepByDate', {date:d}) } //console.log(date)}
         />
         </View>
@@ -93,9 +94,11 @@ const styles = StyleSheet.create({
         maxHeight: 30,
         marginBottom: 10,
         borderRadius:55,
-        alignSelf:'center',
+        alignSelf:'flex-end',
         fontSize: 30,
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        textShadowColor: '#e95805'
+        
     },
 
     input: {

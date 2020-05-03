@@ -13,14 +13,10 @@ const TestScreen = ({initialValues, navigation})=> {
 //now we only care about addblogpost so I'm going to destructure out adblogpost  : 
   const {addReport} = useContext(Context);
 const [username, setState]=useState('');
-const date = '2020-03-23T05:00:00.000Z';
 //!!! to customize the form - 1st! here inside <BlogPostForm /> -we need to formulate -
 //-(make up var names) some set of props -that we're gonna pass into addblogpost form:
 //whenever blogpostform calls onSubmit it has to pass in the new title and content !
- 
-console.log(date);
-
-return (
+  return (
     
       //View to hold our multiple components  
       <View style={styles.container}>  
@@ -35,14 +31,12 @@ return (
       <Button  
   title="Submit"  
   // color="#00B0FF"  
- /* onPress={() =>  
+  onPress={() =>  
   navigation.navigate('Show', {  
       userName: username,  
       otherParam: '101',  
-      
   })  
   }  
-  */
   />  
   </View>  
   </View>  
