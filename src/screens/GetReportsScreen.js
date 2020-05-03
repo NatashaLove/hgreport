@@ -5,7 +5,7 @@ import { DatePicker} from "native-base";
 
 const GetReportsScreen = ({navigation}) => {
     const {state, getReports } = useContext(Context);
-    const [date, setDate] = useState('');
+     const [date, setDate] = useState(new Date());
     
 //inside useEffect - callback func runs only first time when app rendered:   
     useEffect(()=> {
@@ -22,9 +22,11 @@ const GetReportsScreen = ({navigation}) => {
 
     }, []);// empty array right there means that we only want to run that arrow function 
     //exactly one time when our component first shows up on the screen.
-
-       
-    return (
+   // const newDate= date.getFullYear()+'-' + (date.getMonth()+1) + '-'+date.getDate();
+   //const newDate = date.getFullYear()+'-' + (date.getMonth()+1) + '-'+date.getDate();
+   
+   return (
+        
         <>
       
         <Text style={styles.text}  >Select the date</Text>
@@ -42,17 +44,19 @@ const GetReportsScreen = ({navigation}) => {
             placeHolderText="Select date"
             textStyle={{ color: "green" }}
             placeHolderTextStyle={{ color: "#d3d3d3" }}
-            onDateChange={(setDate) }
-           
+            onDateChange={setDate}
+           //newDate = {date.getFullYear()+'-' + (date.getMonth()+1) + '-'+date.getDate()}    
+               //(setDate) => navigation.navigate('ShowRepByDate', {date:date})}
+
           />
          
         
 
-        <View style={styles.button}>
+        <View style={styles.button} >
         <Button
          title="show" 
          color='blue'   
-         onPress={()=> navigation.navigate('ShowRepByDate', {date:date}) }
+         onPress={()=> navigation.navigate('ShowRepByDate', {date:date}) } //console.log(date)}
         />
         </View>
         < FlatList 

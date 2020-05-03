@@ -29,7 +29,7 @@ const Form = ( {initialValues, onSubmit} )=> {
     const ddate= new Date().getDate();
     const month = new Date().getMonth() + 1;
     const year = new Date().getFullYear();
-    const today = (month + '/' + ddate + '/' + year);
+    const today = (month + '-' + ddate + '-' + year);
 
     return (
 
