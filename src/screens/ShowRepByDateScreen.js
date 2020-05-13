@@ -36,7 +36,7 @@ if (theDate===null) {
    // const theDate=date;
 
 return (
-  console.log(date),
+  //console.log(date),
   
 
        <>

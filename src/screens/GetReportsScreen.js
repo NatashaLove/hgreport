@@ -9,7 +9,7 @@ const GetReportsScreen = ({navigation}) => {
      const [date, setDate] = useState(new Date());
    const d = date.toLocaleDateString();
 
-   console.log(d);
+  // console.log(d);
 //inside useEffect - callback func runs only first time when app rendered:   
     useEffect(()=> {
        // getReports();
