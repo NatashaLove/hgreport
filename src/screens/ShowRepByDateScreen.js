@@ -1,6 +1,6 @@
 
 import React, { useContext, useEffect } from 'react';
-import { View, Alert, Text, StyleSheet, TouchableOpacity, FlatList, Button } from 'react-native';
+import { View, ScrollView, Alert, Text, StyleSheet, TouchableOpacity, FlatList, Button } from 'react-native';
 import { Context } from '../context/ReportContext';
 import { Container, Header, Content, List, ListItem, Left, Right, Body } from 'native-base';
 
@@ -37,34 +37,28 @@ if (theDate===null) {
 
 return (
   //console.log(date),
-  
-
-       <>
-            
-<Text  style={styles.headtext} >Report for {date}  </Text>
+  <ScrollView style={styles.container}>   
+    <Text  style={styles.headtext} >Report for {date}  </Text>
     
-<View style={styles.container}>
-
-<FlatList 
-      data={lines}
-      keyExtractor={item => item.id}
-      renderItem={({item}) => {
-        return (
-          <ListItem style={ { marginRight:10, height: 41, borderWidth:1, borderColor: 'blue'} }>
-            <Left>
-              <Text style={styles.text}>{item.title}</Text>
-            </Left>
-            <Body >
-                <Text style={{color: 'blue', fontSize: 15, fontWeight: 'bold'}}>{item.content.text}</Text>
-            </Body>
-            
-            
-          </ListItem>
-        );
-      }}
-    />
- 
-</View> 
+      <FlatList 
+            data={lines}
+            keyExtractor={item => item.id}
+            renderItem={({item}) => {
+              return (
+                <ListItem style={ { marginRight:10, height: 41, borderWidth:1, borderColor: 'blue'} }>
+                  <Left>
+                    <Text style={styles.text}>{item.title}</Text>
+                  </Left>
+                  <Body >
+                      <Text style={{color: 'blue', fontSize: 15, fontWeight: 'bold'}}>{item.content.text}</Text>
+                  </Body>
+                  
+                  
+                </ListItem>
+              );
+            }}
+          />
+      
 
     <Button style={styles.button}
     title="back to all reports" 
@@ -74,8 +68,8 @@ return (
         navigation.pop() 
     }}//}console.log()
 />
- 
-</>
+</ScrollView> 
+
 
 );
 

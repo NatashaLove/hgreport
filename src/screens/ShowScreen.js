@@ -22,7 +22,7 @@ const ShowScreen = ({navigation})=> {
  
         <View style={styles.container}>
             
-            <Text style={styles.headtext}>Report is ready!  </Text>
+            <Text style={styles.headtext}>Report for {today.toString()} is ready!  </Text>
             
         
        
@@ -45,8 +45,6 @@ const ShowScreen = ({navigation})=> {
       }}
     />
  
-         <Text style={styles.headtext}>{today.toString()} </Text>
-       
          <Button style={styles.button}
             title="Confirm" 
             color='rgb(120,0,60)'
@@ -54,9 +52,7 @@ const ShowScreen = ({navigation})=> {
                 addReport(today, lines, () => navigation.navigate('Index'));
             }}//}console.log()
         />
-        <View style={styles.warn}>
-          <Text style={styles.wtext}>Send the screenshot to Ray!</Text>
-        </View>
+       
   
         </View>
     );  
@@ -67,6 +63,15 @@ const ShowScreen = ({navigation})=> {
 //{lines.map((item, key) => {
 //    return ( <Text style={styles.text} key={item.id}>{item.title.toString()} -- {JSON.stringify(item.content.text)} </Text>);
 //})}
+
+/*
+ <View style={styles.warn}>
+          <Text style={styles.wtext}>Send the screenshot to Ray!</Text>
+        </View>
+        
+         <Text style={styles.headtext}>{today.toString()} </Text>
+       
+*/
 
 /*
 when we want to show something inside the header- under our main component add in ShowScreen.navigationOptions = () =>
